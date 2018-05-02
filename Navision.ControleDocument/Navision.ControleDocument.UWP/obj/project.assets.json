@@ -6761,11 +6761,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.UWP\\Navision.ControleDocument.UWP.csproj",
+      "projectUniqueName": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument.UWP\\Navision.ControleDocument.UWP.csproj",
       "projectName": "Navision.ControleDocument.UWP",
-      "projectPath": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.UWP\\Navision.ControleDocument.UWP.csproj",
+      "projectPath": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument.UWP\\Navision.ControleDocument.UWP.csproj",
       "packagesPath": "C:\\Users\\fabien.richard\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.UWP\\obj\\",
+      "outputPath": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -6786,8 +6786,8 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj": {
-              "projectPath": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj"
+            "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj": {
+              "projectPath": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj"
             }
           }
         }

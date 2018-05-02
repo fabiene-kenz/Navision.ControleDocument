@@ -760,11 +760,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.iOS\\Navision.ControleDocument.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument.iOS\\Navision.ControleDocument.iOS.csproj",
       "projectName": "Navision.ControleDocument.iOS",
-      "projectPath": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.iOS\\Navision.ControleDocument.iOS.csproj",
+      "projectPath": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument.iOS\\Navision.ControleDocument.iOS.csproj",
       "packagesPath": "C:\\Users\\fabien.richard\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.iOS\\obj\\",
+      "outputPath": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -785,8 +785,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj": {
-              "projectPath": "c:\\users\\fabien.richard\\source\\repos\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj"
+            "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj": {
+              "projectPath": "C:\\Users\\fabien.richard\\source\\repos\\CheckDocument\\Navision.ControleDocument\\Navision.ControleDocument\\Navision.ControleDocument.csproj"
             }
           }
         }
