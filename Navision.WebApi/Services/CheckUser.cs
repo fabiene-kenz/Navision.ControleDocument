@@ -33,5 +33,7 @@ namespace Navision.WebApi.Services
         {
            return _db.UsersMobile.Any(u => u.User_Name.Contains(user.UserName.GetUser()) && u.Password == user.Password);
         }
+
+        public
     }
 }
