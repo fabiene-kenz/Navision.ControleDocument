@@ -20,6 +20,10 @@ namespace Creation_Json
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Creates and returns a list of Company objects
+        /// </summary>
+        /// <returns>Returns a list of Companies objects</returns>
         static private List<Company> getCompanyList()
         {
             Console.WriteLine("Recuperation de la list des Companies");
@@ -32,6 +36,11 @@ namespace Creation_Json
             return list;
         }
 
+        /// <summary>
+        /// Serializes the list of companies into JSON
+        /// </summary>
+        /// <param name="companyList">The list of Companies objects is needed</param>
+        /// <returns>Returns a string containing the JSON object</returns>
         static private string serializeList(List<Company> companyList)
         {
             Console.WriteLine("Serialisation de la liste des companies");
@@ -47,7 +56,11 @@ namespace Creation_Json
                 throw e;
             }
         }
-
+        
+        /// <summary>
+        /// Write the json string into a test.json file in Navision.ControleDocument.Services/fichierJson/
+        /// </summary>
+        /// <param name="jsonString">String containing the JSON object</param>
         static private void writeStringToFile(string jsonString)
         {
             string jsonFilePath = ConfigurationManager.AppSettings["jsonFilePath"];
