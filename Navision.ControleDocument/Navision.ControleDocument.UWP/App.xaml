@@ -1,8 +1,0 @@
-﻿<Application
-    x:Class="Navision.ControleDocument.UWP.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Navision.ControleDocument.UWP"
-    RequestedTheme="Light">
-
-</Application>
