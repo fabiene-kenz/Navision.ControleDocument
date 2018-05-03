@@ -33,7 +33,14 @@ namespace Navision.WebApi.Services
         {
            return _db.UsersMobile.Any(u => u.User_Name.Contains(user.UserName.GetUser()) && u.Password == user.Password);
         }
-
-        public
+        /// <summary>
+        /// Check if user exist in Navision
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool UserExistInNavision(UserModel user)
+        {
+            return _db.Users.Any(u => u.User_Name.Contains(user.UserName.GetUser()) );
+        }
     }
 }

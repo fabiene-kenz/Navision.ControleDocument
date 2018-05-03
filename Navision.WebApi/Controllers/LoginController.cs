@@ -45,7 +45,11 @@ namespace Navision.WebApi.Controllers
         /// <returns></returns>
         public JsonResult GetNewAccess(UserModel user)
         {
+            ICheckUser checkUser = new CheckUser();
+            if (checkUser.UserExistInNavision(user))
+            {
 
+            }
         }
     }
 }
