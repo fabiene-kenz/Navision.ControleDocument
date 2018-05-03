@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Navision.WebApi.IServices
 {
-   public interface ICheckUser
+   public interface ICheckUserServices
     {
         /// <summary>
         ///  /// Check if User exist

@@ -26,7 +26,7 @@ namespace Navision.WebApi.Controllers
         /// Login\CheckLogin
         public JsonResult CheckLogin(UserModel user)
         {
-            ICheckUser checkUser = new CheckUser();
+            ICheckUserServices checkUser = new CheckUserServices();
             // If exist retun user with token else without token
             if (checkUser.UserExist(user))
             {
@@ -42,13 +42,26 @@ namespace Navision.WebApi.Controllers
         /// Add new access for user
         /// </summary>
         /// <param name="user"></param>
-        /// <returns></returns>
+        /// <returns> userModel</returns>
         public JsonResult GetNewAccess(UserModel user)
         {
-            ICheckUser checkUser = new CheckUser();
-            if (checkUser.UserExistInNavision(user))
+            ICheckUserServices checkUserServices = new CheckUserServices();
+            IUserServices userServices = new UserServices();
+            if (checkUserServices.UserExistInNavision(user))
             {
-
+                if (userServices.AddUSerInMobile(user))
+                {
+                    user.Token = App_Start.GenerationToken.GenerateToken(user.UserName, user.Password, Request.UserHostAddress, Request.UserAgent, DateTime.Now.Ticks);
+                    return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
+                else
+                {
+                    return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
+            }
+            else
+            {
+                return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
     }

@@ -9,13 +9,13 @@ using System.Web;
 
 namespace Navision.WebApi.Services
 {
-    public class CheckUser : ICheckUser,IDisposable
+    public class CheckUserServices : ICheckUserServices,IDisposable
     {
         #region Properties
         private readonly Context _db;
         #endregion
         #region CTR
-        public CheckUser()
+        public CheckUserServices()
         {
             _db = new Context();
         }
