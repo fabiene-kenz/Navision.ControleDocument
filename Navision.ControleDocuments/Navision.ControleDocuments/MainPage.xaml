@@ -4,8 +4,41 @@
              xmlns:local="clr-namespace:Navision.ControleDocuments"
              x:Class="Navision.ControleDocuments.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Orientation="Vertical"
+                     Grid.Column="1"
+                     VerticalOptions="Center">
+            <Entry x:Name="UsernameEntry" 
+                   Placeholder="E-mail"/>
+            <Entry x:Name="passwordEntry" 
+                   Placeholder="Password"
+                   IsPassword="True"/>
+            <Button x:Name="forgottenPassword"
+                    Text="Mot de passe oublié"
+                    FontSize="12"
+                    HorizontalOptions="EndAndExpand"
+                    TextColor="{StaticResource primaryColor}"
+                    BackgroundColor="#00FFFFFF"/>
+            <Button x:Name="LoginButton"
+                    Text="Se connecter"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource blueButton}"/>
+            <BoxView HeightRequest="1"
+                     WidthRequest="100"
+                     HorizontalOptions="Center"
+                     Color="#a8a8a8"
+                     Margin="0, 5">
+            </BoxView>
+            <Button x:Name="firstConnectionButton"
+                    Text="Première connexion"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource blueButton}"/>
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

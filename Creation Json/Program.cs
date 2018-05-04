@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
-using Creation_Json.Model;
 using Newtonsoft.Json;
+using Creation_Json.Model;
 
 namespace Creation_Json
 {
     class Program
     {
         static void Main(string[] args)
-        {
+        { 
             List<Company> list = getCompanyList();
             string jsonString = serializeList(list);
             writeStringToFile(jsonString);

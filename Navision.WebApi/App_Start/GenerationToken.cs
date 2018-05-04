@@ -14,7 +14,7 @@ namespace Navision.WebApi.App_Start
         private const string _salt = "rz8LuOtFBXphj9WQfvFh";
         private static int _expirationMinutes = int.Parse(ConfigurationManager.AppSettings["ExpirationMinutes"]);
         /// <summary>
-        /// 
+        /// Generate Token
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -36,7 +36,11 @@ namespace Navision.WebApi.App_Start
             }
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", hashLeft, hashRight)));
         }
-
+        /// <summary>
+        /// Hash password
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static string GetHashedPassword(string password)
         {
             string key = string.Join(":", new string[] { password, _salt });
@@ -48,7 +52,13 @@ namespace Navision.WebApi.App_Start
                 return Convert.ToBase64String(hmac.Hash);
             }
         }
-
+        /// <summary>
+        /// Check if token is valid
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="ip"></param>
+        /// <param name="userAgent"></param>
+        /// <returns></returns>
         public static bool IsTokenValid(string token, string ip, string userAgent)
         {
             bool result = false;
