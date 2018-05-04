@@ -13,7 +13,7 @@ namespace Navision.ControleDocuments
 		{
 			InitializeComponent();
 
-			MainPage = new Navision.ControleDocuments.MainPage();
+			MainPage = new Navision.ControleDocuments.DashboardPage();
 		}
 
 		protected override void OnStart ()

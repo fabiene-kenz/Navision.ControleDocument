@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Navision.ControleDocuments.CustomControles.CustomContainerView">
+  <ContentView.Content>
+      <StackLayout>
+            <Label Text="{Binding Path=DocumentName, Mode=TwoWay}}" />
+            <Label Text="{Binding Path=DocumentDate, Mode=TwoWay}}" />
+            <Label Text="{Binding Path=DocumentSatut, Mode=TwoWay}}" />
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

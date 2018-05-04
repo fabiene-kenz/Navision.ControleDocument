@@ -10,7 +10,6 @@ namespace Navision.DB
         public Context()
             : base("name=Context")
         { 
-            this.OnModelCreating(new DbModelBuilder()); 
         }
 
         public virtual DbSet<User> Users { get; set; }

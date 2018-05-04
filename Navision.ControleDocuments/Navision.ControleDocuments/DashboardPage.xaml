@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Navision.ControleDocuments.DashboardPage"
+             xmlns:controle="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles">
+    <ContentPage.Content>
+        <StackLayout>
+            <controle:CustomContainerView   DocumentName="Nom du doc" ></controle:CustomContainerView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
