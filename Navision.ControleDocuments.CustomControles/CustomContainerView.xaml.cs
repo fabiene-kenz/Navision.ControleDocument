@@ -13,8 +13,8 @@ namespace Navision.ControleDocuments.CustomControles
     public partial class CustomContainerView : ContentView
     {
         public static readonly BindableProperty DocumentNameProperty = BindableProperty.Create(nameof(DocumentName), typeof(string), typeof(CustomContainerView));
-        public static readonly BindableProperty DocumentDateProperty = BindableProperty.Create(nameof(DocumentDate), typeof(DateTime), typeof(CustomContainerView));
-        public static readonly BindableProperty DocumentSatutProperty = BindableProperty.Create(nameof(DocumentSatut), typeof(Boolean), typeof(CustomContainerView));
+        public static readonly BindableProperty DocumentDateProperty = BindableProperty.Create(nameof(DocumentDate), typeof(DateTime?), typeof(CustomContainerView));
+        public static readonly BindableProperty DocumentSatutProperty = BindableProperty.Create(nameof(DocumentSatut), typeof(Boolean?), typeof(CustomContainerView));
 
         public CustomContainerView()
         {
@@ -32,22 +32,22 @@ namespace Navision.ControleDocuments.CustomControles
                 SetValue(DocumentNameProperty, value);
             }
         }
-        public DateTime DocumentDate
+        public DateTime? DocumentDate
         {
             get
             {
-                return (DateTime)GetValue(DocumentDateProperty);
+                return (DateTime?)GetValue(DocumentDateProperty);
             }
             set
             {
                 SetValue(DocumentDateProperty, value);
             }
         }
-        public Boolean DocumentSatut
+        public Boolean? DocumentSatut
         {
             get
             {
-                return (Boolean)GetValue(DocumentSatutProperty);
+                return (Boolean?)GetValue(DocumentSatutProperty);
             }
             set
             {

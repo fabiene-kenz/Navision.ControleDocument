@@ -2,10 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Navision.ControleDocuments.DashboardPage"
-             xmlns:controle="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles">
+             xmlns:controle="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles"
+             xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers">
+    <ContentPage.BindingContext>
+        <context:DashboardViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <controle:CustomContainerView   DocumentName="Nom du doc" ></controle:CustomContainerView>
+            <controle:CustomContainerView   DocumentDate="{Binding Path=DateDoc,Mode=TwoWay}"  DocumentName="Nom du doc" ></controle:CustomContainerView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Navision.ControleDocuments.Controllers\Navision.ControleDocuments.Controllers.csproj" />
     <ProjectReference Include="..\..\Navision.ControleDocuments.CustomControles\Navision.ControleDocuments.CustomControles.csproj" />
   </ItemGroup>
 
