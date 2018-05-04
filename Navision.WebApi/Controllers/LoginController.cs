@@ -36,7 +36,7 @@ namespace Navision.WebApi.Controllers
             else
             {
                 return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }           
+            }
         }
         /// <summary>
         /// Add new access for user

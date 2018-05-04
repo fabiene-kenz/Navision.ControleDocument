@@ -9,11 +9,13 @@ using System.Web;
 
 namespace Navision.WebApi.Services
 {
-    public class CheckUserServices : ICheckUserServices,IDisposable
+    public class CheckUserServices : ICheckUserServices, IDisposable
     {
+
         #region Properties
         private readonly Context _db;
         #endregion
+
         #region CTR
         public CheckUserServices()
         {
@@ -31,7 +33,8 @@ namespace Navision.WebApi.Services
         /// <returns></returns>
         public bool UserExist(UserModel user)
         {
-           return _db.UsersMobile.Any(u => u.User_Name.Contains(user.UserName.GetUser()) && u.Password == user.Password);
+            var name = user.UserName.GetUser();
+            return _db.UsersMobile.Any(u => u.User_Name.Contains(name) && u.Password == user.Password);
         }
         /// <summary>
         /// Check if user exist in Navision
@@ -40,7 +43,8 @@ namespace Navision.WebApi.Services
         /// <returns></returns>
         public bool UserExistInNavision(UserModel user)
         {
-            return _db.Users.Any(u => u.User_Name.Contains(user.UserName.GetUser()) );
+            var name = user.UserName.GetUser();
+            return _db.Users.Any(u => u.User_Name.Contains(name));
         }
     }
 }

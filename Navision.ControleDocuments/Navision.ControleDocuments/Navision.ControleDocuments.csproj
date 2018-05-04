@@ -9,6 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Navision.ControleDocuments.Controllers\Navision.ControleDocuments.Controllers.csproj" />
+    <ProjectReference Include="..\..\Navision.ControleDocuments.CustomControles\Navision.ControleDocuments.CustomControles.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>

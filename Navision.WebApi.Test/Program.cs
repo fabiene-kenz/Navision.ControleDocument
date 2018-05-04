@@ -13,9 +13,10 @@ namespace Navision.WebApi.Test
     {
         static void Main(string[] args)
         {
-            string uriBase = "http://localhost:61798/";
+            //string uriBase = "http://localhost:61798/";
+            string uriBase = "http://mobilenavision.azurewebsites.net/";
             string Uri = @"Login\CheckLogin";
-            UserModel u = new UserModel { UserName = "fabien", Password = "password" };
+            UserModel u = new UserModel { UserName = "fabien.richard@e-kenz.com", Password = "password" };
             var objUser = JsonConvert.SerializeObject(u);
             var content = new StringContent(objUser, Encoding.UTF8, "application/json");
             using (HttpClient client = new HttpClient())
