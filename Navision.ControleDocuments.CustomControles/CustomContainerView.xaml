@@ -1,16 +1,49 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Navision.ControleDocuments.CustomControles.CustomContainerView">
+             x:Class="Navision.ControleDocuments.CustomControles.CustomContainerView"
+             xmlns:serviceInterne="clr-namespace:Navision.ControleDocuments.CustomControles.Services"
+             xmlns:converterinterne="clr-namespace:Navision.ControleDocuments.CustomControles.Helpers"
+             x:Name="this">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converterinterne:ConvertBoolToImage x:Key="ConvertToImage"></converterinterne:ConvertBoolToImage>
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout BackgroundColor="Gray">
-            <StackLayout Orientation="Vertical">
-                <Label Text="{Binding Path=DocumentName, Mode=TwoWay}}" />
-                <Label Text="{Binding Path=DocumentDate, Mode=TwoWay}}" />
-            </StackLayout>
-            <StackLayout>
-                <Label Text="{Binding Path=DocumentSatut, Mode=TwoWay}}" />
-            </StackLayout>
-        </StackLayout>
+        <Grid BackgroundColor="#F2F2F2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical">
+                <Label Grid.Row="0" Text="{Binding Path=DocumentName, Mode=TwoWay,Source={x:Reference Name=this}}}" FontSize="Large"/>
+                </StackLayout>
+                <StackLayout  Grid.Row="1">
+                    <Label Text="{Binding Path=DocumentDate, Mode=TwoWay,Source={x:Reference Name=this}}}"/>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Column="1" HorizontalOptions="End">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout  Grid.Row="0">
+                    <Label Text="Statut" FontSize="Large"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" VerticalOptions="Start">
+                    <Image  Source="{Binding Path=DocumentSatut, Mode=TwoWay,Converter={StaticResource Key=ConvertToImage },Source={x:Reference Name=this}"
+                            HeightRequest="100" VerticalOptions="Start"></Image>
+                </StackLayout>
+            </Grid>
+        </Grid>
     </ContentView.Content>
 </ContentView>

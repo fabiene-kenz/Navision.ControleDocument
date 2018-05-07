@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Navision.ControleDocuments.Controllers.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,7 @@ namespace Navision.ControleDocuments
 		public DashboardPage ()
 		{
 			InitializeComponent ();
+            BindingContext = new DashboardViewModel(Navigation,typeof(MainPage));
 		}
 	}
 }

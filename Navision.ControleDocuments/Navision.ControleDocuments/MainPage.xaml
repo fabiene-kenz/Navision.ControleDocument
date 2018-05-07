@@ -7,5 +7,6 @@
 	<Label Text="Welcome to Xamarin.Forms!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
+    <Image Source="Cancel.png"/>
 
 </ContentPage>

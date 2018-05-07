@@ -4,6 +4,29 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Cancel.png" />
+    <None Remove="Images\Check.png" />
+    <None Remove="Images\Edit.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Cancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
   </ItemGroup>

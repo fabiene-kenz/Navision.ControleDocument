@@ -3,13 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Navision.ControleDocuments.DashboardPage"
              xmlns:controle="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles"
-             xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers">
-    <ContentPage.BindingContext>
-        <context:DashboardViewModel/>
-    </ContentPage.BindingContext>
-    <ContentPage.Content>
-        <StackLayout>
-            <controle:CustomContainerView   DocumentDate="{Binding Path=DateDoc,Mode=TwoWay}"  DocumentName="Nom du doc" ></controle:CustomContainerView>
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
+             xmlns:services="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
+             x:Name="DashBoardPage"
+             Title="DashBoard">
+    <Grid>
+        <ListView ItemsSource="{Binding Path=DocsModel,Mode=TwoWay}" SelectedItem="{Binding Path=DocModel,Mode=TwoWay}" RowHeight="150">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <controle:CustomContainerView x:Name="controlelist" Margin="5,5,5,5" 
+                                          DocumentSatut="{Binding Path=DocSatut,Mode=TwoWay}" 
+                                          DocumentDate="{Binding Path=DocDate,Mode=TwoWay}" 
+                                          DocumentName="{Binding Path=DocName,Mode=TwoWay}">
+                        </controle:CustomContainerView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>        
+    </Grid>
 </ContentPage>
