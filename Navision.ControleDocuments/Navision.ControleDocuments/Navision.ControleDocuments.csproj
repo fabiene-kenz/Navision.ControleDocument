@@ -10,29 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="img\NOK.png" />
-    <None Remove="img\OK.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="img\OK.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="img\NOK.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Navision.ControleDocuments.Controllers\Navision.ControleDocuments.Controllers.csproj" />
     <ProjectReference Include="..\..\Navision.ControleDocuments.CustomControles\Navision.ControleDocuments.CustomControles.csproj" />
+    <ProjectReference Include="..\..\Navision.ControleDocuments.Services\Navision.ControleDocuments.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

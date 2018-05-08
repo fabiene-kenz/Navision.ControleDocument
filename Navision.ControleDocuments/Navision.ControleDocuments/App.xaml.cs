@@ -9,11 +9,13 @@ namespace Navision.ControleDocuments
 {
 	public partial class App : Application
 	{
-        public App()
-        {
-            InitializeComponent();
-            MainPage = new Navision.ControleDocuments.MainPage();
-        }
+		public App ()
+		{
+			InitializeComponent();
+
+			MainPage =new NavigationPage (new Navision.ControleDocuments.SignInPage());
+		}
+
 		protected override void OnStart ()
 		{
 			// Handle when your app starts

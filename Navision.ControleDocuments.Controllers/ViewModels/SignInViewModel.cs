@@ -45,7 +45,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                     IsPasswordImageVisible = false;
                 else
                 {
-                    Task.Run(async () => IsPasswordCorrect = await checkPasswordsAsync());
+                    Task.Run(async () => IsPasswordCorrect = await CheckPasswordsAsync());
                     IsPasswordImageVisible = true;
                 }
                 OnPropertyChanged("ConfirmPassword");
@@ -82,12 +82,8 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 
         }
 
-        async Task<bool> checkPasswordsAsync()
+        async Task<bool> CheckPasswordsAsync()
         {
-            //bool isEqual = ConfirmPassword.Equals(Password);
-            //if (IsPasswordImageVisible != isEqual)
-            //    IsPasswordCorrect = isEqual;
-
             return ConfirmPassword.Equals(Password);
         }
 

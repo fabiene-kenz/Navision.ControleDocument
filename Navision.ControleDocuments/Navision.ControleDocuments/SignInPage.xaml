@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Navision.ControleDocuments.SignInPage"
              xmlns:local="clr-namespace:Navision.ControleDocuments"
-             xmlns:convert="clr-namespace:Navision.ControleDocuments.Helpers"
+             xmlns:convert="clr-namespace:Navision.ControleDocuments.Services.Helpers;assembly=Navision.ControleDocuments.Services"
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers">
 
     <ContentPage.BindingContext>
@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <convert:ConvertBoolToImage x:Key="ConvertToImage"></convert:ConvertBoolToImage>
+            <convert:ConvertBoolToPasswordImage x:Key="ConvertToImage"></convert:ConvertBoolToPasswordImage>
         </ResourceDictionary>
     </ContentPage.Resources>
 
