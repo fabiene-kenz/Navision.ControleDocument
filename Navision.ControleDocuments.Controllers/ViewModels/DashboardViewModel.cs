@@ -31,18 +31,19 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             get { return _docModel; }
             set
-            {
-                _docModel = value;
+            {                
+                if (_docModel!=value)
+                {
+                    _docModel = value;
+                    NextPage();
+                }
                 OnPropertyChanged("DocModel");
             }
         }
         private readonly INavigation _navigation;
         private Type _page;
         #endregion
-        public ICommand Click
-        {
-            get { return new Command(p => Test()); }
-        }
+       
         private IPageService _pageService;
         public DashboardViewModel(INavigation navigation, Type page)
         {
@@ -61,12 +62,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(t);
             return tcollect;
         }
-        private async void Test()
+        /// <summary>
+        /// Get value selected and switch page
+        /// </summary>
+        private async void NextPage()
         {
             try
             {
                 var page = (Page)Activator.CreateInstance(_page);
+                var pageDetail = (ViewerDocumentViewModel)page.BindingContext;
                 await _pageService.PushAsync(_navigation,page);
+                pageDetail.Doc = DocModel;
             }
             catch (Exception ex)
             {

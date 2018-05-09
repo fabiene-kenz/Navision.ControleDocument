@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
+             x:Class="Navision.ControleDocuments.ViewerDocumentPage">
+    <ContentPage.BindingContext>
+        <context:ViewerDocumentViewModel></context:ViewerDocumentViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <WebView Source="C:\Users\fabien.richard\Downloads\Enterprise-Application-Patterns-using-XamarinForms.pdf"></WebView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
