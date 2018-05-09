@@ -5,3 +5,4 @@ packages
 *.user
 *.userosscache
 *.sln.docstates
+.suo

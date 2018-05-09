@@ -1,14 +1,22 @@
 ﻿using Navision.ControleDocuments.Controllers.Base;
+using Navision.ControleDocuments.Models.UserModels;
+using Navision.ControleDocuments.Services.IServices;
+using Navision.ControleDocuments.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Navision.ControleDocuments.Controllers.ViewModels
 {
-    public class SignInViewModel: BaseViewModel
+    public class SignInViewModel : BaseViewModel
     {
+        #region Properties
+
+        private readonly IPageService _pageService;
+        private readonly IUserLoginService _userLoginService;
 
         private string _userName;
 
@@ -34,20 +42,14 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         }
 
         private string _confirmPassword;
-        
+
         public string ConfirmPassword
         {
             get { return _confirmPassword; }
             set
             {
                 _confirmPassword = value;
-                if (ConfirmPassword.Equals(""))
-                    IsPasswordImageVisible = false;
-                else
-                {
-                    Task.Run(async () => IsPasswordCorrect = await CheckPasswordsAsync());
-                    IsPasswordImageVisible = true;
-                }
+                Task.Run(async () => await CheckPasswordAsync());
                 OnPropertyChanged("ConfirmPassword");
             }
         }
@@ -76,16 +78,50 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
         }
 
+        public ICommand CreateAccountCommand
+        {
+            get { return new Command(async() => await CreateAccountAsync()); }
+        }
+        #endregion
 
         public SignInViewModel()
         {
-
+            _userLoginService = new UserLoginService();
+            _pageService = new PageService();
         }
-
-        async Task<bool> CheckPasswordsAsync()
+        /// <summary>
+        /// Check Passwords
+        /// </summary>
+        /// <returns></returns>
+        private async Task CheckPasswordAsync()
         {
-            return ConfirmPassword.Equals(Password);
+            if (ConfirmPassword.Equals(""))
+                IsPasswordImageVisible = false;
+            else
+            {
+                IsPasswordCorrect = ConfirmPassword.Equals(Password);
+                //IsPasswordCorrect = await CheckPasswordsAsync();
+                IsPasswordImageVisible = true;
+            }
         }
+        /// <summary>
+        /// Create an account
+        /// </summary>
+        /// <returns></returns>
+        private async Task CreateAccountAsync()
+        {
+            if ( await _userLoginService.AddUser( new UserModel { UserName=UserName,Password=Password }))
+            {
+                await _pageService.DisplayAlert("Compte Créee", "Vous etes autorisé à vous connecter avec ce compte", "Ok", "Cancel");
+            }
+            else
+            {
+                await _pageService.DisplayAlert("Compte Non Crée", "Vous n'etes pas autorisé à vous connecter avec ce compte", "Ok", "Cancel");
+            }
+            return;
+        }
+
+       
 
     }
 }

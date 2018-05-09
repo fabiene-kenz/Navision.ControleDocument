@@ -13,6 +13,7 @@ namespace Navision.ControleDocuments
 		public MainPage()
 		{
 			InitializeComponent();
-		}
+            BindingContext = new MainPageViewModel(typeof(SignInPage),typeof(DashboardPage),Navigation);
+        }
 	}
 }

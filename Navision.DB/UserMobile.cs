@@ -24,7 +24,7 @@ namespace Navision.DB
         public string User_Name { get; set; }
 
         [Column("Full Name")]
-        [Required]
+        //[Required]
         [StringLength(80)]
         public string Full_Name { get; set; }
 
@@ -45,17 +45,17 @@ namespace Navision.DB
         public int License_Type { get; set; }
 
         [Column("Authentication Email")]
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Authentication_Email { get; set; }
 
         [Column("Contact Email")]
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Contact_Email { get; set; }
 
         [Column("Exchange Identifier")]
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Exchange_Identifier { get; set; }
 

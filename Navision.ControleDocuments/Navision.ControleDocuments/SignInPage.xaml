@@ -51,7 +51,8 @@
                     Grid.Row="3"
                     x:Name="CreateButton"
                     Text="Créer"
-                    Style="{StaticResource blueButton}"/>
+                    Style="{StaticResource blueButton}"
+                    Command="{Binding CreateAccountCommand}"/>
             <Image Grid.Column="2"
                    Grid.Row="2"
                    x:Name="correctPasswordImage"

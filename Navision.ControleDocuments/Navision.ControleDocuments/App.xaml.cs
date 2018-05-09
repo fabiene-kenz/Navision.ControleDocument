@@ -13,7 +13,7 @@ namespace Navision.ControleDocuments
 		{
 			InitializeComponent();
 
-			MainPage =new NavigationPage (new Navision.ControleDocuments.SignInPage());
+			MainPage =new NavigationPage (new Navision.ControleDocuments.MainPage());
 		}
 
 		protected override void OnStart ()

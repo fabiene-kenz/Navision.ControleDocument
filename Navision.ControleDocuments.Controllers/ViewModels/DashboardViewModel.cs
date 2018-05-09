@@ -42,9 +42,9 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         }
         private readonly INavigation _navigation;
         private Type _page;
-        #endregion
-       
         private IPageService _pageService;
+        #endregion
+        #region CTR
         public DashboardViewModel(INavigation navigation, Type page)
         {
             _pageService = new PageService();
@@ -52,7 +52,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _page = page;
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
-
+        #endregion
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
             List<DocModel> t = new List<DocModel>();
