@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Navision.ControleDocuments.SignInPage"
+             xmlns:local="clr-namespace:Navision.ControleDocuments"
+             xmlns:convert="clr-namespace:Navision.ControleDocuments.Services.Helpers;assembly=Navision.ControleDocuments.Services"
+             xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers">
+
+    <ContentPage.BindingContext>
+        <context:SignInViewModel></context:SignInViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convert:ConvertBoolToPasswordImage x:Key="ConvertToImage"></convert:ConvertBoolToPasswordImage>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="Center">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Entry Grid.Column="1"
+                   Grid.Row="0"
+                   x:Name="emailEntry"
+                   Placeholder="E-mail"
+                   Text="{Binding Path=UserName,Mode=TwoWay}"/>
+            <Entry Grid.Column="1"
+                   Grid.Row="1"
+                   x:Name="passwordEntry"
+                   Placeholder="Mot de passe"
+                   Text="{Binding Path=Password,Mode=TwoWay}"
+                   IsPassword="True"/>
+            <Entry Grid.Column="1"
+                   Grid.Row="2"
+                   x:Name="confirmPasswordEntry"
+                   Placeholder="Confirmer mot de passe"
+                   IsPassword="True"
+                   Text="{Binding Path=ConfirmPassword, Mode=TwoWay}"
+                   HorizontalOptions="FillAndExpand"/>
+            <Button Grid.Column="1"
+                    Grid.Row="3"
+                    x:Name="CreateButton"
+                    Text="Créer"
+                    Style="{StaticResource blueButton}"/>
+            <Image Grid.Column="2"
+                   Grid.Row="2"
+                   x:Name="correctPasswordImage"
+                   IsVisible="{Binding IsPasswordImageVisible}"
+                   Source="{Binding IsPasswordCorrect, Converter={StaticResource ConvertToImage}}"
+                   HeightRequest="30"
+                   WidthRequest="30"
+                   HorizontalOptions="Start"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

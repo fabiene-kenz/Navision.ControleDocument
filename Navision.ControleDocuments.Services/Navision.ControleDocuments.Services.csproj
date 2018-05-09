@@ -7,6 +7,8 @@
   <ItemGroup>
     <None Remove="FichierJson\test.json" />
     <None Remove="Images\Cancel.png" />
+    <None Remove="Images\PasswordNotOk.png" />
+    <None Remove="Images\PasswordOk.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +16,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\Cancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\PasswordNotOk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\PasswordOk.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
