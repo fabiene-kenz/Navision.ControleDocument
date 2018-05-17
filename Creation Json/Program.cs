@@ -7,46 +7,50 @@ using System.Threading.Tasks;
 using System.Configuration;
 using Newtonsoft.Json;
 using Creation_Json.Model;
+using System.Diagnostics;
 
 namespace Creation_Json
 {
     class Program
     {
         static void Main(string[] args)
-        { 
-            List<Company> list = getCompanyList();
-            string jsonString = serializeList(list);
+        {
+            ConfigFile configObject = getConfigObject();
+            string jsonString = serializeObject(configObject);
             writeStringToFile(jsonString);
             Console.ReadLine();
+            var versionInfo = typeof(Program).Assembly.GetName().Version.ToString();
         }
 
         /// <summary>
-        /// Creates and returns a list of Company objects
+        /// Creates and returns an Object containing the version of the program and the list of the companies with their respective URL
         /// </summary>
-        /// <returns>Returns a list of Companies objects</returns>
-        static private List<Company> getCompanyList()
+        /// <returns>Returns a config object</returns>
+        static private ConfigFile getConfigObject()
         {
-            Console.WriteLine("Recuperation de la list des Companies");
+            ConfigFile objectConfig = new ConfigFile();
             List<Company> list = new List<Company>();
+            objectConfig.Version = typeof(Program).Assembly.GetName().Version.ToString();
 
-            list.Add(new Company() {CompanyName = "Company", Url="URL"});
-            list.Add(new Company() {CompanyName = "Company1", Url = "URL1"});
+            list.Add(new Company() { CompanyName = "Company0", Url = "URL0" });
+            list.Add(new Company() { CompanyName = "Company1", Url = "URL1" });
             list.Add(new Company() { CompanyName = "Company2", Url = "URL2" });
+            objectConfig.Companies = list;
 
-            return list;
+            return objectConfig;
         }
 
         /// <summary>
-        /// Serializes the list of companies into JSON
+        /// Serializes the config object into JSON
         /// </summary>
-        /// <param name="companyList">The list of Companies objects is needed</param>
+        /// <param name="configObject">The object with the version and the list of companies with their URL</param>
         /// <returns>Returns a string containing the JSON object</returns>
-        static private string serializeList(List<Company> companyList)
+        static private string serializeObject(ConfigFile configObject)
         {
-            Console.WriteLine("Serialisation de la liste des companies");
+            Console.WriteLine("Sérialisation de l'objet en Json");
             try
             {
-                string jsonString = JsonConvert.SerializeObject(companyList, Formatting.Indented);
+                string jsonString = JsonConvert.SerializeObject(configObject, Formatting.Indented);
                 Console.WriteLine(jsonString);
                 return jsonString;
 
@@ -73,7 +77,7 @@ namespace Creation_Json
             {
                 throw e;
             }
-            Console.WriteLine("Terminer");
+            Console.WriteLine("Terminé");
         }
     }
 }

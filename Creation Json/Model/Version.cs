@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Creation_Json.Model
 {
-    public class Company
+    public class ConfigFile
     {
-        public string CompanyName { get; set; }
-        public string Url { get; set; }
+        public string Version { get; set; }
+        public List<Company> Companies { get; set; }
     }
 }
