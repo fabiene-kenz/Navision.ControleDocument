@@ -111,7 +111,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             string token = await _userLoginService.GetToken(new UserModel { UserName = UserName, Password = Password });
             if (!String.IsNullOrEmpty(token))
             {
-                Application.Current.Properties[ConstantsValues.Token] = Utils.SerializeToJson(token);
+                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = Password, Token = token});
                 return true;
             }
             else
