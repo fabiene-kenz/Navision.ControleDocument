@@ -19,6 +19,7 @@ namespace Navision.WebApi.Controllers
         {
             return View();
         }
+        [ExceptionHandlerAttribute]
         [@Authorize]
         /// <summary>
         /// Check user
@@ -40,7 +41,7 @@ namespace Navision.WebApi.Controllers
                 return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
-
+        [ExceptionHandlerAttribute]
         /// <summary>
         /// Add new access for user
         /// </summary>
@@ -70,6 +71,7 @@ namespace Navision.WebApi.Controllers
                 return new JsonResult { Data = false, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
+        [ExceptionHandlerAttribute]
         /// <summary>
         /// Get Token
         /// </summary>
@@ -89,5 +91,6 @@ namespace Navision.WebApi.Controllers
                 return new JsonResult { Data = string.Empty, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
+        
     }
 }

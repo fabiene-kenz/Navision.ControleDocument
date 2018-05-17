@@ -79,7 +79,9 @@ namespace Navision.WebApi.App_Start
                     DateTime timeStamp = new DateTime(ticks);
                     // Ensure the timestamp is valid.
                     bool expired = Math.Abs((DateTime.UtcNow - timeStamp).TotalMinutes) > _expirationMinutes;
-                    if (!expired)
+                    // Not check if expire
+                    //if (!expired)
+                    if (true)
                     {
                         // Check if user in UsersMobile Table
                         Context c = new Context();

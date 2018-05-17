@@ -1,4 +1,6 @@
-﻿using Navision.ControleDocuments.Controllers.Base;
+﻿using Microsoft.Data.Sqlite;
+using Navision.ControleDocument.DependenciesServices.IServices;
+using Navision.ControleDocuments.Controllers.Base;
 using Navision.ControleDocuments.Controllers.Constants;
 using Navision.ControleDocuments.Controllers.Helpers;
 using Navision.ControleDocuments.Models.UserModels;
@@ -21,6 +23,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private readonly Type _dashboardPage;
         private readonly INavigation _navigation;
         private readonly IUserLoginService _userLoginService;
+        private readonly IReadFileService _readFileService;
 
         private string _userName;
 
@@ -71,6 +74,15 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _dashboardPage = dashboardpage;
             _navigation = navigation;
             _userLoginService = new UserLoginService();
+            _readFileService = new ReadFileService();
+            
+            var stream= _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
+
+            var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath(stream,"db.sqlite3");
+
+            GetClientParamService t = new GetClientParamService(dbSql);
+            t.GetClient();
+                        
         }
         #endregion
         /// <summary>
@@ -89,7 +101,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             {
                 await _pageService.DisplayAlert("Refus", "Vous n'etes pas autorisé à vous connecter", "Ok", "Cancel");
             }
-            
+
         }
         /// <summary>
         /// Switch to SignIn Page
