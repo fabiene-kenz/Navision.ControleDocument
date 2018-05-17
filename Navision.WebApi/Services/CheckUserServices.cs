@@ -34,7 +34,7 @@ namespace Navision.WebApi.Services
         public bool UserExist(UserModel user)
         {
             var name = user.UserName.GetUser();
-            return _db.UsersMobile.Any(u => u.User_Name.Contains(name) && u.Password == user.Password);
+            return _db.UsersMobile.Any(u => u.User_Name.ToLower().Contains(name.ToLower()) && u.Password == user.Password);
         }
         /// <summary>
         /// Check if user exist in Navision
@@ -44,7 +44,7 @@ namespace Navision.WebApi.Services
         public bool UserExistInNavision(UserModel user)
         {
             var name = user.UserName.GetUser();
-            return _db.Users.Any(u => u.User_Name.Contains(name));
+            return _db.Users.Any(u => u.User_Name.ToLower().Contains(name.ToLower()));
         }
     }
 }

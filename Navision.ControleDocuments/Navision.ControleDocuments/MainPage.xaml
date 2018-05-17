@@ -4,9 +4,6 @@
              xmlns:local="clr-namespace:Navision.ControleDocuments"
              x:Class="Navision.ControleDocuments.MainPage"
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers">
-    <ContentPage.BindingContext>
-        <context:MainPageViewModel></context:MainPageViewModel>
-    </ContentPage.BindingContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -23,7 +20,7 @@
                    Placeholder="Password"
                    IsPassword="True"
                    Text="{Binding Path=Password,Mode=TwoWay}"/>
-            <Button x:Name="forgottenPassword"
+            <Button x:Name="ForgottenPassword"
                     Text="Mot de passe oublié"
                     FontSize="12"
                     HorizontalOptions="EndAndExpand"
@@ -40,9 +37,10 @@
                      Color="#a8a8a8"
                      Margin="0, 5">
             </BoxView>
-            <Button x:Name="firstConnectionButton"
+            <Button x:Name="FirstConnectionButton"
                     Text="Première connexion"
                     HorizontalOptions="Center"
+                    Command="{Binding FirstConnectCommand}"
                     Style="{StaticResource blueButton}"/>
         </StackLayout>
     </Grid>

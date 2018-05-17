@@ -31,19 +31,20 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             get { return _docModel; }
             set
-            {
-                _docModel = value;
+            {                
+                if (_docModel!=value)
+                {
+                    _docModel = value;
+                    NextPage();
+                }
                 OnPropertyChanged("DocModel");
             }
         }
         private readonly INavigation _navigation;
         private Type _page;
-        #endregion
-        public ICommand Click
-        {
-            get { return new Command(p => Test()); }
-        }
         private IPageService _pageService;
+        #endregion
+        #region CTR
         public DashboardViewModel(INavigation navigation, Type page)
         {
             _pageService = new PageService();
@@ -51,7 +52,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _page = page;
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
-
+        #endregion
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
             List<DocModel> t = new List<DocModel>();
@@ -61,12 +62,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(t);
             return tcollect;
         }
-        private async void Test()
+        /// <summary>
+        /// Get value selected and switch page
+        /// </summary>
+        private async void NextPage()
         {
             try
             {
                 var page = (Page)Activator.CreateInstance(_page);
+                var pageDetail = (ViewerDocumentViewModel)page.BindingContext;
                 await _pageService.PushAsync(_navigation,page);
+                pageDetail.Doc = DocModel;
             }
             catch (Exception ex)
             {

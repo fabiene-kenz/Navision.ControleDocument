@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Navision.DB;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -64,31 +65,33 @@ namespace Navision.WebApi.App_Start
             bool result = false;
             try
             {
+                var tokenKey = HttpUtility.HtmlEncode(token).Replace("&quot;", string.Empty).Trim();
                 // Base64 decode the string, obtaining the token:username:timeStamp.
-                string key = Encoding.UTF8.GetString(Convert.FromBase64String(token));
+                string key = Encoding.UTF8.GetString(Convert.FromBase64String(tokenKey));
                 // Split the parts.
                 string[] parts = key.Split(new char[] { ':' });
                 if (parts.Length == 3)
                 {
                     // Get the hash message, username, and timestamp.
                     string hash = parts[0];
-                    string username = parts[1];
+                    string username = parts[1].Split('@')[0];
                     long ticks = long.Parse(parts[2]);
                     DateTime timeStamp = new DateTime(ticks);
                     // Ensure the timestamp is valid.
                     bool expired = Math.Abs((DateTime.UtcNow - timeStamp).TotalMinutes) > _expirationMinutes;
                     if (!expired)
                     {
-                        //
-                        // Lookup the user's account from the db.
-                        //
-                        if (username == "fabien")
+                        // Check if user in UsersMobile Table
+                        Context c = new Context();
+                        var user = c.UsersMobile.FirstOrDefault(u => u.User_Name.Contains(username));
+
+                        if (user.User_Name == username)
                         {
-                            string password = "password";
+                            string password = user.Password;
                             // Hash the message with the key to generate a token.
                             string computedToken = GenerateToken(username, password, ip, userAgent, ticks);
                             // Compare the computed token with the one supplied and ensure they match.
-                            result = (token == computedToken);
+                            result = (tokenKey == computedToken);
                         }
                     }
                 }

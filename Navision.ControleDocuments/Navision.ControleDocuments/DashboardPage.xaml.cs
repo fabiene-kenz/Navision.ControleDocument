@@ -1,4 +1,5 @@
 ﻿using Navision.ControleDocuments.Controllers.ViewModels;
+using Navision.ControleDocuments.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Navision.ControleDocuments
 		public DashboardPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new DashboardViewModel(Navigation,typeof(MainPage));
+            BindingContext = new DashboardViewModel(Navigation,typeof(ViewerDocumentPage));
 		}
 	}
 }

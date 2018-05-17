@@ -22,11 +22,12 @@ namespace Navision.WebApi.Services
         #endregion
         public bool AddUSerInMobile(UserModel user)
         {
-            if (_db.Users.Any(u => u.User_Name.Contains(user.UserName.GetUser())))
+            var userName = user.UserName.GetUser().ToLower();
+            if (_db.Users.Any(u => u.User_Name.ToLower().Contains(userName)))
             {
                 try
                 {
-                    var userNav = _db.Users.FirstOrDefault(u => u.User_Name.Contains(user.UserName.GetUser()));
+                    var userNav = _db.Users.FirstOrDefault(u => u.User_Name.ToLower().Contains(userName));
                     _db.UsersMobile.Add(new UserMobile
                         {
                             Application_ID = userNav.Application_ID,

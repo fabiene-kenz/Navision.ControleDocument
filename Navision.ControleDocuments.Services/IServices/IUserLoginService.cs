@@ -1,25 +1,24 @@
-﻿using Navision.Models;
+﻿using Navision.ControleDocuments.Models.UserModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Navision.WebApi.IServices
+namespace Navision.ControleDocuments.Services.IServices
 {
-   public interface ICheckUserServices
+   public interface IUserLoginService
     {
         /// <summary>
-        ///  Check if User exist in User Mobile
+        /// Get Token for user
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        bool UserExist(UserModel user);
+        Task<string> GetToken(UserModel user);
         /// <summary>
-        /// Check if user exist in Navision
+        /// Add a new entry for the app
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        bool UserExistInNavision(UserModel user);
+        Task<bool> AddUser(UserModel user);
     }
 }
