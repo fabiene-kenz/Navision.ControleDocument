@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using Navision.ControleDocument.DependenciesServices.IServices;
+﻿using Navision.ControleDocument.DependenciesServices.IServices;
 using Navision.ControleDocuments.Controllers.Base;
 using Navision.ControleDocuments.Controllers.Constants;
 using Navision.ControleDocuments.Controllers.Helpers;
@@ -8,6 +7,7 @@ using Navision.ControleDocuments.Services.IServices;
 using Navision.ControleDocuments.Services.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -75,14 +75,18 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _navigation = navigation;
             _userLoginService = new UserLoginService();
             _readFileService = new ReadFileService();
-            
-            var stream= _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
 
-            var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath(stream,"db.sqlite3");
+            var stream = _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
+
+            var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath(stream, "db.sqlite3");
 
             GetClientParamService t = new GetClientParamService(dbSql);
-            t.GetClient();
-                        
+            
+            var result = t.GetClient();
+            //result.CompanyName = "test";
+            //t.UpdateClient(result);
+            //t.DelClient(result);
+            //t.
         }
         #endregion
         /// <summary>

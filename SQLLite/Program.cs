@@ -18,11 +18,6 @@ namespace SQLLite
         {
             FileStream fs = File.Create("NavisionDocumentDB.sqlite3");
             fs.Close();
-            //var platform = new ISQLitePlatform();
-            //var co=new  SQLiteConnectionString("NavisionDocumentDB.sqlite",false);
-            // SQLiteConnection connect = new SQLiteConnection(null, "NavisionDocumentDB.sqlite");
-            // connect.CreateTable()
-            // var t= new  SQLiteConnection.CreateFile("MyDatabase.sqlite");
             using (var connection = new SqliteConnection("Filename=NavisionDocumentDB.sqlite3"))
             {
                 SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
@@ -32,35 +27,26 @@ namespace SQLLite
                 var createCommand = connection.CreateCommand();
                 createCommand.CommandText =
                 @"
-                CREATE TABLE ClientParam (
-                    Client TEXT,
-                    URL TEXT
+                CREATE TABLE Companies (
+                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    CompanyName TEXT,
+                    Url TEXT
                 );
-                INSERT INTO ClientParam
-                VALUES ('e-Kenz','https://mobilenavision.azurewebsites.net'),
-                       ('BGL','https://mobilenavisionbgl.azurewebsites.net');
+                INSERT INTO Companies
+                VALUES (1,'e-Kenz','https://mobilenavision.azurewebsites.net'),
+                       (2,'BGL','https://mobilenavisionbgl.azurewebsites.net');
+
+                CREATE TABLE VersionTable (
+                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Version TEXT
+                );
+                INSERT INTO VersionTable
+                VALUES (1,'1.0.0.0');
             ";
                 createCommand.ExecuteNonQuery();
-
-                // Without this, the query returns one since the built-in NOCASE collation only
-                // handles ASCII characters (A-Z)
-                connection.CreateCollation("NOCASE", (x, y) => string.Compare(x, y, ignoreCase: true));
-
-                var queryCommand = connection.CreateCommand();
-                queryCommand.CommandText =
-                @"
-                SELECT count()
-                FROM ClientParam
-                WHERE Client = 'e-Kenz' COLLATE NOCASE
-            ";
-                var count = (long)queryCommand.ExecuteScalar();
-
-                Console.WriteLine($"Results: {count}");
             }
-            string dbUWP = ConfigurationManager.AppSettings["dbUWP"];
+            string dbUWP = ConfigurationManager.AppSettings["db"];
             File.Copy("NavisionDocumentDB.sqlite3", dbUWP, true);
-            string dbAndroid = ConfigurationManager.AppSettings["dbAndroid"];
-            File.Copy("NavisionDocumentDB.sqlite3", dbAndroid, true);
 
         }
     }

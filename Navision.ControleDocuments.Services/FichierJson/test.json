@@ -1,14 +1,17 @@
-[
-  {
-    "CompanyName": "Company",
-    "Url": "URL"
-  },
-  {
-    "CompanyName": "Company1",
-    "Url": "URL1"
-  },
-  {
-    "CompanyName": "Company2",
-    "Url": "URL2"
-  }
-]
+{
+  "Version": "1.0.0.0",
+  "Companies": [
+    {
+      "CompanyName": "Company0",
+      "Url": "URL0"
+    },
+    {
+      "CompanyName": "Company1",
+      "Url": "URL1"
+    },
+    {
+      "CompanyName": "Company2",
+      "Url": "URL2"
+    }
+  ]
+}
