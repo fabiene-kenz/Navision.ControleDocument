@@ -15,9 +15,9 @@ namespace Creation_Json
     {
         static void Main(string[] args)
         {
-            ConfigFile configObject = getConfigObject();
-            string jsonString = serializeObject(configObject);
-            writeStringToFile(jsonString);
+            ConfigFile configObject = GetConfigObject();
+            string jsonString = SerializeObject(configObject);
+            WriteStringToFile(jsonString);
             Console.ReadLine();
             var versionInfo = typeof(Program).Assembly.GetName().Version.ToString();
         }
@@ -26,7 +26,7 @@ namespace Creation_Json
         /// Creates and returns an Object containing the version of the program and the list of the companies with their respective URL
         /// </summary>
         /// <returns>Returns a config object</returns>
-        static private ConfigFile getConfigObject()
+        static private ConfigFile GetConfigObject()
         {
             ConfigFile objectConfig = new ConfigFile();
             List<Company> list = new List<Company>();
@@ -45,7 +45,7 @@ namespace Creation_Json
         /// </summary>
         /// <param name="configObject">The object with the version and the list of companies with their URL</param>
         /// <returns>Returns a string containing the JSON object</returns>
-        static private string serializeObject(ConfigFile configObject)
+        static private string SerializeObject(ConfigFile configObject)
         {
             Console.WriteLine("Sérialisation de l'objet en Json");
             try
@@ -65,7 +65,7 @@ namespace Creation_Json
         /// Write the json string into a test.json file in Navision.ControleDocument.Services/fichierJson/
         /// </summary>
         /// <param name="jsonString">String containing the JSON object</param>
-        static private void writeStringToFile(string jsonString)
+        static private void WriteStringToFile(string jsonString)
         {
             string jsonFilePath = ConfigurationManager.AppSettings["jsonFilePath"];
             Console.WriteLine("Ecriture du fichier JSON");

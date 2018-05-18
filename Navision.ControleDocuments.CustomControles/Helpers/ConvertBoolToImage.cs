@@ -49,7 +49,7 @@ namespace Navision.ControleDocuments.CustomControles.Helpers
                 }
                 else
                 {
-                    var assembly = typeof(ConvertBoolToImage).Assembly;
+                    var assembly = typeof(ConvertBoolToImage).Assembly; 
                     return ImageSource.FromStream(() => assembly.GetManifestResourceStream(RessourceId));
                 }
             }

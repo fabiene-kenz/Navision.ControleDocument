@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Navision.ControleDocument.DependenciesServices\Navision.ControleDocument.DependenciesServices.csproj" />
     <ProjectReference Include="..\Navision.ControleDocuments.Models\Navision.ControleDocuments.Models.csproj" />
     <ProjectReference Include="..\Navision.ControleDocuments.Services\Navision.ControleDocuments.Services.csproj" />
   </ItemGroup>

@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
-             x:Class="Navision.ControleDocuments.ViewerDocumentPage">
+             xmlns:control="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles"
+             x:Class="Navision.ControleDocuments.ViewerDocumentPage"
+             Padding="0,20,0,0">
     <ContentPage.BindingContext>
         <context:ViewerDocumentViewModel></context:ViewerDocumentViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <WebView Source="C:\Users\fabien.richard\Downloads\Enterprise-Application-Patterns-using-XamarinForms.pdf"></WebView>
+            <control:CustomWebView Uri="Enterprise-Application-Patterns-using-XamarinForms.pdf" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></control:CustomWebView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
