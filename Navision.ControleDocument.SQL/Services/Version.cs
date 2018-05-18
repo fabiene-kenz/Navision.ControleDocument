@@ -16,12 +16,12 @@ namespace Navision.ControleDocument.SQL.Services
         }
         public void Dispose() => _connect.Close();
 
-        public int AddNewCompany(T version) => Add(version);
+        public int AddVersion(T version) => Add(version);
 
-        public int DelCompany(T version) => Del(version);
+        public int DelVersion(T version) => Del(version);
 
-        public IQueryable<VersionModel> GetClientParams() => Get();
+        public IQueryable<VersionModel> GetVersion() => Get();
 
-        public int UpdateCompany(T version) => Update(version);
+        public int UpdateVersion(T version) => Update(version);
     }
 }
