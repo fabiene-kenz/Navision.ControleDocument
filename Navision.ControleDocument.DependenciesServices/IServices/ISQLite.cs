@@ -7,6 +7,6 @@ namespace Navision.ControleDocument.DependenciesServices.IServices
 {
     public interface ISQLite
     {
-        string GetLocalFilePath(Stream file, string filename);
+        string GetLocalFilePath(string filename);
     }
 }

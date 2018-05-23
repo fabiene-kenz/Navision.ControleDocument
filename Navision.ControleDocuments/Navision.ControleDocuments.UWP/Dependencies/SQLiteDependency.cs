@@ -15,7 +15,7 @@ namespace Navision.ControleDocuments.UWP.Dependencies
 {
     public class SQLiteDependency : ISQLite
     {
-        public string GetLocalFilePath(Stream file,string filename)
+        public string GetLocalFilePath(string filename)
         {
             string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string libFolder = Path.Combine(docFolder, "Database");
@@ -23,17 +23,6 @@ namespace Navision.ControleDocuments.UWP.Dependencies
             if (!Directory.Exists(libFolder))
             {
                 Directory.CreateDirectory(libFolder);
-            }
-            if (!File.Exists(Path.Combine(libFolder, filename)))
-            {
-                string filePath = Path.Combine(libFolder, filename);
-                FileStream fileStream = File.Create(filePath, (int)file.Length);
-                // Initialize the bytes array with the stream length and then fill it with data
-                byte[] bytesInStream = new byte[file.Length];
-                file.Read(bytesInStream, 0, bytesInStream.Length);
-                // Use write method to write to the file specified above
-                fileStream.Write(bytesInStream, 0, bytesInStream.Length);
-
             }
             return Path.Combine(libFolder, filename);
         }        

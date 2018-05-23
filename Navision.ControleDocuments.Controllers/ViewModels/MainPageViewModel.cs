@@ -78,7 +78,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 
             var stream = _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
 
-            var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath(stream, "db.sqlite3");
+            var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
 
             GetClientParamService t = new GetClientParamService(dbSql);
             
@@ -127,7 +127,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             string token = await _userLoginService.GetToken(new UserModel { UserName = UserName, Password = Password });
             if (!String.IsNullOrEmpty(token))
             {
-                Application.Current.Properties[ConstantsValues.Token] = Utils.SerializeToJson(token);
+                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = Password, Token = token});
                 return true;
             }
             else

@@ -32,9 +32,9 @@ namespace Creation_Json
             List<Company> list = new List<Company>();
             objectConfig.Version = typeof(Program).Assembly.GetName().Version.ToString();
 
-            list.Add(new Company() { CompanyName = "Company0", Url = "URL0" });
-            list.Add(new Company() { CompanyName = "Company1", Url = "URL1" });
-            list.Add(new Company() { CompanyName = "Company2", Url = "URL2" });
+            list.Add(new Company() { CompanyName = "Company0", Url = "URL0", Domain = "Domain0" });
+            list.Add(new Company() { CompanyName = "Company1", Url = "URL1", Domain = "Domain1" });
+            list.Add(new Company() { CompanyName = "Company2", Url = "URL2", Domain = "Domain2" });
             objectConfig.Companies = list;
 
             return objectConfig;

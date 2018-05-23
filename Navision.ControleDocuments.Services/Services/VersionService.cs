@@ -33,10 +33,8 @@ namespace Navision.ControleDocuments.Services.Services
 
         public IQueryable<VersionModel> GetVersion()
         {
-            using (Version<VersionModel> v = new Version<VersionModel>(_file))
-            {
-                return v.GetVersion();
-            }
+            Version<VersionModel> v = new Version<VersionModel>(_file);
+            return v.GetVersion();
         }
 
         public int UpdateVersion(VersionModel version)
