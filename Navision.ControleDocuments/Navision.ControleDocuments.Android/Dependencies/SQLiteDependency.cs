@@ -14,10 +14,10 @@ using Navision.ControleDocument.DependenciesServices.IServices;
 using Navision.ControleDocuments.Droid.Dependencies;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(SQLite))]
+[assembly: Dependency(typeof(SQLiteDependency))]
 namespace Navision.ControleDocuments.Droid.Dependencies
 {
-    public class SQLite : ISQLite
+    public class SQLiteDependency : ISQLite
     {
         public string GetLocalFilePath(Stream file, string filename)
         {

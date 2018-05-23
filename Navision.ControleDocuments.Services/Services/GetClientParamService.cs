@@ -47,8 +47,10 @@ namespace Navision.ControleDocuments.Services.Services
         public IQueryable<Companies> GetClient()
         {
             using (ClientParam<Companies> c = new ClientParam<Companies>(_file))
-            { 
-              return  c.GetClientParams();
+            {
+                var test = c.GetClientParams().ToList();
+                //return  c.GetClientParams();
+                return test.AsQueryable();
             }
         }
         /// <summary>
