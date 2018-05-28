@@ -3,15 +3,18 @@
   "Companies": [
     {
       "CompanyName": "Company0",
-      "Url": "URL0"
+      "Url": "URL0",
+      "Domain": "Domain0"
     },
     {
       "CompanyName": "Company1",
-      "Url": "URL1"
+      "Url": "URL1",
+      "Domain":  "Domain1"
     },
     {
       "CompanyName": "Company2",
-      "Url": "URL2"
+      "Url": "URL2",
+      "Domain": "Domain2"
     }
   ]
 }

@@ -96,6 +96,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomControl\CustomWebViewRenderer.cs" />
     <Compile Include="Dependencies\SQLiteDependency.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +106,9 @@
     <None Include="Navision.ControleDocuments.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Content\Enterprise-Application-Patterns-using-XamarinForms.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />
@@ -470,6 +474,10 @@
     <ProjectReference Include="..\..\Navision.ControleDocument.DependenciesServices\Navision.ControleDocument.DependenciesServices.csproj">
       <Project>{a6b761e1-5686-49d0-bbb9-dfbc91dd865a}</Project>
       <Name>Navision.ControleDocument.DependenciesServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Navision.ControleDocuments.CustomControles\Navision.ControleDocuments.CustomControles.csproj">
+      <Project>{cf06202b-dc43-4039-9024-d2d224aa8d25}</Project>
+      <Name>Navision.ControleDocuments.CustomControles</Name>
     </ProjectReference>
     <ProjectReference Include="..\Navision.ControleDocuments\Navision.ControleDocuments.csproj">
       <Project>{9C1EA252-CBF5-4A07-BDB6-0EF08F8CDD2E}</Project>
