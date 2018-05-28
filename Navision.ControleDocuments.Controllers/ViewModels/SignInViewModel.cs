@@ -1,4 +1,5 @@
 ﻿using Navision.ControleDocuments.Controllers.Base;
+using Navision.ControleDocuments.Controllers.Helpers;
 using Navision.ControleDocuments.Models.UserModels;
 using Navision.ControleDocuments.Services.IServices;
 using Navision.ControleDocuments.Services.Services;
@@ -110,7 +111,8 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// <returns></returns>
         private async Task CreateAccountAsync()
         {
-            if ( await _userLoginService.AddUser( new UserModel { UserName=UserName,Password=Password }))
+            var passwordCrypted = Convert.ToBase64String(Utils.EncryptStringToBytes_Aes(Password));
+            if ( await _userLoginService.AddUser( new UserModel { UserName=UserName,Password= passwordCrypted }))
             {
                 await _pageService.DisplayAlert("Compte Créee", "Vous etes autorisé à vous connecter avec ce compte", "Ok", "Cancel");
             }

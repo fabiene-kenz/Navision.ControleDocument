@@ -17,5 +17,15 @@ namespace Navision.WebApi.Helpers
             string name = username.Split('@')[0];
             return name;
         }
+        /// <summary>
+        /// Get string array for User in Navision
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static string[] SplitUser(this string user)
+        {
+            var test= user.Split(new string[] { @"\\" }, StringSplitOptions.None); 
+            return user.Split(new string[] { @"\\" }, StringSplitOptions.None);
+        }
     }
 }

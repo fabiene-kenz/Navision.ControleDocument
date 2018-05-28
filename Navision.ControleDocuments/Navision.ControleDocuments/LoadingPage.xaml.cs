@@ -16,6 +16,7 @@ namespace Navision.ControleDocuments
 		public LoadingPage ()
 		{
 			InitializeComponent();
-		}
+            BindingContext = new LoadingViewModel(typeof(MainPage),Navigation);
+        }
 	}
 }

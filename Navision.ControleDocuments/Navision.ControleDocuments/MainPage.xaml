@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:Navision.ControleDocuments"
              x:Class="Navision.ControleDocuments.MainPage"
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
-             xmlns:ImageService="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services">
+             xmlns:ImageService="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
+             BackgroundColor="White">
     <ScrollView>
         <Grid>
             <Grid.RowDefinitions>

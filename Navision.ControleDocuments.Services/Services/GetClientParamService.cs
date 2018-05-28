@@ -9,6 +9,9 @@ using Navision.ControleDocument.SQL.IServices;
 
 namespace Navision.ControleDocuments.Services.Services
 {
+    /// <summary>
+    /// Connect DB mobile
+    /// </summary>
     public class GetClientParamService : IGetClientParamService
     {
         private readonly string _file;
@@ -46,9 +49,9 @@ namespace Navision.ControleDocuments.Services.Services
         /// <returns></returns>
         public IQueryable<Companies> GetClient()
         {
-      
             ClientParam<Companies> c = new ClientParam<Companies>(_file);
-            return  c.GetClientParams();        }
+            return c.GetClientParams();
+        }
         /// <summary>
         /// Update Company
         /// </summary>

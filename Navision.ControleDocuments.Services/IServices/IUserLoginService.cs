@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Navision.ControleDocuments.Services.IServices
 {
-   public interface IUserLoginService
+    /// <summary>
+    /// Connect DB Navision
+    /// </summary>
+    public interface IUserLoginService
     {
         /// <summary>
         /// Get Token for user

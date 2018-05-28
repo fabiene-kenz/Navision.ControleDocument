@@ -7,6 +7,7 @@ using Navision.WebApi.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -33,7 +34,6 @@ namespace Navision.WebApi.Controllers
             // If exist retun user with token else without token
             if (checkUser.UserExist(user))
             {
-                //user.Token = App_Start.GenerationToken.GenerateToken(user.UserName, user.Password, Request.UserHostAddress, Request.UserAgent, DateTime.Now.Ticks);
                 return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else
@@ -83,6 +83,7 @@ namespace Navision.WebApi.Controllers
             ICheckUserServices checkUser = new CheckUserServices();
             if (checkUser.UserExist(user))
             {
+               
                 string token = App_Start.GenerationToken.GenerateToken(user.UserName, user.Password, Request.UserHostAddress, Request.UserAgent, DateTime.Now.Ticks);
                 return new JsonResult { Data = token, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
@@ -91,6 +92,6 @@ namespace Navision.WebApi.Controllers
                 return new JsonResult { Data = string.Empty, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
-        
+
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -74,7 +75,7 @@ namespace Navision.WebApi.App_Start
                 {
                     // Get the hash message, username, and timestamp.
                     string hash = parts[0];
-                    string username = parts[1].Split('@')[0];
+                    string username = parts[1];
                     long ticks = long.Parse(parts[2]);
                     DateTime timeStamp = new DateTime(ticks);
                     // Ensure the timestamp is valid.
@@ -85,9 +86,10 @@ namespace Navision.WebApi.App_Start
                     {
                         // Check if user in UsersMobile Table
                         Context c = new Context();
-                        var user = c.UsersMobile.FirstOrDefault(u => u.User_Name.Contains(username));
+                        var userConnect= username.Split('@')[0];
+                        var user = c.UsersMobile.FirstOrDefault(u => u.User_Name.ToLower().Contains(userConnect));
 
-                        if (user.User_Name == username)
+                        if (user.User_Name.ToLower().Contains(userConnect))
                         {
                             string password = user.Password;
                             // Hash the message with the key to generate a token.
@@ -102,6 +104,41 @@ namespace Navision.WebApi.App_Start
             {
             }
             return result;
+        }
+
+        public static byte[] AES_Decrypt(byte[] bytesToBeDecrypted)
+        {
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(ConstantsValues.Password);
+            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+            byte[] decryptedBytes = null;
+
+            // Set your salt here, change it to meet your flavor:
+            // The salt bytes must be at least 8 bytes.
+            byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (RijndaelManaged AES = new RijndaelManaged())
+                {
+                    AES.KeySize = 256;
+                    AES.BlockSize = 128;
+
+                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+                    AES.Key = key.GetBytes(AES.KeySize / 8);
+                    AES.IV = key.GetBytes(AES.BlockSize / 8);
+
+                    AES.Mode = CipherMode.CBC;
+
+                    using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
+                        cs.Close();
+                    }
+                    decryptedBytes = ms.ToArray();
+                }
+            }
+
+            return decryptedBytes;
         }
     }
 }

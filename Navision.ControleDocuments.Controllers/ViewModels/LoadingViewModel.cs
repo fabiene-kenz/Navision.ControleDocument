@@ -14,12 +14,19 @@ using Navision.ControleDocuments.Services.Services;
 using System.Reflection;
 using System.IO;
 using System.Threading.Tasks;
+using Navision.ControleDocuments.Services.IServices;
 
 namespace Navision.ControleDocuments.Controllers.ViewModels
 {
     public class LoadingViewModel : BaseViewModel
     {
         #region Properties
+
+        private readonly IVersionService _versionService;
+        private readonly IGetClientParamService _getClientParamService;
+        private readonly IPageService _pageService;
+        private readonly INavigation _navigation;
+        private Type _mainpage;
         private bool _isLoading;
 
         public bool IsLoading
@@ -37,25 +44,30 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         }
         #endregion
 
-        public LoadingViewModel()
+        public LoadingViewModel(Type mainpage, INavigation navigation)
         {
+            _mainpage = mainpage;
+            string dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
+            _versionService = new VersionService(dbSql);
+            _getClientParamService = new GetClientParamService(dbSql);
+
             IsLoading = true;
             TextLoading = "Vérification du fichier de configuration...";
 
-            string dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
-            var jsonObject = Utils.DeserializeFromJson<JsonModel>("{\"Version\": \"1.0.0.0\",\"Companies\": [{\"CompanyName\": \"Company0\",\"Url\": \"URL0\", \"Domain\": \"Domain0\"},{\"CompanyName\": \"Company1\",\"Url\": \"URL1\", \"Domain\": \"Domain1\"},{\"CompanyName\": \"Company2\",\"Url\": \"URL2\", \"Domain\": \"Domain2\"}]}");
+            var jsonObject = Utils.DeserializeFromJson<JsonModel>("{\"Version\": \"1.0.0.0\",\"Companies\": [{\"CompanyName\": \"e-Kenz\",\"Url\": \"https://navapi.saas.e-kenz.com\", \"Domain\": \"SAAS\"},{\"CompanyName\": \"Company1\",\"Url\": \"URL1\", \"Domain\": \"Domain1\"},{\"CompanyName\": \"Company2\",\"Url\": \"URL2\", \"Domain\": \"Domain2\"}]}");
 
-            Task.Run(() => CreateTablesAsync(dbSql));
-            Task.Run(() => PopulateDb(dbSql, jsonObject));
+            Task.Run(async () => await CreateTablesAsync(dbSql));
+            Task.Run(async () => await PopulateDb(dbSql, jsonObject));
 
             //deleteTablesDebug(dbSql);
 
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(2), () =>
             {
-                IsLoading = false;
-                TextLoading = "Chargement effectué";
+                Device.BeginInvokeOnMainThread(async () => await SwitchPage());
                 return false;
             });
+
+
         }
 
         /// <summary>
@@ -72,7 +84,6 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             catch (Exception e)
             {
-
                 throw e;
             }
         }
@@ -82,37 +93,45 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// </summary>
         /// <param name="dbSql">Path of the database</param>
         /// <param name="jsonObject">Configuration file as object</param>
-        public void PopulateDb(string dbSql, JsonModel jsonObject)
+        public async Task PopulateDb(string dbSql, JsonModel jsonObject)
         {
-            VersionService versionService = new VersionService(dbSql);
-            GetClientParamService client = new GetClientParamService(dbSql);
-
-            var versionResult = versionService.GetVersion();
-            var clientResult = client.GetClient();
-            var query = versionResult.FirstOrDefault();
-            if (query != null && query.Version == jsonObject.Version)
+            var versionService = new VersionService(dbSql);
+            // One version in the Table
+            var versionResult = versionService.GetVersion().FirstOrDefault();
+            //var query = versionResult.FirstOrDefault();
+            var clientResult = _getClientParamService.GetClient();
+            // Check Version
+            if (versionResult != null && versionResult.Version == jsonObject.Version)
             {
                 TextLoading = "La base de données est à jour...";
-                Task.Delay(1000);
                 return;
             }
-            if (versionResult.Any() && query.Version != jsonObject.Version)
+
+            if (versionResult != null && versionResult.Version == jsonObject.Version)
             {
-                versionService.DelVersion(query);
-                foreach (var company in clientResult.ToList())
-                    client.DelClient(company);
+                // Clean DB
+                _versionService.DelVersion(versionResult);
+                foreach (var company in clientResult)
+                    _getClientParamService.DelClient(company);
             }
-            versionService.AddVersion(new VersionModel { Version = jsonObject.Version });
+           
+            // Add new Datas
+            _versionService.AddVersion(new VersionModel { Version = jsonObject.Version });
             foreach (var company in jsonObject.Companies)
-                client.AddClient(new Companies { CompanyName = company.CompanyName, Url = company.Url, Domain = company.Domain });
+                _getClientParamService.AddClient(new Companies { CompanyName = company.CompanyName, Url = company.Url, Domain = company.Domain });
             TextLoading = "Mise à jour de la nouvelle base de données...";
+
+
+            IsLoading = false;
+            TextLoading = "Chargement effectué";
+
         }
 
         /// <summary>
         /// Creates VersionModel and Companies Tables if not already created
         /// </summary>
         /// <param name="dbSql">Path of the database</param>
-        public async void CreateTablesAsync(string dbSql)
+        public async Task CreateTablesAsync(string dbSql)
         {
             try
             {
@@ -122,9 +141,15 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             catch (Exception e)
             {
-
                 throw e;
             }
+        }
+
+        private async Task SwitchPage()
+        {
+            var page = (Page)Activator.CreateInstance(_mainpage);
+            // Main become a NavigationPage and the DashBoardPage is the root
+            Application.Current.MainPage = new NavigationPage(page);
         }
     }
 }

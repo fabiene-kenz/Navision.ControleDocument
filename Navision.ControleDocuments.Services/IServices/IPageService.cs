@@ -6,6 +6,9 @@ using Xamarin.Forms;
 
 namespace Navision.ControleDocuments.Services.IServices
 {
+    /// <summary>
+    /// Popup and Navigation
+    /// </summary>
     public interface IPageService
     {
         Task<bool> DisplayAlert(string title, string message, string ok, string cancel);
