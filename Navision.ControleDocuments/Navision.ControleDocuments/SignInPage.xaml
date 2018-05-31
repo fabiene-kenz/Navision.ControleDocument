@@ -5,7 +5,8 @@
              xmlns:local="clr-namespace:Navision.ControleDocuments"
              xmlns:convert="clr-namespace:Navision.ControleDocuments.Services.Helpers;assembly=Navision.ControleDocuments.Services"
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
-             xmlns:ImageService="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services">
+             xmlns:ImageService="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services" 
+             BackgroundColor="White">
 
     <ContentPage.BindingContext>
         <context:SignInViewModel></context:SignInViewModel>

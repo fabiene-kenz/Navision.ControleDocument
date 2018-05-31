@@ -1,5 +1,7 @@
 ﻿using Navision.ControleDocuments.Controllers.Base;
+using Navision.ControleDocuments.Controllers.Helpers;
 using Navision.ControleDocuments.Models.DocsModel;
+using Navision.ControleDocuments.Models.UserModels;
 using Navision.ControleDocuments.Services.IServices;
 using Navision.ControleDocuments.Services.Services;
 using System;
@@ -15,6 +17,8 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
     public class DashboardViewModel : BaseViewModel
     {
         #region Properties
+
+        private readonly IDocumentsService _documentsService;
         private ObservableCollection<DocModel> _docsModel = new ObservableCollection<DocModel>();
         public ObservableCollection<DocModel> DocsModel
         {
@@ -40,6 +44,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 OnPropertyChanged("DocModel");
             }
         }
+        private bool _isLoading = true;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+
+                OnPropertyChanged("IsLoading");
+            }
+        }
         private readonly INavigation _navigation;
         private Type _page;
         private IPageService _pageService;
@@ -47,19 +62,19 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         #region CTR
         public DashboardViewModel(INavigation navigation, Type page)
         {
+            UserModel user= Utils.DeserializeFromJson<UserModel>(Application.Current.Properties["UserData"].ToString());
             _pageService = new PageService();
             _navigation = navigation;
             _page = page;
+            _documentsService = new DocumentsService(user.Token);
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
         #endregion
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
-            List<DocModel> t = new List<DocModel>();
-            t.Add(new DocModel { DocName = "test1", DocDate = DateTime.Now, DocSatut = true });
-            t.Add(new DocModel { DocName = "test2", DocDate = DateTime.Now, DocSatut = false });
-            t.Add(new DocModel { DocName = "test3", DocDate = DateTime.Now, DocSatut = null });
-            ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(t);
+            var listDocuments = await _documentsService.GetDocuments();
+            ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(listDocuments);
+            IsLoading = false;
             return tcollect;
         }
         /// <summary>

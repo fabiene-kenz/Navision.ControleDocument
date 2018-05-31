@@ -10,8 +10,12 @@ namespace Navision.ControleDocuments.Services.Services
     public class ConnectService
     {
         //http://localhost:61798/
-        //http://mobilenavision.azurewebsites.net
+        //https://navapi.saas.e-kenz.com/Documents/GetDocuments
+#if DEBUG
+        public string Uribase { get { return "http://navapi.saas.e-kenz.com"; } }
+#else
         public string Uribase { get { return "http://localhost:61798/"; } }
+#endif
         public HttpClient httpClient { get; private set; }
         private readonly string _userAgent = "Navision";
 

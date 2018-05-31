@@ -1,5 +1,4 @@
-﻿//using Microsoft.Data.Sqlite;
-using Navision.ControleDocument.SQL.Models;
+﻿using Navision.ControleDocument.SQL.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -18,6 +17,7 @@ namespace Navision.ControleDocument.SQL
         {
             Repository = repository;
             _connect = new SQLiteConnection(file);
+            _connect.Trace = true;
         }
         /// <summary>
         /// Del a row

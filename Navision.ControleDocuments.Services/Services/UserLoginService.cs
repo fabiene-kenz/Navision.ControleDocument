@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 
 namespace Navision.ControleDocuments.Services.Services
 {
-   public class UserLoginService: ConnectService,IUserLoginService
+    /// <summary>
+    /// Connect DB Navision
+    /// </summary>
+    public class UserLoginService : ConnectService, IUserLoginService
     {
-        public UserLoginService():base()
+        public UserLoginService() : base()
         {
 
         }
@@ -26,7 +29,7 @@ namespace Navision.ControleDocuments.Services.Services
         /// <returns></returns>
         public async Task<bool> AddUser(UserModel user)
         {
-           string Uri = @"/Login/GetNewAccess";
+            string Uri = @"/Login/GetNewAccess";
             var objUser = JsonConvert.SerializeObject(user);
             var content = new StringContent(objUser, Encoding.UTF8, "application/json");
             try

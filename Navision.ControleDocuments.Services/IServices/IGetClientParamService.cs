@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Navision.ControleDocuments.Services.IServices
 {
+    /// <summary>
+    /// Connect DB Mobile
+    /// </summary>
    public interface IGetClientParamService
     {
         /// <summary>

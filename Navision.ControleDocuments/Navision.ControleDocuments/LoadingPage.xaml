@@ -2,31 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Navision.ControleDocuments.LoadingPage"
+             xmlns:ImageService="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services" 
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers">
-
-    <ContentPage.BindingContext>
-        <context:LoadingViewModel></context:LoadingViewModel>
-    </ContentPage.BindingContext>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Image Source="{ImageService:EmbeddedImage RessourceId=Navision.ControleDocuments.Services.Images.eKenz.png}" HeightRequest="200" WidthRequest="200" Grid.Column="1" >
+            <Image.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="UWP">True</On>
+                    <On Platform="Android">False</On>
+                    <On Platform="iOS">False</On>
+                </OnPlatform>
+            </Image.IsVisible>
+        </Image>        
         <StackLayout Grid.Column="1"
                      Orientation="Vertical"
-                     VerticalOptions="Center"
-                     HorizontalOptions="Center">
+                     VerticalOptions="End"
+                     HorizontalOptions="Center"
+                     BackgroundColor="Transparent">
             <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
                                IsVisible="{Binding Path=IsLoading}"
-                               HorizontalOptions="Center"/>
+                               HorizontalOptions="Fill"
+                               Color="Blue"/>
             <Label Text="{Binding Path=TextLoading}"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    FontSize="Medium"
                    Margin="0,15"/>
         </StackLayout>
-    </Grid>
-    
+    </Grid>    
 </ContentPage>

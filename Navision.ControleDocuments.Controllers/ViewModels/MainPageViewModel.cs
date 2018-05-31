@@ -8,6 +8,7 @@ using Navision.ControleDocuments.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -24,6 +25,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private readonly INavigation _navigation;
         private readonly IUserLoginService _userLoginService;
         private readonly IReadFileService _readFileService;
+
 
         private string _userName;
 
@@ -75,18 +77,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _navigation = navigation;
             _userLoginService = new UserLoginService();
             _readFileService = new ReadFileService();
+            
 
             var stream = _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
 
             var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
 
             GetClientParamService t = new GetClientParamService(dbSql);
-            
+
             var result = t.GetClient();
-            //result.CompanyName = "test";
-            //t.UpdateClient(result);
-            //t.DelClient(result);
-            //t.
+
+           
         }
         #endregion
         /// <summary>
@@ -117,17 +118,19 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             await _pageService.PushAsync(_navigation, page);
         }
 
-
         /// <summary>
         /// Get Token and Store in Cache
         /// </summary>
         /// <returns></returns>
         private async Task<bool> GetTokenForUser()
         {
-            string token = await _userLoginService.GetToken(new UserModel { UserName = UserName, Password = Password });
+            // Crypt password
+            var passwordCrypted = Convert.ToBase64String(Utils.EncryptStringToBytes_Aes(Password));
+            string token = await _userLoginService.GetToken(new UserModel { UserName = UserName, Password = passwordCrypted });
+           
             if (!String.IsNullOrEmpty(token))
             {
-                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = Password, Token = token});
+                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = passwordCrypted, Token = token });
                 return true;
             }
             else

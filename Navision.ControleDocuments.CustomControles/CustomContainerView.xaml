@@ -25,7 +25,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackLayout Orientation="Vertical">
-                <Label Grid.Row="0" Text="{Binding Path=DocumentName, Mode=TwoWay,Source={x:Reference Name=this}}}" FontSize="Large"/>
+                <Label Grid.Row="0" Text="{Binding Path=DocumentName, Mode=TwoWay,Source={x:Reference Name=this}}}" FontSize="Medium"/>
                 </StackLayout>
                 <StackLayout  Grid.Row="1">
                     <Label Text="{Binding Path=DocumentDate, Mode=TwoWay,Source={x:Reference Name=this}}}"/>

@@ -6,9 +6,17 @@
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
              xmlns:services="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
              x:Name="DashBoardPage"
-             Title="DashBoard">
+             Title="DashBoard"
+             BackgroundColor="White">
     <Grid>
-        <ListView ItemsSource="{Binding Path=DocsModel,Mode=TwoWay}" SelectedItem="{Binding Path=DocModel,Mode=TwoWay}" RowHeight="150">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ActivityIndicator      IsRunning="{Binding Path=IsLoading,Mode=TwoWay}"
+                                IsVisible="{Binding Path=IsLoading,Mode=TwoWay}"
+                                HorizontalOptions="Fill"/>
+        <ListView ItemsSource="{Binding Path=DocsModel,Mode=TwoWay}" SelectedItem="{Binding Path=DocModel,Mode=TwoWay}" RowHeight="150" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -20,6 +28,6 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>        
+        </ListView>
     </Grid>
 </ContentPage>
