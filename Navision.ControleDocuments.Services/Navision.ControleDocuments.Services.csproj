@@ -10,8 +10,10 @@
     <None Remove="Images\Cancel.png" />
     <None Remove="Images\Check.png" />
     <None Remove="Images\eKenz.png" />
+    <None Remove="Images\hidePanel.png" />
     <None Remove="Images\PasswordNotOk.png" />
     <None Remove="Images\PasswordOk.png" />
+    <None Remove="Images\showPanel.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,10 +32,16 @@
     <EmbeddedResource Include="Images\eKenz.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Images\hidePanel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\PasswordNotOk.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\PasswordOk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\showPanel.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

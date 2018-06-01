@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
              xmlns:control="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles"
+             xmlns:ImageService="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
              x:Class="Navision.ControleDocuments.ViewerDocumentPage"
              xmlns:Gesture="clr-namespace:Navision.ControleDocuments.Event;assembly=Navision.ControleDocuments"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
@@ -10,6 +11,7 @@
     <ContentPage.BindingContext>
         <context:ViewerDocumentViewModel></context:ViewerDocumentViewModel>
     </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -35,5 +37,83 @@
                 </controls:CarouselViewControl.ItemTemplate>
             </controls:CarouselViewControl>
         </Grid>
-    </ContentPage.Content>
+    <AbsoluteLayout VerticalOptions="FillAndExpand" x:Name="MainContent">
+
+        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     Orientation="Vertical"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="White">
+            <Image x:Name="ShowPanelImg"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="EndAndExpand"
+                   HeightRequest="35"
+                   Source="{ImageService:EmbeddedImage RessourceId=Navision.ControleDocuments.Services.Images.showPanel.png}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ShowPanel"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+
+        <StackLayout x:Name="Panel"
+                    AbsoluteLayout.LayoutBounds="0, 1, 1, .5"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Orientation="Vertical"
+                    VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0"
+                    BackgroundColor="#99006df0">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0, 0, 0, 15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="HidePanelImg"
+                           HorizontalOptions="Center"
+                           HeightRequest="35"
+                           Source="{ImageService:EmbeddedImage RessourceId=Navision.ControleDocuments.Services.Images.hidePanel.png}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="HidePanel"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" >
+                    <Button Text="TOUT" Command="{Binding Path=BtnCommand}" BackgroundColor="#00FFFFFF" TextColor="White" FontAttributes="Bold"/>
+                </StackLayout>
+            </Grid>
+            <StackLayout>
+                <ListView x:Name="PropertiesListView" HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding Path=ValuesModel, Mode=TwoWay}"
+                        SelectedItem="{Binding Path=ValueModel,Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                        <Label Text="{Binding Path=PropertyName, Mode=TwoWay}" FontAttributes="Bold" TextColor="White"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                        <Label  Text="{Binding Path=PropertyValue, Mode=TwoWay}" TextColor="White" HorizontalOptions="StartAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                        <Switch IsToggled="{Binding Path=IsValidated, Mode=TwoWay}" HorizontalOptions="StartAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="TERMINER" HorizontalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" FontAttributes="Bold" Margin="0, 0, 5, 10"/>
+            </StackLayout>
+        </StackLayout>
+        
+    </AbsoluteLayout>
 </ContentPage>
