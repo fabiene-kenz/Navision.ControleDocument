@@ -53,8 +53,6 @@ namespace Navision.WebApi.Controllers
         {
             string MULTIPLE_FILE_LOCATION = "output%d.jpg";
             var filepath = pdffilepath.Url;
-            //var filepath = @"C:\CheckDocument\Navision.ControleDocuments\Navision.ControleDocuments.UWP\Assets\Content\Enterprise-Application-Patterns-using-XamarinForms.pdf";
-            //var filepath = @"C:\Users\fabien.richard\Downloads\6005.pdf";
             var uri = new System.Uri(filepath);
             var nameFolder = uri.Segments.Last().Split('.')[0];
             PdfReader pdfReader = new PdfReader(filepath);
@@ -66,7 +64,9 @@ namespace Navision.WebApi.Controllers
 
             Logger logger = LogManager.GetCurrentClassLogger();
             logger.Info(folder);
+
             MULTIPLE_FILE_LOCATION = folder + "/" + MULTIPLE_FILE_LOCATION;
+
             logger.Info(MULTIPLE_FILE_LOCATION);
             GhostscriptWrapper.GeneratePageThumbs(filepath, MULTIPLE_FILE_LOCATION, 1, numberOfPages, 100, 100);
           

@@ -3,19 +3,23 @@ using Navision.ControleDocuments.Controllers.Base;
 using Navision.ControleDocuments.Controllers.Helpers;
 using Navision.ControleDocuments.Models.DocsModel;
 using Navision.ControleDocuments.Models.UserModels;
+using Navision.ControleDocuments.Models.ValuesToValidateModel;
 using Navision.ControleDocuments.Services.IServices;
 using Navision.ControleDocuments.Services.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Navision.ControleDocuments.Controllers.ViewModels
 {
     public class ViewerDocumentViewModel : BaseViewModel
     {
+#region properties
         private readonly IStreamService _streamservice;
         private bool _isLoading;
 
@@ -92,6 +96,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
         }
 
+        private List<PdfModel> _images = new List<PdfModel>();
+        public List<PdfModel> Images
+        {
+            get { return _images; }
+            set
+            {
+                _images = value;
+                OnPropertyChanged("Images");
+            }
+
+        }
         #endregion
 
         public ViewerDocumentViewModel()
