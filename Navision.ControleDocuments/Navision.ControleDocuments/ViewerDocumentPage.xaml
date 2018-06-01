@@ -4,13 +4,36 @@
              xmlns:context="clr-namespace:Navision.ControleDocuments.Controllers.ViewModels;assembly=Navision.ControleDocuments.Controllers"
              xmlns:control="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles"
              x:Class="Navision.ControleDocuments.ViewerDocumentPage"
+             xmlns:Gesture="clr-namespace:Navision.ControleDocuments.Event;assembly=Navision.ControleDocuments"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              Padding="0,20,0,0">
     <ContentPage.BindingContext>
         <context:ViewerDocumentViewModel></context:ViewerDocumentViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <control:CustomWebView Uri="Enterprise-Application-Patterns-using-XamarinForms.pdf" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></control:CustomWebView>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
+                               IsVisible="{Binding Path=IsLoading}"
+                               HeightRequest="55"
+                               Color="Blue"/>
+            <controls:CarouselViewControl Orientation="Horizontal" InterPageSpacing="10" ItemsSource="{Binding Path=Images,Mode=TwoWay}"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                <controls:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Gesture:PinchToZoomContainer>
+                                <Gesture:PinchToZoomContainer.Content>
+                                    <Image Source="{Binding Path=URL, Mode=TwoWay}">
+                                    </Image>
+                                </Gesture:PinchToZoomContainer.Content>
+                            </Gesture:PinchToZoomContainer>
+                        </Grid>
+                    </DataTemplate>
+                </controls:CarouselViewControl.ItemTemplate>
+            </controls:CarouselViewControl>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

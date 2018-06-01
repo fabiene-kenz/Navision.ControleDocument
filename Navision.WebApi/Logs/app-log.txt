@@ -1,12 +1,8 @@
-2018-05-23 16:07:52.4891|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.InvalidOperationException: The context cannot be used while the model is being created. This exception may be thrown if the context is used inside the OnModelCreating method or if the same context instance is accessed by multiple threads concurrently. Note that instance members of DbContext and related classes are not guaranteed to be thread safe.
-   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
-   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
-   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
-   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
-   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
-   at System.Linq.Queryable.Any[TSource](IQueryable`1 source, Expression`1 predicate)
-   at Navision.WebApi.Services.CheckUserServices.UserExist(UserModel user) in C:\CheckDocument\Navision.WebApi\Services\CheckUserServices.cs:line 37
-   at Navision.WebApi.Controllers.LoginController.ConnectUser(UserModel user) in C:\CheckDocument\Navision.WebApi\Controllers\LoginController.cs:line 84
+2018-05-31 08:51:00.9035|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.IO.IOException: C:\Users\fabien.richard\Downloads\Enterprise-Application-Patterns-using-XamarinForms.pdf not found as file or resource.
+   at iTextSharp.text.io.RandomAccessSourceFactory.CreateByReadingToMemory(String filename)
+   at iTextSharp.text.io.RandomAccessSourceFactory.CreateBestSource(String filename)
+   at iTextSharp.text.pdf.PdfReader..ctor(String filename)
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 58
    at lambda_method(Closure , ControllerBase , Object[] )
    at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
@@ -23,3 +19,76 @@
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-05-31 08:51:41.0119|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.IO.IOException: C:\Users\fabien.richard\Downloads\Enterprise-Application-Patterns-using-XamarinForms.pdf not found as file or resource.
+   at iTextSharp.text.io.RandomAccessSourceFactory.CreateByReadingToMemory(String filename)
+   at iTextSharp.text.io.RandomAccessSourceFactory.CreateBestSource(String filename)
+   at iTextSharp.text.pdf.PdfReader..ctor(String filename)
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 58
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-05-31 13:38:32.5605|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-05-31 13:38:37.4076|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-05-31 15:29:53.3169|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-05-31 15:29:53.3599|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-05-31 15:29:53.3755|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.DllNotFoundException: Unable to load DLL 'gsdll32.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
+   at GhostscriptSharp.GhostscriptWrapper.CreateAPIInstance(IntPtr& pinstance, IntPtr caller_handle)
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 75
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-05-31 15:32:02.7775|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-05-31 15:32:04.4204|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-05-31 15:32:07.3503|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.DllNotFoundException: Unable to load DLL 'gsdll32.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
+   at GhostscriptSharp.GhostscriptWrapper.CreateAPIInstance(IntPtr& pinstance, IntPtr caller_handle)
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 75
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-05-31 16:03:54.5774|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-05-31 16:03:54.6146|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-05-31 16:05:14.6874|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-05-31 16:05:14.6874|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg

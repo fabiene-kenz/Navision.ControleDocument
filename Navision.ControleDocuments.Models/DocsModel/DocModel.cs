@@ -8,6 +8,7 @@ namespace Navision.ControleDocuments.Models.DocsModel
     {
         public int IdDoc { get; set; }
         public string DocName { get; set; }
+        public string Url { get; set; }
         public DateTime DocDate { get; set; }
         public Boolean? DocSatut { get; set; }
     }

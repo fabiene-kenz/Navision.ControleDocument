@@ -57,7 +57,7 @@ namespace Navision.WebApi.Controllers
                     if (approvalsMgmt.HasOpenApprovalEntriesForCurrentUser(recordId))
                     {
                         var docs = recordlink.ReadMultiple(rlparray, null, 0).Where(d=>d.Record_ID== recordId);
-                        listsDocuments.AddRange( docs.Select(d => new DocumentModel() { DocName = d.Description, DocDate = d.Created, DocSatut = ((EnumStatut.Values) d.Statut).GetBool()}).ToList());
+                        listsDocuments.AddRange( docs.Select(d => new DocumentModel() { DocName = d.Description, Url=d.URL1,DocDate = d.Created, DocSatut = ((EnumStatut.Values) d.Statut).GetBool()}).ToList());
                     }                    
                 }
             }

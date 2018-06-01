@@ -12,9 +12,11 @@ namespace Navision.ControleDocuments
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ViewerDocumentPage : ContentPage
 	{
-		public ViewerDocumentPage ()
+        double x, y;
+        public ViewerDocumentPage ()
 		{
 			InitializeComponent ();
 		}
-	}
+        
+    }
 }
