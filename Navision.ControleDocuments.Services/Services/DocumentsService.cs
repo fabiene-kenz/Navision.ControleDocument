@@ -19,12 +19,13 @@ namespace Navision.ControleDocuments.Services.Services
         {
 
         }
-
+        /// <summary>
+        /// GEt doc for user connected
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<DocModel>> GetDocuments()
         {
             string Uri = @"/Documents/GetDocuments";
-            //var objUser = JsonConvert.SerializeObject(user);
-            //var content = new StringContent(objUser, Encoding.UTF8, "application/json");
             try
             {
                 var reponse = await httpClient.GetStringAsync(Uribase + Uri);

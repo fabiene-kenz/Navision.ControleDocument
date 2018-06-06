@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace Navision.WebApi.Models
+namespace Navision.ControleDocuments.Models.DocsModel
 {
     public class PdfModel
     {
         public string fileName { get; set; }
-        public byte[] fileStream { get; set; }
+        public string URL { get; set; }
     }
 }

@@ -12,27 +12,51 @@ namespace Navision.ControleDocuments
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ViewerDocumentPage : ContentPage
 	{
-		public ViewerDocumentPage ()
+        double x, y;
+        private bool _popupShow = false;
+        public ViewerDocumentPage ()
 		{
 			InitializeComponent ();
-            Panel.TranslationY = 1000;
+            //Panel.TranslationY = 1000;
 
-            ShowPanelImg.IsVisible = true;
-            HidePanelImg.IsVisible = false;
+            //ShowPanelImg.IsVisible = true;
+            //HidePanelImg.IsVisible = false;
         }
 
         async void ShowPanel(object sender, System.EventArgs e)
         {
-            ShowPanelImg.IsVisible = !ShowPanelImg.IsVisible;
-            HidePanelImg.IsVisible = !HidePanelImg.IsVisible;
-            await Panel.TranslateTo(0, 0, 500, Easing.CubicIn);
+
+            // longueur de la popup
+            //var width = Application.Current.MainPage.Width * 40 / 100;
+            var width = Application.Current.MainPage.Width;
+            // position du debut de la popup
+            //var x = Application.Current.MainPage.Width-(Application.Current.MainPage.Width*40/100);
+            var x = Application.Current.MainPage.Width - (Application.Current.MainPage.Width);
+            // Hauteur de l'ecran
+            var h = Application.Current.MainPage.Height;
+            ShowSLide(x,h, width, h);
+            //ShowPanelImg.IsVisible = !ShowPanelImg.IsVisible;
+            //HidePanelImg.IsVisible = !HidePanelImg.IsVisible;
+            //await Panel.TranslateTo(0, 0, 500, Easing.CubicIn);
         }
 
-        async void HidePanel(object sender, System.EventArgs e)
+        private void ShowSLide(double x,double y, double width, double height)
         {
-            await Panel.TranslateTo(0, MainContent.Height, 500, Easing.CubicOut);
-            ShowPanelImg.IsVisible = !ShowPanelImg.IsVisible;
-            HidePanelImg.IsVisible = !HidePanelImg.IsVisible;
+            if (!_popupShow)
+            {
+                var rect = new Rectangle(x, y / 2, width, height / 2.4);
+                // affichela popup a l'endroit et la taille voulu
+                Panel.LayoutTo(rect, 450, Easing.CubicOut);
+                _popupShow = true;
+            }
+            else
+            {
+                var rect = new Rectangle(Application.Current.MainPage.Width, 0, 0, 0);
+                // affichela popup a l'endroit et la taille voulu
+                Panel.LayoutTo(rect, 450, Easing.CubicOut);
+                _popupShow = false;
+            }
         }
+        
     }
 }

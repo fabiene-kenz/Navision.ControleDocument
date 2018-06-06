@@ -5,19 +5,62 @@
              xmlns:control="clr-namespace:Navision.ControleDocuments.CustomControles;assembly=Navision.ControleDocuments.CustomControles"
              xmlns:ImageService="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
              x:Class="Navision.ControleDocuments.ViewerDocumentPage"
+             xmlns:Gesture="clr-namespace:Navision.ControleDocuments.Event;assembly=Navision.ControleDocuments"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              Padding="0,20,0,0">
     <ContentPage.BindingContext>
         <context:ViewerDocumentViewModel></context:ViewerDocumentViewModel>
     </ContentPage.BindingContext>
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
+                               IsVisible="{Binding Path=IsLoading}"
+                               HeightRequest="55"/>-->
 
-    <AbsoluteLayout VerticalOptions="FillAndExpand" x:Name="MainContent">
+    <!--<controls:CarouselViewControl Orientation="Horizontal" InterPageSpacing="10" Grid.Row="1"  ItemsSource="{Binding Path=Images,Mode=TwoWay}"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+            <controls:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Gesture:PinchToZoomContainer>
+                            <Gesture:PinchToZoomContainer.Content>
+                                <Image Source="{Binding Path=URL, Mode=TwoWay}">
+                                </Image>
+                            </Gesture:PinchToZoomContainer.Content>
+                        </Gesture:PinchToZoomContainer>
+                    </Grid>
+                </DataTemplate>
+            </controls:CarouselViewControl.ItemTemplate>
+        </controls:CarouselViewControl>-->
 
-        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                     AbsoluteLayout.LayoutFlags="All"
-                     Orientation="Vertical"
-                     VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"
-                     BackgroundColor="White">
+    <Grid x:Name="MainContent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
+                               IsVisible="{Binding Path=IsLoading}"
+                               HeightRequest="55"/>
+        <controls:CarouselViewControl Orientation="Horizontal" InterPageSpacing="10"  ItemsSource="{Binding Path=Images,Mode=TwoWay}">
+            <controls:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Gesture:PinchToZoomContainer>
+                            <Gesture:PinchToZoomContainer.Content>
+                                <Image Source="{Binding Path=URL, Mode=TwoWay}">
+                                </Image>
+                            </Gesture:PinchToZoomContainer.Content>
+                        </Gesture:PinchToZoomContainer>
+                    </Grid>
+                </DataTemplate>
+            </controls:CarouselViewControl.ItemTemplate>
+        </controls:CarouselViewControl>
+        <!--Ouvre le slide-->
+        <StackLayout Grid.Row="1">
             <Image x:Name="ShowPanelImg"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="EndAndExpand"
@@ -28,15 +71,16 @@
                 </Image.GestureRecognizers>
             </Image>
         </StackLayout>
-
+        <!--Contenu du slide-->
         <StackLayout x:Name="Panel"
-                    AbsoluteLayout.LayoutBounds="0, 1, 1, .5"
-                    AbsoluteLayout.LayoutFlags="All"
+                    Grid.Row="2"
                     Orientation="Vertical"
                     VerticalOptions="Start"
                     HorizontalOptions="FillAndExpand"
                     Spacing="0"
-                    BackgroundColor="#99006df0">
+                    BackgroundColor="#99006df0"
+                     HeightRequest="0"
+                     WidthRequest="0">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -52,7 +96,7 @@
                            HeightRequest="35"
                            Source="{ImageService:EmbeddedImage RessourceId=Navision.ControleDocuments.Services.Images.hidePanel.png}">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="HidePanel"/>
+                            <TapGestureRecognizer Tapped="ShowPanel"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
@@ -90,7 +134,5 @@
                 <Button Text="TERMINER" HorizontalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" FontAttributes="Bold" Margin="0, 0, 5, 10"/>
             </StackLayout>
         </StackLayout>
-        
-    </AbsoluteLayout>
-
+    </Grid>
 </ContentPage>

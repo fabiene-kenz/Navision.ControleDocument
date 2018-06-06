@@ -12,7 +12,8 @@ namespace Navision.ControleDocuments.Services.Services
         //http://localhost:61798/
         //https://navapi.saas.e-kenz.com/Documents/GetDocuments
 #if DEBUG
-        public string Uribase { get { return "http://navapi.saas.e-kenz.com"; } }
+        public string Uribase { get { return "http://localhost:61798/"; } }
+        //public string Uribase { get { return "http://navapi.saas.e-kenz.com"; } }
 #else
         public string Uribase { get { return "http://localhost:61798/"; } }
 #endif

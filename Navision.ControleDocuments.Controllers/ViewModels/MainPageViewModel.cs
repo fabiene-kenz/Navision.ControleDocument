@@ -90,7 +90,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _readFileService = new ReadFileService();
 
 
-            var stream = _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
+            //var stream = _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
 
             var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
 

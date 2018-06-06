@@ -148,7 +148,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private async Task SwitchPage()
         {
             var page = (Page)Activator.CreateInstance(_mainpage);
-            // Main become a NavigationPage and the DashBoardPage is the root
+            // Main become a NavigationPage
             Application.Current.MainPage = new NavigationPage(page);
         }
     }
