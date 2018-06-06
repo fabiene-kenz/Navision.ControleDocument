@@ -8,15 +8,19 @@
              x:Name="DashBoardPage"
              Title="DashBoard"
              BackgroundColor="White">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ActivityIndicator      IsRunning="{Binding Path=IsLoading,Mode=TwoWay}"
-                                IsVisible="{Binding Path=IsLoading,Mode=TwoWay}"
-                                HorizontalOptions="Fill"/>
-        <ListView ItemsSource="{Binding Path=DocsModel,Mode=TwoWay}" SelectedItem="{Binding Path=DocModel,Mode=TwoWay}" RowHeight="150" Grid.Row="1">
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+            <SearchBar VerticalOptions="Start" Placeholder="Search for a document" TextChanged="FilterByName" />
+            <ActivityIndicator      IsRunning="{Binding Path=IsLoading,Mode=TwoWay}"
+                                    IsVisible="{Binding Path=IsLoading,Mode=TwoWay}"
+                                    HorizontalOptions="Fill"/>
+        </StackLayout>
+        <ListView x:Name="DocumentsListView" ItemsSource="{Binding Path=DocsModel,Mode=TwoWay}" SelectedItem="{Binding Path=DocModel,Mode=TwoWay}" RowHeight="150" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

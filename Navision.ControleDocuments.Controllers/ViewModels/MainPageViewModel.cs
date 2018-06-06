@@ -26,6 +26,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private readonly IUserLoginService _userLoginService;
         private readonly IReadFileService _readFileService;
 
+        private bool _isBusy;
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged("IsBusy");
+            }
+        }
 
         private string _userName;
 
@@ -57,7 +68,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             get
             {
-                return new Command(async () => await LoginAsync());
+                return new Command(async() => await StartLoading());
             }
         }
         /// <summary>
@@ -77,7 +88,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _navigation = navigation;
             _userLoginService = new UserLoginService();
             _readFileService = new ReadFileService();
-            
+
 
             var stream = _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
 
@@ -86,10 +97,20 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             GetClientParamService t = new GetClientParamService(dbSql);
 
             var result = t.GetClient();
-
-           
+            IsBusy = false;
         }
         #endregion
+
+        /// <summary>
+        /// Start displaying login, then do LoginAsync()
+        /// </summary>
+        /// <returns></returns>
+        private async Task StartLoading()
+        {
+            IsBusy = true;
+            await LoginAsync();
+        }
+
         /// <summary>
         /// Check if the user can connect
         /// </summary>
@@ -106,7 +127,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             {
                 await _pageService.DisplayAlert("Refus", "Vous n'etes pas autorisé à vous connecter", "Ok", "Cancel");
             }
-
+            IsBusy = false;
         }
         /// <summary>
         /// Switch to SignIn Page
@@ -127,7 +148,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             // Crypt password
             var passwordCrypted = Convert.ToBase64String(Utils.EncryptStringToBytes_Aes(Password));
             string token = await _userLoginService.GetToken(new UserModel { UserName = UserName, Password = passwordCrypted });
-           
+
             if (!String.IsNullOrEmpty(token))
             {
                 Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = passwordCrypted, Token = token });

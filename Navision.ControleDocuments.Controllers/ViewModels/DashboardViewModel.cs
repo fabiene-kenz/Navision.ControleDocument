@@ -70,9 +70,13 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
         #endregion
+
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
-            var listDocuments = await _documentsService.GetDocuments();
+            //var listDocuments = await _documentsService.GetDocuments();
+            List<DocModel> listDocuments = new List<DocModel>();
+            listDocuments.Add(new DocModel { DocName="test", DocDate= new DateTime(2018, 06, 04), DocSatut=null});
+            listDocuments.Add(new DocModel { DocName= "test2", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
             ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(listDocuments);
             IsLoading = false;
             return tcollect;

@@ -21,6 +21,14 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             set { _doc = value; }
         }
 
+        private bool _selectAllIsToggled;
+
+        public bool SelectAllIsToggled
+        {
+            get { return _selectAllIsToggled; }
+            set { _selectAllIsToggled = value; OnPropertyChanged("SelectAllIsToggled"); }
+        }
+
         private string _propertyName;
 
         public string PropertyName
@@ -50,7 +58,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         public ObservableCollection<ValuesToValidateModel> ValuesModel
         {
             get { return _valuesModel; }
-            set { _valuesModel = value; OnPropertyChanged("Values"); }
+            set { _valuesModel = value; OnPropertyChanged("ValuesModel"); }
         }
 
         private ValuesToValidateModel _valueModel;
@@ -58,7 +66,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         public ValuesToValidateModel ValueModel
         {
             get { return _valueModel; }
-            set { _valueModel = value; OnPropertyChanged("Value"); }
+            set { _valueModel = value; OnPropertyChanged("ValueModel"); }
         }
 
         public ICommand BtnCommand
@@ -73,6 +81,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 
         public ViewerDocumentViewModel()
         {
+            SelectAllIsToggled = false;
             ValuesModel = GetValuesAsync();
         }
 
@@ -80,32 +89,50 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             List<ValuesToValidateModel> t = new List<ValuesToValidateModel>();
             t.Add(new ValuesToValidateModel { PropertyName = "Name 0", PropertyValue = "Value 0", IsValidated = false });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 1", PropertyValue = "Value 1", IsValidated = true });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 2", PropertyValue = "Value 2", IsValidated = false });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 3", PropertyValue = "Value 3", IsValidated = true });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 4", PropertyValue = "Value 4", IsValidated = false });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 5", PropertyValue = "Value 5", IsValidated = true });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 6", PropertyValue = "Value 6", IsValidated = false });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 7", PropertyValue = "Value 7", IsValidated = true });
-            //t.Add(new ValuesToValidate { PropertyName = "Name 8", PropertyValue = "Value 8", IsValidated = false });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 1", PropertyValue = "Value 1", IsValidated = true });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 2", PropertyValue = "Value 2", IsValidated = false });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 3", PropertyValue = "Value 3", IsValidated = true });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 4", PropertyValue = "Value 4", IsValidated = false });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 5", PropertyValue = "Value 5", IsValidated = true });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 6", PropertyValue = "Value 6", IsValidated = false });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 7", PropertyValue = "Value 7", IsValidated = true });
+            t.Add(new ValuesToValidateModel { PropertyName = "Name 8", PropertyValue = "Value 8", IsValidated = false });
             ObservableCollection<ValuesToValidateModel> tcollect = new ObservableCollection<ValuesToValidateModel>(t);
             return tcollect;
         }
 
+        /// <summary>
+        /// Either the switches need to be set to true or not
+        /// </summary>
+        /// <returns></returns>
         private async Task SelectAllBtn()
         {
-            var newValuesCollection = new ObservableCollection<ValuesToValidateModel>();
+            if (SelectAllIsToggled == false)
+                SelectAllIsToggled = true;
+            else
+                SelectAllIsToggled = false;
+            ValuesModel = UpdateValuesToValidate();
+        }
 
+        /// <summary>
+        /// Update the Values collection with the new IsValidated values 
+        /// </summary>
+        /// <returns></returns>
+        private ObservableCollection<ValuesToValidateModel> UpdateValuesToValidate()
+        {
+            var newValuesCollection = new ObservableCollection<ValuesToValidateModel>();
             var collectionCopy = ValuesModel;
+
             foreach (var value in collectionCopy)
             {
                 newValuesCollection.Add(new ValuesToValidateModel
-                { PropertyName = value.PropertyName,
+                {
+                    PropertyName = value.PropertyName,
                     PropertyValue = value.PropertyValue,
-                    IsValidated = !value.IsValidated });
+                    IsValidated = SelectAllIsToggled
+                });
             }
-            ValuesModel = null;
-            ValuesModel = newValuesCollection;
+            return newValuesCollection;
         }
 
     }
