@@ -17,6 +17,8 @@ using System.Web.Mvc;
 
 namespace Navision.WebApi.Controllers
 {
+    enum FileFormatEnum { jpg, jpeg, png, bmp, pdf };
+
     [ExceptionHandler]
     //[@Authorize]
     public class StreamController : Controller
@@ -67,9 +69,11 @@ namespace Navision.WebApi.Controllers
             Logger logger = LogManager.GetCurrentClassLogger();
             logger.Info(folder);
 
-            if (fileFormat == "pdf")
-                SavePdfToImage(folder, filepath);
-            else if (fileFormat == "jpg" || fileFormat == "jpeg" || fileFormat == "png" || fileFormat == "bmp")
+        
+            if (fileFormat == FileFormatEnum.pdf.ToString())
+                SavePdfToImage(folder, filepath)
+            else if (fileFormat == FileFormatEnum.jpg.ToString() || fileFormat == FileFormatEnum.jpeg.ToString()
+                || fileFormat == FileFormatEnum.png.ToString() || fileFormat == FileFormatEnum.bmp.ToString())
             {
                 using (WebClient webClient = new WebClient())
                     webClient.DownloadFile(filepath, folder + "/" + nameFolder + '.' + fileFormat);
@@ -80,6 +84,12 @@ namespace Navision.WebApi.Controllers
             return new JsonResult { Data = listPdfModel, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+        /// <summary>
+        /// Get and return the content of the folder
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="nameFolder"></param>
+        /// <returns></returns>
         private List<PdfModel> getFolderContent(string folder, string nameFolder)
         {
             var result = Directory.GetFiles(folder);
@@ -97,15 +107,40 @@ namespace Navision.WebApi.Controllers
 
         private void SavePdfToImage(string folder, string filepath)
         {
-            Logger logger = LogManager.GetCurrentClassLogger();
+           Logger logger = LogManager.GetCurrentClassLogger();
             logger.Info(folder);
 
             PdfReader pdfReader = new PdfReader(filepath);
             int numberOfPages = pdfReader.NumberOfPages;
-            var fileOutPut = folder + "/" + MULTIPLE_FILE_LOCATION;
 
-            logger.Info(MULTIPLE_FILE_LOCATION);
-            GhostscriptWrapper.GeneratePageThumbs(filepath, fileOutPut, 1, numberOfPages, 100, 100);
+            var finalPath = string.Join("/", folder, MULTIPLE_FILE_LOCATION);
+            logger.Info(finalPath);
+            GhostscriptWrapper.GeneratePageThumbs(filepath, finalPath, 1, numberOfPages, 100, 100);
+        }
+
+        /// <summary>
+        /// Clean and delete the folder specified in doc.Url after user processed the document
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
+        public JsonResult CleanFolder(DocumentModel doc)
+        {
+            try
+            {
+                var filepath = doc.Url;
+                var uri = new System.Uri(filepath);
+                var nameFolder = uri.Segments.Last().Split('.')[0];
+
+                var folder = Server.MapPath(@"~/Logs/FileRead/" + nameFolder);
+                if (Directory.Exists(folder))
+                    Directory.Delete(folder, true);
+
+                return new JsonResult { Data = "OK", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch(Exception ex)
+            {
+                return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
         }
 
     }

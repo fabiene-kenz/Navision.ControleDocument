@@ -135,7 +135,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             if (IsValidEmail() && IsValidPassword())
                 await LoginAsync();
             else
-                await _pageService.DisplayAlert("Erreur", "Adresse email ou mot de passe incorrect. Verifiez vos identifiants puis réessayez.", "Ok", "Annuler");
+                await _pageService.DisplayAlert("Erreur", "Adresse email ou mot de passe incorrect. Verifiez vos identifiants puis réessayez.", "Ok");
             IsBusy = false;
         }
 
@@ -184,12 +184,12 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             else if (token == null)
             {
-                await _pageService.DisplayAlert("Erreur de connexion", "Connectez-vous à internet puis réessayez.", "Ok", "Cancel");
+                await _pageService.DisplayAlert("Erreur de connexion", "Connectez-vous à internet puis réessayez.", "Ok");
                 return false;
             }
             else
             {
-                await _pageService.DisplayAlert("Connexion refusée", "Vous n'êtes pas autorisé à vous connecter.\nVérifiez vos identifiants puis réessayer.", "Ok", "Cancel");
+                await _pageService.DisplayAlert("Connexion refusée", "Vous n'êtes pas autorisé à vous connecter.\nVérifiez vos identifiants puis réessayer.", "Ok");
                 return false;
             }
         }

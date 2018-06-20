@@ -31,8 +31,9 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             set
             {
                 _docModel = value;
-                if (_docModel != null && _docModel.DocName != null && _docModel.DocDate.Year != 0001)
-                    NextPage();
+               
+                    if (_docModel != null && _docModel.DocName != null && _docModel.DocDate.Year != 0001)
+                        NextPage();
                 OnPropertyChanged("DocModel");
             }
         }
@@ -176,8 +177,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// <returns></returns>
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
-            var listDocuments = await _documentsService.GetDocuments();
-
+             var listDocuments = await _documentsService.GetDocuments();
             //List<DocModel> listDocuments = new List<DocModel>();
             //listDocuments.Add(new DocModel { DocName = "JPG", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
             //listDocuments.Add(new DocModel { DocName = "PDF", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
@@ -188,6 +188,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 
             ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(listDocuments);
             _docsModelUnfiltered = tcollect;
+          
             NumberDocuments = tcollect.Count();
             IsLoading = false;
             return tcollect;
@@ -199,18 +200,23 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private async void NextPage()
         {
             try
-            {
-                var page = (Page)Activator.CreateInstance(_page);
-                var pageDetail = (ViewerDocumentViewModel)page.BindingContext;
-                pageDetail.Doc = DocModel;
-                await _pageService.PushAsync(_navigation, page);
+            {               
+                if (DocModel.DocSatut == false || DocModel.DocSatut == true)
+                    await _pageService.DisplayAlert("Erreur", "Impossible d'ouvrir le document car il a déjà été traité.", "OK");
+                else
+                {
+                    var page = (Page)Activator.CreateInstance(_page);
+                    var pageDetail = (ViewerDocumentViewModel)page.BindingContext;
+                    pageDetail.Doc = DocModel;
+                    await _pageService.PushAsync(_navigation, page);
+                }
                 DocModel = null;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-        }
+        }        
 
         /// <summary>
         /// Show or hide the popup for filtering the documents

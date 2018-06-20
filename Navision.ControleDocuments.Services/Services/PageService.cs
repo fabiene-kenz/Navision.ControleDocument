@@ -14,6 +14,11 @@ namespace Navision.ControleDocuments.Services.Services
             return await Application.Current.MainPage.DisplayAlert(title, message, ok, cancel);
         }
 
+        public async Task DisplayAlert(string title, string message, string cancel)
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, cancel);
+        }
+
         public async Task PushAsync(INavigation nav, Page page)
         {
             await nav.PushAsync(page,true);

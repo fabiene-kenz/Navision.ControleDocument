@@ -184,9 +184,14 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// <returns></returns>
         private async Task DoneCommand()
         {
-            var response = await _pageService.DisplayAlert("Confimer ?", "Enregistrer les modifications et quitter ?", "Confirmer", "Annuler");
+            var response = await _pageService.DisplayAlert("Confimer", "Enregistrer les modifications et quitter ?", "Confirmer", "Annuler");
             if (response)
+            {
                 await _pageService.PopAsync(_navigation);
+                var deletedFolder = await _streamservice.CleanFolder(Doc);
+                if (string.IsNullOrEmpty(deletedFolder))
+                    await _pageService.DisplayAlert("Erreur", "Erreur lors de la suppression du document.", "Ok");
+            }
         }
 
         /// <summary>

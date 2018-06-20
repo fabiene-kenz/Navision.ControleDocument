@@ -19,6 +19,29 @@ namespace Navision.ControleDocuments.Services.Services
         {
 
         }
+
+        /// <summary>
+        /// Clean the folder in WebApi after user processed the document
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
+        public async Task<string> CleanFolder(DocModel doc)
+        {
+            string Uri = @"/Stream/CleanFolder";
+            var objDoc = JsonConvert.SerializeObject(doc);
+            var content = new StringContent(objDoc, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await httpClient.PostAsync(Uribase + Uri, content);
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<string>(result);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Get file
         /// </summary>

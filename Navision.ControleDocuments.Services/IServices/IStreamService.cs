@@ -9,5 +9,6 @@ namespace Navision.ControleDocuments.Services.IServices
    public interface IStreamService
     {
         Task<List<PdfModel>> GetPdfFile(DocModel pdffilepath);
+        Task<string> CleanFolder(DocModel doc);
     }
 }
