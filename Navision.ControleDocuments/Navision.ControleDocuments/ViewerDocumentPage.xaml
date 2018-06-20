@@ -7,10 +7,10 @@
              x:Class="Navision.ControleDocuments.ViewerDocumentPage"
              xmlns:Gesture="clr-namespace:Navision.ControleDocuments.Event;assembly=Navision.ControleDocuments"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-             Padding="0,20,0,0">
-    <ContentPage.BindingContext>
-        <context:ViewerDocumentViewModel></context:ViewerDocumentViewModel>
-    </ContentPage.BindingContext>
+             xmlns:services="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
+             Padding="0,20,0,0"
+             Title="{Binding Source=Doc Path=DocName, Mode=TwoWay}">
+    
     <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -43,8 +43,9 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
-                               IsVisible="{Binding Path=IsLoading}"
-                               HeightRequest="55"/>
+                           IsVisible="{Binding Path=IsLoading}"
+                           HeightRequest="55"
+                           VerticalOptions="Center"/>
         <controls:CarouselViewControl Orientation="Horizontal" InterPageSpacing="10"  ItemsSource="{Binding Path=Images,Mode=TwoWay}">
             <controls:CarouselViewControl.ItemTemplate>
                 <DataTemplate>
@@ -97,6 +98,7 @@
                            Source="{ImageService:EmbeddedImage RessourceId=Navision.ControleDocuments.Services.Images.hidePanel.png}">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ShowPanel"/>
+                            <PanGestureRecognizer PanUpdated="ShowPanel"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
@@ -131,7 +133,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Text="TERMINER" HorizontalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" FontAttributes="Bold" Margin="0, 0, 5, 10"/>
+                <Button Text="Terminer" Command="{Binding Path=DoneBtn}" HorizontalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" FontAttributes="Bold" Margin="0, 0, 5, 10"/>
             </StackLayout>
         </StackLayout>
     </Grid>

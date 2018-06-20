@@ -13,5 +13,6 @@ namespace Navision.ControleDocuments.Services.IServices
     {
         Task<bool> DisplayAlert(string title, string message, string ok, string cancel);
         Task PushAsync(INavigation nav, Page page);
+        Task PopAsync(INavigation nav);
     }
 }

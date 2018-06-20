@@ -18,5 +18,10 @@ namespace Navision.ControleDocuments.Services.Services
         {
             await nav.PushAsync(page,true);
         }
+
+        public async Task PopAsync(INavigation nav)
+        {
+            await nav.PopAsync(true);
+        }
     }
 }

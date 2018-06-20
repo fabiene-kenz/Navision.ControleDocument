@@ -17,23 +17,6 @@ namespace Navision.ControleDocuments
 		{
 			InitializeComponent ();
             BindingContext = new DashboardViewModel(Navigation,typeof(ViewerDocumentPage));
-		}
-
-        /// <summary>
-        /// Filter the documents by their names
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FilterByName(object sender, TextChangedEventArgs e)
-        {
-            var vm = BindingContext as DashboardViewModel;
-
-            DocumentsListView.BeginRefresh();
-            if (string.IsNullOrWhiteSpace(e.NewTextValue))
-                DocumentsListView.ItemsSource = vm.DocsModel;
-            else
-                DocumentsListView.ItemsSource = vm.DocsModel.Where(i => i.DocName.Contains(e.NewTextValue.ToLower()));
-            DocumentsListView.EndRefresh();
         }
     }
 }

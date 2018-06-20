@@ -21,6 +21,8 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
     {
 #region properties
         private readonly IStreamService _streamservice;
+        private readonly IPageService _pageService;
+        private readonly INavigation _navigation;
         private bool _isLoading;
 
         public bool IsLoading
@@ -33,7 +35,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
         }
 
-        private DocModel _doc = new DocModel();
+        private DocModel _doc = new DocModel() { };
         public DocModel Doc
         {
             get { return _doc; }
@@ -96,6 +98,14 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             set { _valueModel = value; OnPropertyChanged("ValueModel"); }
         }
 
+        public ICommand DoneBtn
+        {
+            get
+            {
+                return new Command(async () => await DoneCommand());
+            }
+        }
+
         public ICommand BtnCommand
         {
             get
@@ -117,17 +127,21 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         }
         #endregion
 
-        public ViewerDocumentViewModel()
+        public ViewerDocumentViewModel(INavigation navigation)
         {
-            //DocPath = "6005.pdf";
+            //Doc.Url = "6005.pdf";
             //DocPath = "Enterprise-Application-Patterns-using-XamarinForms.pdf";
             ////string fileName = DependencyService.Get<ILocalStorageFolder>().GetLocalFilePath("TEST.pdf");
             UserModel user = Utils.DeserializeFromJson<UserModel>(Application.Current.Properties["UserData"].ToString());
+            _pageService = new PageService();
+            _navigation = navigation;
+            ValuesModel = GetValuesAsync();
             _streamservice = new StreamService(user.Token);
             IsLoading = true;
+            SelectAllIsToggled = false;
         }
        
-        private  async Task<List<PdfModel>> GetPdf(DocModel doc)
+        private async Task<List<PdfModel>> GetPdf(DocModel doc)
         {
             List<PdfModel> listPdfModel = await _streamservice.GetPdfFile(doc);
             IsLoading = false;
@@ -161,6 +175,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             else
                 SelectAllIsToggled = false;
             ValuesModel = UpdateValuesToValidate();
+        }
+
+        /// <summary>
+        /// Get back to Dashboard page if user clicks on Terminer button
+        /// </summary>
+        /// <returns></returns>
+        private async Task DoneCommand()
+        {
+            var response = await _pageService.DisplayAlert("Confimer ?", "Enregistrer les modifications et quitter ?", "Confirmer", "Annuler");
+            if (response)
+                await _pageService.PopAsync(_navigation);
         }
 
         /// <summary>

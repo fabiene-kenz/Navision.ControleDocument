@@ -60,6 +60,10 @@ namespace Navision.ControleDocuments.Services.Services
                 var result = await reponse.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<string>(result);
             }
+            catch(HttpRequestException ex)
+            {
+                return null;
+            }
             catch (Exception ex)
             {
                 return string.Empty;
