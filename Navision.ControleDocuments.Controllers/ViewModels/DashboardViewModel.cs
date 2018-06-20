@@ -31,7 +31,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             set
             {
                 _docModel = value;
-                
+               
                     if (_docModel != null && _docModel.DocName != null && _docModel.DocDate.Year != 0001)
                         NextPage();
                 OnPropertyChanged("DocModel");
@@ -57,28 +57,47 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         public string FilterNameLabel
         {
             get { return _filterNameLabel; }
-            set { _filterNameLabel = value; OnPropertyChanged("FilterNameLabel"); }
+            set
+            {
+                _filterNameLabel = value;
+                OnPropertyChanged("FilterNameLabel");
+            }
         }
-        
+
         private bool _approuvedSwitch = true;
         public bool ApprouvedSwitch
         {
             get { return _approuvedSwitch; }
-            set { _approuvedSwitch = value; ValidateFilters(); OnPropertyChanged("ApprouvedSwitch"); }
+            set
+            {
+                _approuvedSwitch = value;
+                ValidateFilters();
+                OnPropertyChanged("ApprouvedSwitch");
+            }
         }
 
         private bool _unapprouvedSwitch = true;
         public bool UnapprouvedSwitch
         {
             get { return _unapprouvedSwitch; }
-            set { _unapprouvedSwitch = value; ValidateFilters(); OnPropertyChanged("UnapprouvedSwitch"); }
+            set
+            {
+                _unapprouvedSwitch = value;
+                ValidateFilters();
+                OnPropertyChanged("UnapprouvedSwitch");
+            }
         }
 
         private bool _toDoSwitch = true;
         public bool ToDoSwitch
         {
             get { return _toDoSwitch; }
-            set { _toDoSwitch = value; ValidateFilters(); OnPropertyChanged("ToDoSwitch"); }
+            set
+            {
+                _toDoSwitch = value;
+                ValidateFilters();
+                OnPropertyChanged("ToDoSwitch");
+            }
         }
 
         private string _searchText;
@@ -86,17 +105,21 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             get { return _searchText; }
             set
-          {
+            {
                 _searchText = value;
                 OnPropertyChanged("SearchText");
             }
         }
 
-        private string _numberDocuments;
-        public string NumberDocuments
+        private int _numberDocuments = 0;
+        public int NumberDocuments
         {
             get { return _numberDocuments; }
-            set { _numberDocuments = value; OnPropertyChanged("NumberDocuments"); }
+            set
+            {
+                _numberDocuments = value;
+                OnPropertyChanged("NumberDocuments");
+            }
         }
 
         private bool _isLoading = true;
@@ -106,7 +129,6 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             set
             {
                 _isLoading = value;
-
                 OnPropertyChanged("IsLoading");
             }
         }
@@ -115,12 +137,16 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         public bool IsPopUpVisible
         {
             get { return _isPopUpVisible; }
-            set { _isPopUpVisible = value; OnPropertyChanged("IsPopUpVisible"); }
+            set
+            {
+                _isPopUpVisible = value;
+                OnPropertyChanged("IsPopUpVisible");
+            }
         }
-        
+
         public ICommand ShowPopUpCommand
         {
-            get { return new Command(async() => await ShowPopUpFilter()); }
+            get { return new Command(async () => await ShowPopUpFilter()); }
         }
 
         public ICommand RefreshCommand
@@ -130,14 +156,14 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 
         public ICommand SearchCommand
         {
-            get { return new Command(async () => await performSearch()); }
+            get { return new Command(async () => await PerformSearch()); }
         }
         #endregion
 
         #region CTR
         public DashboardViewModel(INavigation navigation, Type page)
         {
-            UserModel user= Utils.DeserializeFromJson<UserModel>(Application.Current.Properties["UserData"].ToString());
+            UserModel user = Utils.DeserializeFromJson<UserModel>(Application.Current.Properties["UserData"].ToString());
             _pageService = new PageService();
             _navigation = navigation;
             _page = page;
@@ -145,10 +171,13 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
         #endregion
-
+        /// <summary>
+        /// Get Documents
+        /// </summary>
+        /// <returns></returns>
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
-            var listDocuments = await _documentsService.GetDocuments();
+             var listDocuments = await _documentsService.GetDocuments();
             //List<DocModel> listDocuments = new List<DocModel>();
             //listDocuments.Add(new DocModel { DocName = "JPG", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
             //listDocuments.Add(new DocModel { DocName = "PDF", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
@@ -156,9 +185,11 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             //listDocuments.Add(new DocModel { DocName = "test4", DocDate = new DateTime(2018, 06, 04), DocSatut = true });
             //listDocuments.Add(new DocModel { DocName = "test5", DocDate = new DateTime(2018, 06, 04), DocSatut = false });
             //listDocuments.Add(new DocModel { DocName = "test6", DocDate = new DateTime(2018, 06, 04), DocSatut = false });
+
             ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(listDocuments);
             _docsModelUnfiltered = tcollect;
-            NumberDocuments = tcollect.Count().ToString() + " document(s) trouvé(s)";
+          
+            NumberDocuments = tcollect.Count();
             IsLoading = false;
             return tcollect;
         }
@@ -169,7 +200,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private async void NextPage()
         {
             try
-            {
+            {               
                 if (DocModel.DocSatut == false || DocModel.DocSatut == true)
                     await _pageService.DisplayAlert("Erreur", "Impossible d'ouvrir le document car il a déjà été traité.", "OK");
                 else
@@ -185,8 +216,8 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             {
                 throw ex;
             }
-        }
-        
+        }        
+
         /// <summary>
         /// Show or hide the popup for filtering the documents
         /// </summary>
@@ -200,7 +231,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// Perform a search on the list of documents from a string
         /// </summary>
         /// <returns></returns>
-        public async Task performSearch()
+        public async Task PerformSearch()
         {
             if (string.IsNullOrEmpty(SearchText))
                 DocsModel = _docsModelUnfiltered;
@@ -209,7 +240,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 _docsModelFiltered = new ObservableCollection<DocModel>(_docsModelUnfiltered.Where(i => i.DocName.ToLower().Contains(SearchText.ToLower())));
                 DocsModel = _docsModelFiltered;
             }
-             await ValidateFilters();
+            await ValidateFilters();
         }
 
         /// <summary>
@@ -224,10 +255,9 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 saveList = await FilterWithSearchText(saveList);
             else
                 saveList = await FilterWithEmptySearchText(saveList);
+            DocsModel = saveList;
 
-            _docsModelFiltered = saveList;
-            DocsModel = _docsModelFiltered;
-            NumberDocuments = DocsModel.Count().ToString() + " document(s) trouvé(s)";
+            NumberDocuments = DocsModel.Count();
         }
 
         /// <summary>

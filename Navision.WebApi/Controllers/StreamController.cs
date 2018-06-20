@@ -69,8 +69,9 @@ namespace Navision.WebApi.Controllers
             Logger logger = LogManager.GetCurrentClassLogger();
             logger.Info(folder);
 
+        
             if (fileFormat == FileFormatEnum.pdf.ToString())
-                SavePdfToImage(folder, filepath);
+                SavePdfToImage(folder, filepath)
             else if (fileFormat == FileFormatEnum.jpg.ToString() || fileFormat == FileFormatEnum.jpeg.ToString()
                 || fileFormat == FileFormatEnum.png.ToString() || fileFormat == FileFormatEnum.bmp.ToString())
             {
@@ -106,7 +107,7 @@ namespace Navision.WebApi.Controllers
 
         private void SavePdfToImage(string folder, string filepath)
         {
-            Logger logger = LogManager.GetCurrentClassLogger();
+           Logger logger = LogManager.GetCurrentClassLogger();
             logger.Info(folder);
 
             PdfReader pdfReader = new PdfReader(filepath);
