@@ -1,7 +1,17 @@
-2018-06-20 09:28:45.5010|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
+2018-06-20 13:17:44.7105|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:17:45.5456|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:17:46.1327|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:33:13.4573|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:33:13.8453|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:33:14.2932|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:33:26.7255|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:33:26.7255|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:33:26.7970|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:33:27.2165|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFF9C): Ghostscript conversion error
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
    at lambda_method(Closure , ControllerBase , Object[] )
    at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
@@ -18,3 +28,148 @@ Parameter name: uriString
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-20 13:34:03.2130|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:34:03.2130|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:34:03.2305|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:34:03.6925|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFF9C): Ghostscript conversion error
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-20 13:34:15.8525|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:34:15.8525|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:34:15.8830|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:34:16.2510|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFF9C): Ghostscript conversion error
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-20 13:34:32.3018|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:34:32.3018|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:34:32.3493|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:34:32.4738|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFFF1): Ghostscript conversion error
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-20 13:35:40.5296|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:36:10.4491|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:36:10.4846|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:36:10.7251|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFFF1): Ghostscript conversion error
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-20 13:37:45.3869|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:37:47.6507|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:39:53.9073|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:39:54.0273|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFFF1): Ghostscript conversion error
+   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
+   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
+   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
+   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-20 13:40:53.6814|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:40:56.5738|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:46:43.6312|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:46:49.8530|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:47:03.6841|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 13:47:16.9210|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:47:22.3536|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:51:39.5239|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:51:42.9282|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:51:49.4727|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
+2018-06-20 13:52:00.9314|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:52:00.9314|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:52:58.2890|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
+2018-06-20 13:53:11.8190|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:53:11.8190|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:53:14.6714|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
+2018-06-20 13:53:19.5252|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:53:19.5252|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:53:19.5252|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
+2018-06-20 13:53:25.0347|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:53:25.0347|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 13:53:25.0622|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
+2018-06-20 13:53:33.6422|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:53:33.6422|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 13:53:33.6517|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
