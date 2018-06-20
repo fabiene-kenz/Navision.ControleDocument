@@ -102,10 +102,10 @@ namespace Navision.WebApi.Controllers
 
             PdfReader pdfReader = new PdfReader(filepath);
             int numberOfPages = pdfReader.NumberOfPages;
-            MULTIPLE_FILE_LOCATION = folder + "/" + MULTIPLE_FILE_LOCATION;
+            var fileOutPut = folder + "/" + MULTIPLE_FILE_LOCATION;
 
             logger.Info(MULTIPLE_FILE_LOCATION);
-            GhostscriptWrapper.GeneratePageThumbs(filepath, MULTIPLE_FILE_LOCATION, 1, numberOfPages, 100, 100);
+            GhostscriptWrapper.GeneratePageThumbs(filepath, fileOutPut, 1, numberOfPages, 100, 100);
         }
 
     }

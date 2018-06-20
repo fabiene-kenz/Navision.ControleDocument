@@ -9,38 +9,15 @@
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:services="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
              Padding="0,20,0,0"
+             BackgroundColor="White"
              Title="{Binding Source=Doc Path=DocName, Mode=TwoWay}">
+
     
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
-                               IsVisible="{Binding Path=IsLoading}"
-                               HeightRequest="55"/>-->
-
-    <!--<controls:CarouselViewControl Orientation="Horizontal" InterPageSpacing="10" Grid.Row="1"  ItemsSource="{Binding Path=Images,Mode=TwoWay}"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
-            <controls:CarouselViewControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Gesture:PinchToZoomContainer>
-                            <Gesture:PinchToZoomContainer.Content>
-                                <Image Source="{Binding Path=URL, Mode=TwoWay}">
-                                </Image>
-                            </Gesture:PinchToZoomContainer.Content>
-                        </Gesture:PinchToZoomContainer>
-                    </Grid>
-                </DataTemplate>
-            </controls:CarouselViewControl.ItemTemplate>
-        </controls:CarouselViewControl>-->
-
     <Grid x:Name="MainContent">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="0"></RowDefinition>
         </Grid.RowDefinitions>
         <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
                            IsVisible="{Binding Path=IsLoading}"

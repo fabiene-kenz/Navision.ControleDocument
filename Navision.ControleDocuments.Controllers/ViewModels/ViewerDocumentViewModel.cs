@@ -132,6 +132,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             //Doc.Url = "6005.pdf";
             //DocPath = "Enterprise-Application-Patterns-using-XamarinForms.pdf";
             ////string fileName = DependencyService.Get<ILocalStorageFolder>().GetLocalFilePath("TEST.pdf");
+
             UserModel user = Utils.DeserializeFromJson<UserModel>(Application.Current.Properties["UserData"].ToString());
             _pageService = new PageService();
             _navigation = navigation;
