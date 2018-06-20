@@ -26,8 +26,7 @@
                      BackgroundColor="Transparent">
             <ActivityIndicator IsRunning="{Binding Path=IsLoading}"
                                IsVisible="{Binding Path=IsLoading}"
-                               HorizontalOptions="Fill"
-                               Color="Blue"/>
+                               HorizontalOptions="Fill"/>
             <Label Text="{Binding Path=TextLoading}"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"

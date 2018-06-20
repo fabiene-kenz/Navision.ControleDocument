@@ -17,6 +17,6 @@ namespace Navision.ControleDocuments
 		{
 			InitializeComponent ();
             BindingContext = new DashboardViewModel(Navigation,typeof(ViewerDocumentPage));
-		}
-	}
+        }
+    }
 }

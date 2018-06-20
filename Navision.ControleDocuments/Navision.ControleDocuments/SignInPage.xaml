@@ -54,7 +54,8 @@
                     </StackLayout>
                     <Button     x:Name="CreateButton"
                                 Text="Créer"
-                                Style="{StaticResource blueButton}"
+                                BackgroundColor="CornflowerBlue"
+                                TextColor="White"
                                 Command="{Binding CreateAccountCommand}"/>
                 </StackLayout>
             </Grid>

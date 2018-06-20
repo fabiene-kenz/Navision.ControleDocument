@@ -27,9 +27,15 @@ namespace Navision.ControleDocuments
 			// Handle when your app sleeps
 		}
 
+        /// <summary>
+        /// On resume, the credentials from de cache are removed and
+        /// user is redirected to Login page
+        /// </summary>
 		protected override void OnResume ()
 		{
-			// Handle when your app resumes
-		}
-	}
+            if (Current.Properties.ContainsKey("UserData"))
+                Current.Properties.Remove("UserData");
+            MainPage = new NavigationPage(new Navision.ControleDocuments.MainPage());
+        }
+    }
 }

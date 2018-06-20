@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Navision.ControleDocuments.Controllers.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace Navision.ControleDocuments
         public ViewerDocumentPage ()
 		{
 			InitializeComponent ();
+            BindingContext = new ViewerDocumentViewModel(Navigation);
             //Panel.TranslationY = 1000;
 
             //ShowPanelImg.IsVisible = true;
@@ -35,7 +37,7 @@ namespace Navision.ControleDocuments
             // Hauteur de l'ecran
             var h = Application.Current.MainPage.Height;
             ShowSLide(x,h, width, h);
-            //ShowPanelImg.IsVisible = !ShowPanelImg.IsVisible;
+            ShowPanelImg.IsVisible = !ShowPanelImg.IsVisible;
             //HidePanelImg.IsVisible = !HidePanelImg.IsVisible;
             //await Panel.TranslateTo(0, 0, 500, Easing.CubicIn);
         }

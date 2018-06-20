@@ -27,7 +27,8 @@ namespace Navision.ControleDocuments.CustomControles
 
             var control = bindable as CustomContainerView;
             if (control == null) return;
-            control.DocumentName = newValue.ToString();
+            if (newValue != null)
+                control.DocumentName = newValue.ToString();
         }
         public static void OnStatutPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
