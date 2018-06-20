@@ -9,7 +9,7 @@
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:services="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
              Padding="0,20,0,0"
-             Title="{Binding Source=Doc Path=DocName, Mode=TwoWay}">
+             Title="{Binding Path=Doc.DocName}">
     
     <!--<Grid>
         <Grid.RowDefinitions>
