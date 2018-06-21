@@ -356,4 +356,25 @@ Parameter name: uriString
 2018-06-20 15:17:57.9329|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
 2018-06-20 15:17:57.9329|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
 2018-06-20 15:17:57.9641|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+<<<<<<< HEAD
+2018-06-20 16:14:40.5565|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 16:14:40.6052|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 16:14:40.7697|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-06-20 16:14:44.9752|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 16:14:44.9752|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 16:14:45.7631|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 16:14:47.8728|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 16:14:47.8728|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 16:14:47.8728|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-06-20 16:14:54.2540|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 16:14:54.2540|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 16:14:54.2861|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-20 16:15:04.9143|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 16:15:04.9168|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-20 16:15:04.9506|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-06-20 16:15:09.9494|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 16:15:09.9494|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-20 16:15:10.0238|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+=======
 >>>>>>> c492d71c0f6b6f93491c6bc4ed66fe1ca505fa51
+>>>>>>> d85e486cb41e27e73f574feee7e93c777a2dd6ea

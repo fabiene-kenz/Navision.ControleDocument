@@ -399,7 +399,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Logs\app-log.txt" />
-    <Content Include="Logs\FileRead\ImagePage-0-246.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -461,6 +460,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Logs\FileRead\" />
     <Folder Include="Views\Documents\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\RecordLink\" />

@@ -177,6 +177,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// <returns></returns>
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
+            IsLoading = true;
              var listDocuments = await _documentsService.GetDocuments();
             //List<DocModel> listDocuments = new List<DocModel>();
             //listDocuments.Add(new DocModel { DocName = "JPG", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
