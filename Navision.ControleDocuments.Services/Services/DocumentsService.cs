@@ -1,4 +1,5 @@
 ﻿using Navision.ControleDocuments.Models.DocsModel;
+using Navision.ControleDocuments.Models.UserModels;
 using Navision.ControleDocuments.Services.IServices;
 using Newtonsoft.Json;
 using System;
@@ -15,7 +16,7 @@ namespace Navision.ControleDocuments.Services.Services
         {
 
         }
-        public DocumentsService(string token) : base(token)
+        public DocumentsService(UserModel user) : base(user)
         {
 
         }

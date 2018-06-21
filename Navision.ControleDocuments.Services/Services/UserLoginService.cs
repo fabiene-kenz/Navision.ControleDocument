@@ -18,7 +18,7 @@ namespace Navision.ControleDocuments.Services.Services
         {
 
         }
-        public UserLoginService(string token) : base(token)
+        public UserLoginService(UserModel user) : base(user)
         {
 
         }

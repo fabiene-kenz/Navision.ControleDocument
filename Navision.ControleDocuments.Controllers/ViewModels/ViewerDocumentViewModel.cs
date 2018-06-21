@@ -137,7 +137,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _pageService = new PageService();
             _navigation = navigation;
             ValuesModel = GetValuesAsync();
-            _streamservice = new StreamService(user.Token);
+            _streamservice = new StreamService(user);
             IsLoading = true;
             SelectAllIsToggled = false;
         }

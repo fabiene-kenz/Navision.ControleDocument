@@ -167,7 +167,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _pageService = new PageService();
             _navigation = navigation;
             _page = page;
-            _documentsService = new DocumentsService(user.Token);
+            _documentsService = new DocumentsService(user);
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
         #endregion

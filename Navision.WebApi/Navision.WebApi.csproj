@@ -428,6 +428,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Json\Config.json" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

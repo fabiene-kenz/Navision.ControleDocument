@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32.SafeHandles;
+using Navision.ControleDocuments.Models.UserModels;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -13,7 +14,13 @@ namespace Navision.ControleDocuments.Services.Services
         //https://navapi.saas.e-kenz.com/Documents/GetDocuments
 #if DEBUG
         //public string Uribase { get { return "http://localhost:61798/"; } }
-        public string Uribase { get { return "http://navapi.saas.e-kenz.com"; } }
+        private string _uribase;
+        public string Uribase
+        {
+            //get { return "http://navapi.saas.e-kenz.com"; }
+            get { return _uribase; }
+            private set { _uribase = value; }
+        }
 #else
         public string Uribase { get { return "http://localhost:61798/"; } }
 #endif
@@ -28,12 +35,14 @@ namespace Navision.ControleDocuments.Services.Services
         public ConnectService()
         {
             httpClient = new HttpClient();
+            
             httpClient.DefaultRequestHeaders.Add("User-Agent", _userAgent);
         }
-        public ConnectService(string token)
+        public ConnectService(UserModel user)
         {
             httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            Uribase = user.URL;
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", user.Token);
             httpClient.DefaultRequestHeaders.Add("User-Agent", _userAgent);
         }
 
