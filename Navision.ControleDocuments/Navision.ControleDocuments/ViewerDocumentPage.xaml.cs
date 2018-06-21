@@ -37,7 +37,7 @@ namespace Navision.ControleDocuments
             // Hauteur de l'ecran
             var h = Application.Current.MainPage.Height;
             ShowSLide(x,h, width, h);
-            ShowPanelImg.IsVisible = !ShowPanelImg.IsVisible;
+            //ShowPanelImg.IsVisible = !ShowPanelImg.IsVisible;
             //HidePanelImg.IsVisible = !HidePanelImg.IsVisible;
             //await Panel.TranslateTo(0, 0, 500, Easing.CubicIn);
         }

@@ -10,7 +10,7 @@
              xmlns:services="clr-namespace:Navision.ControleDocuments.Services.Services;assembly=Navision.ControleDocuments.Services"
              Padding="0,20,0,0"
              BackgroundColor="White"
-             Title="{Binding Source=Doc.DocName}">
+             Title="{Binding Path=Doc.DocName}">
 
     
     <Grid x:Name="MainContent">
@@ -43,6 +43,7 @@
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="EndAndExpand"
                    HeightRequest="35"
+                   IsVisible="{Binding Path=ShowPanelImg, Mode=TwoWay}"
                    Source="{ImageService:EmbeddedImage RessourceId=Navision.ControleDocuments.Services.Images.showPanel.png}">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ShowPanel"/>

@@ -50,6 +50,14 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
         }
 
+        private bool _showPanelImg = false;
+        public bool ShowPanelImg
+        {
+            get { return _showPanelImg; }
+            set { _showPanelImg = value; OnPropertyChanged("ShowPanelImg"); }
+        }
+
+
         private bool _selectAllIsToggled;
 
         public bool SelectAllIsToggled
@@ -146,6 +154,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             List<PdfModel> listPdfModel = await _streamservice.GetPdfFile(doc);
             IsLoading = false;
+            ShowPanelImg = true;
             return listPdfModel;
         }
 
