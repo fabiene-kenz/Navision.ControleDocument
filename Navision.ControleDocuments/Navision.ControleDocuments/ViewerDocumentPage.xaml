@@ -15,7 +15,7 @@
     
     <Grid x:Name="MainContent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="0"></RowDefinition>
         </Grid.RowDefinitions>
@@ -51,15 +51,14 @@
             </Image>
         </StackLayout>
         <!--Contenu du slide-->
-        <StackLayout x:Name="Panel"
+        <Grid x:Name="Panel"
                     Grid.Row="2"
-                    Orientation="Vertical"
-                    VerticalOptions="Start"
-                    HorizontalOptions="FillAndExpand"
-                    Spacing="0"
-                    BackgroundColor="#99006df0"
-                     HeightRequest="0"
-                     WidthRequest="0">
+                    BackgroundColor="#99006df0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -84,8 +83,7 @@
                     <Button Text="TOUT" Command="{Binding Path=BtnCommand}" BackgroundColor="#00FFFFFF" TextColor="White" FontAttributes="Bold"/>
                 </StackLayout>
             </Grid>
-            <StackLayout>
-                <ListView x:Name="PropertiesListView" HorizontalOptions="FillAndExpand"
+                <ListView x:Name="PropertiesListView" HorizontalOptions="FillAndExpand" Grid.Row="1"
                         ItemsSource="{Binding Path=ValuesModel, Mode=TwoWay}"
                         SelectedItem="{Binding Path=ValueModel,Mode=TwoWay}">
                     <ListView.ItemTemplate>
@@ -111,8 +109,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Text="Terminer" Command="{Binding Path=DoneBtn}" HorizontalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" FontAttributes="Bold" Margin="0, 0, 5, 10"/>
-            </StackLayout>
-        </StackLayout>
+                <Button Text="Terminer" Command="{Binding Path=DoneBtn}" HorizontalOptions="Center" BackgroundColor="White" Grid.Row="2" VerticalOptions="Start"
+                        TextColor="CornflowerBlue" FontAttributes="Bold" Margin="0, 0, 5, 10"/>
+        </Grid>
     </Grid>
 </ContentPage>

@@ -42,7 +42,7 @@ namespace Navision.WebApi.Controllers
                 PurchaseOrders_Filter[] fiArray = new PurchaseOrders_Filter[] { fi };
 
                 var results = await purchaseOrders_PortClient.ReadMultipleAsync(fiArray, null, 0);
-                var approvalsMgmt=GetApprove(user);
+                var approvalsMgmt = GetApprove(user);
 
                 var recordlink = GetRecordLink(user);
 
@@ -56,9 +56,20 @@ namespace Navision.WebApi.Controllers
                     // check if user connected can approve a doc
                     if (approvalsMgmt.HasOpenApprovalEntriesForCurrentUser(recordId))
                     {
-                        var docs = recordlink.ReadMultiple(rlparray, null, 0).Where(d=>d.Record_ID== recordId);
-                        listsDocuments.AddRange( docs.Select(d => new DocumentModel() { DocName = d.Description, Url=d.URL1,DocDate = d.Created, DocSatut = ((EnumStatut.Values) d.Statut).GetBool()}).ToList());
-                    }                    
+                        var docs = recordlink.ReadMultiple(rlparray, null, 0).Where(d => d.Record_ID == recordId);
+                        listsDocuments.AddRange(docs.Select(d => new DocumentModel()
+                        {
+                            IdDoc= sale.No,
+                            VendorName = sale.Buy_from_Vendor_Name,
+                            VendorInvoiceNo = sale.Vendor_Invoice_No,
+                            VendorShipNo = sale.Vendor_Shipment_No,
+                            DocumentDate = sale.Document_Date.ToString(),
+                            DocName = d.Description,
+                            Url = d.URL1,
+                            DocDate = d.Created,
+                            DocSatut = ((EnumStatut.Values)d.Statut).GetBool()
+                        }).ToList()); 
+                    }
                 }
             }
             catch (Exception ex)
@@ -66,9 +77,39 @@ namespace Navision.WebApi.Controllers
                 throw ex;
             }
 
-            return new JsonResult { Data = listsDocuments,JsonRequestBehavior=JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = listsDocuments, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-
+        /// <summary>
+        /// Approve or reject record
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
+        public async Task<JsonResult> ApproveOrRejectRecord(DocumentModel document)
+        {
+            // Get user call api
+            UserContext context = UserConnect.GetContext(HttpContext);
+            UserMobile user = UserConnect.GetUserConnected(context.Token, context.Ip, context.UserAgent);
+            try
+            {
+                var approvalsMgmt = GetApprove(user);
+                var recordId = "Purchase Header: 1," + document.IdDoc;
+                if (document.IsApprove)
+                {
+                    approvalsMgmt.ApproveRecordApprovalRequest(recordId);
+                }
+                else
+                {
+                    approvalsMgmt.RejectRecordApprovalRequest(recordId);
+                }
+                return new JsonResult { Data = true, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = false, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                throw ex;                
+            }
+           
+        }
         /// <summary>
         /// Get Approve service ref
         /// </summary>

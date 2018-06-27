@@ -12,5 +12,7 @@ namespace Navision.ControleDocuments.Services.IServices
     public interface IDocumentsService
     {
         Task<List<DocModel>> GetDocuments();
+        Task<List<DocumentValuesModel>> GetValueToCheck(DocModel document);
+        Task<bool> ApproveOrRejectDocument(DocModel document);
     }
 }

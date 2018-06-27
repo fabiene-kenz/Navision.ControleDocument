@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DocumentModel.cs" />
+    <Compile Include="DocumentValuesModel.cs" />
     <Compile Include="JsonModel.cs" />
     <Compile Include="PdfModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

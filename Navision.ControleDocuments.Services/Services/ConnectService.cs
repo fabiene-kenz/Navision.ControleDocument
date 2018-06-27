@@ -17,7 +17,7 @@ namespace Navision.ControleDocuments.Services.Services
         private string _uribase;
         public string Uribase
         {
-            //get { return "http://navapi.saas.e-kenz.com"; }
+            //get { return "http://localhost:61798/"; }
             get { return _uribase; }
             private set { _uribase = value; }
         }

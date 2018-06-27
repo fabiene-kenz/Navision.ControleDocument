@@ -31,9 +31,9 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             set
             {
                 _docModel = value;
-               
-                    if (_docModel != null && _docModel.DocName != null && _docModel.DocDate.Year != 0001)
-                        NextPage();
+
+                if (_docModel != null && _docModel.DocName != null && _docModel.DocDate.Year != 0001)
+                    NextPage();
                 OnPropertyChanged("DocModel");
             }
         }
@@ -151,12 +151,20 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 
         public ICommand RefreshCommand
         {
-            get { return new Command(async () => await GetDocsAsync()); }
+            get { return new Command(async () => DocsModel = await GetDocsAsync()); }
         }
 
         public ICommand SearchCommand
         {
             get { return new Command(async () => await PerformSearch()); }
+        }
+
+        public ICommand RefreshCollection
+        {
+            get
+            {
+                return new Command(async () => DocsModel = await UpdateDocsAsync());
+            }
         }
         #endregion
 
@@ -178,30 +186,34 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private async Task<ObservableCollection<DocModel>> GetDocsAsync()
         {
             IsLoading = true;
-             var listDocuments = await _documentsService.GetDocuments();
-            //List<DocModel> listDocuments = new List<DocModel>();
-            //listDocuments.Add(new DocModel { DocName = "JPG", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
-            //listDocuments.Add(new DocModel { DocName = "PDF", DocDate = new DateTime(2018, 06, 04), DocSatut = null });
-            //listDocuments.Add(new DocModel { DocName = "PDF2", DocDate = new DateTime(2018, 06, 04), DocSatut = true });
-            //listDocuments.Add(new DocModel { DocName = "test4", DocDate = new DateTime(2018, 06, 04), DocSatut = true });
-            //listDocuments.Add(new DocModel { DocName = "test5", DocDate = new DateTime(2018, 06, 04), DocSatut = false });
-            //listDocuments.Add(new DocModel { DocName = "test6", DocDate = new DateTime(2018, 06, 04), DocSatut = false });
+            var listDocuments = await _documentsService.GetDocuments();
 
             ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(listDocuments);
             _docsModelUnfiltered = tcollect;
-          
+
             NumberDocuments = tcollect.Count();
             IsLoading = false;
             return tcollect;
         }
+        /// <summary>
+        /// Update list of document
+        /// </summary>
+        /// <returns></returns>
+        private async Task<ObservableCollection<DocModel>> UpdateDocsAsync()
+        {
+            var collec = DocsModel.ToList();
+            DocsModel = null;
 
+            ObservableCollection<DocModel> tcollect = new ObservableCollection<DocModel>(collec);
+            return tcollect;
+        }
         /// <summary>
         /// Get value selected and switch page
         /// </summary>
         private async void NextPage()
         {
             try
-            {               
+            {
                 if (DocModel.DocSatut == false || DocModel.DocSatut == true)
                     await _pageService.DisplayAlert("Erreur", "Impossible d'ouvrir le document car il a déjà été traité.", "OK");
                 else
@@ -217,7 +229,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             {
                 throw ex;
             }
-        }        
+        }
 
         /// <summary>
         /// Show or hide the popup for filtering the documents
