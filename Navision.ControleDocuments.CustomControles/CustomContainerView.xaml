@@ -60,12 +60,12 @@
                        FontSize="Medium" FontAttributes="Bold" TextColor="#4f4f4f"/>
             </StackLayout>
             <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Label VerticalOptions="CenterAndExpand" Text="{Binding Path=DocumentDate, Mode=TwoWay,Source={x:Reference Name=this}}"
+                <Label x:Name="DocumentDateLabel" VerticalOptions="CenterAndExpand" Text="{Binding Path=DocumentDate, Mode=TwoWay,Source={x:Reference Name=this}}"
                        FontSize="Small" TextColor="#4f4f4f" FontAttributes="Italic"/>
             </StackLayout>
             <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
                 <Label VerticalOptions="CenterAndExpand"  HorizontalOptions="EndAndExpand" Text="Statut" FontSize="Small" TextColor="#4f4f4f"/>
-            </StackLayout>
+            </StackLayout>            
             <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Image  Source="{Binding Path=DocumentSatut, Mode=TwoWay,Converter={StaticResource Key=ConvertToImage},Source={x:Reference Name=this}}"
                         VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>

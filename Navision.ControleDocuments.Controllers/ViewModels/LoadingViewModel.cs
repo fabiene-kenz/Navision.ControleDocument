@@ -21,7 +21,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
     public class LoadingViewModel : BaseViewModel
     {
         #region Properties
-
+        private readonly IJsonService _jsonService;
         private readonly IVersionService _versionService;
         private readonly IGetClientParamService _getClientParamService;
         private readonly IPageService _pageService;
@@ -48,18 +48,20 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             _mainpage = mainpage;
             string dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
+            _jsonService = new JsonService();
+            
             _versionService = new VersionService(dbSql);
             _getClientParamService = new GetClientParamService(dbSql);
 
             IsLoading = true;
             TextLoading = "Vérification du fichier de configuration...";
+            // Get config file
+            var jsonObject = Utils.DeserializeFromJson<JsonModel>(_jsonService.GetJson());
 
-            var jsonObject = Utils.DeserializeFromJson<JsonModel>("{\"Version\": \"1.0.0.0\",\"Companies\": [{\"CompanyName\": \"e-Kenz\",\"Url\": \"https://navapi.saas.e-kenz.com\", \"Domain\": \"SAAS\"},{\"CompanyName\": \"Company1\",\"Url\": \"URL1\", \"Domain\": \"Domain1\"},{\"CompanyName\": \"Company2\",\"Url\": \"URL2\", \"Domain\": \"Domain2\"}]}");
+            //var jsonObject = Utils.DeserializeFromJson<JsonModel>("{\"Version\": \"1.0.0.0\",\"Companies\": [{\"CompanyName\": \"e-Kenz\",\"Url\": \"http://navapi.saas.e-kenz.com\", \"Domain\": \"SAAS\"},{\"CompanyName\": \"Company1\",\"Url\": \"URL1\", \"Domain\": \"Domain1\"},{\"CompanyName\": \"Company2\",\"Url\": \"URL2\", \"Domain\": \"Domain2\"}]}");
 
             Task.Run(async () => await CreateTablesAsync(dbSql));
             Task.Run(async () => await PopulateDb(dbSql, jsonObject));
-
-            //deleteTablesDebug(dbSql);
 
             Device.StartTimer(TimeSpan.FromSeconds(2), () =>
             {
@@ -74,7 +76,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// Delete tables for debug purpose only
         /// </summary>
         /// <param name="dbSql">Path of the database</param>
-        public async void deleteTablesDebug(string dbSql)
+        public async void DeleteTablesDebug(string dbSql)
         {
             try
             {
@@ -108,7 +110,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 return;
             }
 
-            if (versionResult != null && versionResult.Version == jsonObject.Version)
+            if (versionResult != null && versionResult.Version != jsonObject.Version)
             {
                 // Clean DB
                 _versionService.DelVersion(versionResult);

@@ -1,13 +1,14 @@
-2018-06-20 09:28:45.5010|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+2018-06-26 13:23:38.0212|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:23:38.0797|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:23:38.6165|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-26 13:23:38.7895|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
@@ -18,3 +19,156 @@ Parameter name: uriString
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:26:51.6036|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:26:51.9006|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:26:52.4707|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:26:52.6602|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-26 13:27:22.8818|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-26 13:27:22.8818|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-26 13:27:22.9253|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-06-26 13:27:24.0303|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:27:27.7819|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:27:27.7819|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:27:28.1046|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-26 13:27:28.6171|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:28:09.0221|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-26 13:28:09.0221|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-26 13:28:09.0326|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
+2018-06-26 13:28:09.9296|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:28:20.1052|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:28:20.1052|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:28:20.1362|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-26 13:28:20.9752|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:28:34.3387|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:28:34.3387|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:28:34.3687|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-26 13:28:35.2032|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:29:08.6508|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:29:08.6548|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:29:08.6843|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-26 13:30:05.9013|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.NullReferenceException: Object reference not set to an instance of an object.
+   at Navision.WebApi.Controllers.RecordLinkController.<GetValueToCheck>d__1.MoveNext() in C:\CheckDocument\Navision.WebApi\Controllers\RecordLinkController.cs:line 45
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-06-26 13:31:50.0632|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:31:50.3286|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-26 13:31:50.7109|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-26 13:32:15.6623|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-26 13:32:15.6693|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
+2018-06-26 13:32:15.7093|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg

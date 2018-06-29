@@ -13,16 +13,13 @@ namespace Navision.ControleDocuments
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ViewerDocumentPage : ContentPage
 	{
-        double x, y;
         private bool _popupShow = false;
+        private static ViewerDocumentViewModel _context;
         public ViewerDocumentPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new ViewerDocumentViewModel(Navigation);
-            //Panel.TranslationY = 1000;
-
-            //ShowPanelImg.IsVisible = true;
-            //HidePanelImg.IsVisible = false;
+            _context= new ViewerDocumentViewModel(Navigation);
+            BindingContext = _context;
         }
 
         async void ShowPanel(object sender, System.EventArgs e)
@@ -46,10 +43,11 @@ namespace Navision.ControleDocuments
         {
             if (!_popupShow)
             {
-                var rect = new Rectangle(x, y / 2, width, height / 2.4);
-                // affichela popup a l'endroit et la taille voulu
+                var rect = new Rectangle(x, y/2 , width, height / 2);
+                // affiche la popup a l'endroit et la taille voulu
                 Panel.LayoutTo(rect, 450, Easing.CubicOut);
                 _popupShow = true;
+                //ShowPanelImg.IsVisible = false;
             }
             else
             {
@@ -57,8 +55,19 @@ namespace Navision.ControleDocuments
                 // affichela popup a l'endroit et la taille voulu
                 Panel.LayoutTo(rect, 450, Easing.CubicOut);
                 _popupShow = false;
+                //ShowPanelImg.IsVisible = true;
             }
         }
-        
+        /// <summary>
+        /// Come back page
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed()
+        {
+            // If you want to continue going back
+            base.OnBackButtonPressed();
+            _context.CleanWebApi.Execute(null);
+            return false;
+        }
     }
 }

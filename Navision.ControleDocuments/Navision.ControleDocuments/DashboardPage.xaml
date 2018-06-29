@@ -35,7 +35,7 @@
                                    IsVisible="{Binding Path=IsLoading,Mode=TwoWay}"
                                    HorizontalOptions="Fill"/>
             </StackLayout>
-            <ListView x:Name="DocumentsListView" ItemsSource="{Binding Path=DocsModel,Mode=TwoWay}" SelectedItem="{Binding Path=DocModel,Mode=TwoWay}" Grid.Row="1" RowHeight="120">
+            <ListView x:Name="DocumentsListView" ItemsSource="{Binding Path=DocsModel,Mode=TwoWay}" SelectedItem="{Binding Path=DocModel,Mode=TwoWay}" Grid.Row="1" RowHeight="140">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

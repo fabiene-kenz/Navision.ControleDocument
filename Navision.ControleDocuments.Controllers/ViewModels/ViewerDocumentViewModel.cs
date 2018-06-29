@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,10 +20,11 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 {
     public class ViewerDocumentViewModel : BaseViewModel
     {
-#region properties
+        #region properties
         private readonly IStreamService _streamservice;
         private readonly IPageService _pageService;
         private readonly INavigation _navigation;
+        private readonly IDocumentsService _documentsService;
         private bool _isLoading;
 
         public bool IsLoading
@@ -45,6 +47,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 {
                     _doc = value;
                     Task.Run(async () => Images = await GetPdf(value));
+                    Task.Run(async () => ValuesModel = await GetValuesAsync());
                 }
                 OnPropertyChanged("Doc");
             }
@@ -121,7 +124,13 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 return new Command(async () => await SelectAllBtn());
             }
         }
-
+        public ICommand CleanWebApi
+        {
+            get
+            {
+                return new Command(async () => await CleanFolder());
+            }
+        }
         private List<PdfModel> _images = new List<PdfModel>();
         public List<PdfModel> Images
         {
@@ -137,19 +146,22 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
 
         public ViewerDocumentViewModel(INavigation navigation)
         {
-            //Doc.Url = "6005.pdf";
-            //DocPath = "Enterprise-Application-Patterns-using-XamarinForms.pdf";
-            ////string fileName = DependencyService.Get<ILocalStorageFolder>().GetLocalFilePath("TEST.pdf");
-
             UserModel user = Utils.DeserializeFromJson<UserModel>(Application.Current.Properties["UserData"].ToString());
             _pageService = new PageService();
             _navigation = navigation;
-            ValuesModel = GetValuesAsync();
-            _streamservice = new StreamService(user.Token);
+            _streamservice = new StreamService(user);
+            _documentsService = new DocumentsService(user);
+
+            
+
             IsLoading = true;
             SelectAllIsToggled = false;
         }
-       
+        /// <summary>
+        /// Get all pdf for user
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
         private async Task<List<PdfModel>> GetPdf(DocModel doc)
         {
             List<PdfModel> listPdfModel = await _streamservice.GetPdfFile(doc);
@@ -157,20 +169,23 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             ShowPanelImg = true;
             return listPdfModel;
         }
-
-        private ObservableCollection<ValuesToValidateModel> GetValuesAsync()
+        /// <summary>
+        /// Get values to check
+        /// </summary>
+        /// <returns></returns>
+        private async Task<ObservableCollection<ValuesToValidateModel>> GetValuesAsync()
         {
-            List<ValuesToValidateModel> t = new List<ValuesToValidateModel>();
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 0", PropertyValue = "Value 0", IsValidated = false });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 1", PropertyValue = "Value 1", IsValidated = true });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 2", PropertyValue = "Value 2", IsValidated = false });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 3", PropertyValue = "Value 3", IsValidated = true });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 4", PropertyValue = "Value 4", IsValidated = false });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 5", PropertyValue = "Value 5", IsValidated = true });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 6", PropertyValue = "Value 6", IsValidated = false });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 7", PropertyValue = "Value 7", IsValidated = true });
-            t.Add(new ValuesToValidateModel { PropertyName = "Name 8", PropertyValue = "Value 8", IsValidated = false });
-            ObservableCollection<ValuesToValidateModel> tcollect = new ObservableCollection<ValuesToValidateModel>(t);
+            var values = await _documentsService.GetValueToCheck(Doc);
+            List<ValuesToValidateModel> check = new List<ValuesToValidateModel>();
+            foreach (var value in values)
+            {
+                check.Add(new ValuesToValidateModel { PropertyName = value.Name, PropertyValue = value.Value, IsValidated = false });
+            }
+            check.Add(new ValuesToValidateModel { PropertyName = "Vendor Invoice No", PropertyValue = Doc.VendorInvoiceNo, IsValidated = false });
+            check.Add(new ValuesToValidateModel { PropertyName = "Vendor Shipment No", PropertyValue = Doc.VendorShipNo, IsValidated = false });
+            check.Add(new ValuesToValidateModel { PropertyName = "Vendor Name", PropertyValue = Doc.VendorName, IsValidated = false });
+            check.Add(new ValuesToValidateModel { PropertyName = "Document Date", PropertyValue = Doc.DocumentDate, IsValidated = false });
+            ObservableCollection<ValuesToValidateModel> tcollect = new ObservableCollection<ValuesToValidateModel>(check);
             return tcollect;
         }
 
@@ -196,10 +211,8 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             var response = await _pageService.DisplayAlert("Confimer", "Enregistrer les modifications et quitter ?", "Confirmer", "Annuler");
             if (response)
             {
-                await _pageService.PopAsync(_navigation);
-                var deletedFolder = await _streamservice.CleanFolder(Doc);
-                if (string.IsNullOrEmpty(deletedFolder))
-                    await _pageService.DisplayAlert("Erreur", "Erreur lors de la suppression du document.", "Ok");
+                await SetStatutDocument();
+                await CleanFolder();
             }
         }
 
@@ -222,6 +235,36 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 });
             }
             return newValuesCollection;
+        }
+        /// <summary>
+        /// Update Statut in Navision
+        /// </summary>
+        private async Task SetStatutDocument()
+        {
+            if (ValuesModel.Any(v => !v.IsValidated))
+            {
+                Doc.IsApprove = false;
+                Doc.DocSatut = false;
+
+                Doc.DocDate = DateTime.Now;
+            }
+            else
+            {
+                Doc.IsApprove = true;
+                Doc.DocSatut = true;
+            }
+            await _documentsService.ApproveOrRejectDocument(Doc);
+        }
+        /// <summary>
+        /// Clean folder in webapi
+        /// </summary>
+        /// <returns></returns>
+        private async Task CleanFolder()
+        {
+            await _pageService.PopAsync(_navigation);
+            var deletedFolder = await _streamservice.CleanFolder(Doc);
+            if (string.IsNullOrEmpty(deletedFolder))
+                await _pageService.DisplayAlert("Erreur", "Erreur lors de la suppression du document.", "Ok");
         }
 
     }

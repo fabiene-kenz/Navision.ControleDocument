@@ -1,380 +1,45 @@
-2018-06-20 13:17:44.7105|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:17:45.5456|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:17:46.1327|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:33:13.4573|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:33:13.8453|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:33:14.2932|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:33:26.7255|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:33:26.7255|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:33:26.7970|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:33:27.2165|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFF9C): Ghostscript conversion error
-   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
-   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
-   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-<<<<<<< HEAD
-2018-06-20 13:34:03.2130|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:34:03.2130|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:34:03.2305|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:34:03.6925|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFF9C): Ghostscript conversion error
-   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
-   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
-   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
-=======
-2018-06-20 11:14:12.5019|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
->>>>>>> c492d71c0f6b6f93491c6bc4ed66fe1ca505fa51
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-<<<<<<< HEAD
-2018-06-20 13:34:15.8525|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:34:15.8525|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:34:15.8830|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:34:16.2510|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFF9C): Ghostscript conversion error
-   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
-   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
-   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
-=======
-2018-06-20 11:15:49.8669|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
->>>>>>> c492d71c0f6b6f93491c6bc4ed66fe1ca505fa51
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-<<<<<<< HEAD
-2018-06-20 13:34:32.3018|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:34:32.3018|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:34:32.3493|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:34:32.4738|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFFF1): Ghostscript conversion error
-   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
-   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
-   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
-=======
-2018-06-20 11:18:58.7423|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
->>>>>>> c492d71c0f6b6f93491c6bc4ed66fe1ca505fa51
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-<<<<<<< HEAD
-2018-06-20 13:35:40.5296|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:36:10.4491|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:36:10.4846|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:36:10.7251|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFFF1): Ghostscript conversion error
-   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
-   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
-   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
-=======
-2018-06-20 11:19:01.3166|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
->>>>>>> c492d71c0f6b6f93491c6bc4ed66fe1ca505fa51
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-<<<<<<< HEAD
-2018-06-20 13:37:45.3869|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:37:47.6507|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:39:53.9073|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005/C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:39:54.0273|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.Runtime.InteropServices.ExternalException (0xFFFFFFF1): Ghostscript conversion error
-   at GhostscriptSharp.GhostscriptWrapper.CallAPI(String[] args)
-   at GhostscriptSharp.GhostscriptWrapper.GeneratePageThumbs(String inputPath, String outputPath, Int32 firstPage, Int32 lastPage, Int32 width, Int32 height)
-   at Navision.WebApi.Controllers.StreamController.SavePdfToImage(String folder, String filepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 108
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\CheckDocument\Navision.WebApi\Controllers\StreamController.cs:line 71
-=======
-2018-06-20 11:19:03.7705|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
->>>>>>> c492d71c0f6b6f93491c6bc4ed66fe1ca505fa51
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-<<<<<<< HEAD
-2018-06-20 13:40:53.6814|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:40:56.5738|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:46:43.6312|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:46:49.8530|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:47:03.6841|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:47:16.9210|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:47:22.3536|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:51:39.5239|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:51:42.9282|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:51:49.4727|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:52:00.9314|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:52:00.9314|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:52:58.2890|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:53:11.8190|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:53:11.8190|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:53:14.6714|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:53:19.5252|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:53:19.5252|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:53:19.5252|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:53:25.0347|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:53:25.0347|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:53:25.0622|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:53:33.6422|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:53:33.6422|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:53:33.6517|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-=======
-2018-06-20 11:20:54.2816|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentNullException: Value cannot be null.
-Parameter name: uriString
-   at System.Uri..ctor(String uriString)
-   at Navision.WebApi.Controllers.StreamController.GetPdfFile(DocumentModel pdffilepath) in C:\Navision.ControleDocument\Navision.WebApi\Controllers\StreamController.cs:line 59
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-2018-06-20 13:30:47.5631|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:30:47.6109|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:30:47.8129|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 13:31:04.1064|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:31:04.1064|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:31:04.8492|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 13:35:18.9109|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:35:19.3503|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:35:19.7943|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:35:41.9774|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:35:41.9824|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:35:42.0472|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 13:45:00.6178|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:46:16.6057|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:48:28.8839|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:48:32.1622|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:48:35.7188|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:49:00.2933|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:49:01.3756|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:49:02.1869|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:50:04.0184|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:50:04.7077|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:50:05.2873|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:50:11.5998|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:50:12.1890|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 13:50:16.6915|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:50:42.2127|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:50:42.8975|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:50:43.4720|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:51:26.2700|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:51:29.2306|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:52:36.0987|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 13:55:04.1609|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:55:09.1396|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 13:55:10.6719|INFO|Navision.WebApi.Controllers.StreamController|output%d.jpg
-2018-06-20 14:03:53.8067|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 14:03:53.8503|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 14:06:49.8059|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 14:07:18.9049|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 14:07:18.9049|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 14:07:20.6355|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 14:07:41.1858|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:07:41.1858|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:07:42.8239|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:28:07.4149|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:28:07.4526|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:28:07.6321|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:29:22.6543|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:29:22.6543|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:29:22.7226|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:42:14.1054|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:42:14.1459|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:42:14.3858|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:45:40.0974|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:45:40.4765|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:45:40.6131|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:47:40.9099|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:47:40.9500|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:47:41.0848|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:50:19.2379|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:50:19.2879|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:50:19.4344|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:50:33.1542|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.MissingMethodException: No parameterless constructor defined for this object. Object type 'System.Net.Http.StringContent'. ---> System.MissingMethodException: No parameterless constructor defined for this object.
-   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-   at System.Activator.CreateInstance(Type type)
-   at System.Web.Mvc.DefaultModelBinder.CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-   --- End of inner exception stack trace ---
-   at System.Web.Mvc.DefaultModelBinder.CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-   at System.Web.Mvc.DefaultModelBinder.BindComplexModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   at System.Web.Mvc.DefaultModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
-   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
-2018-06-20 14:53:56.2406|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:53:56.6132|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:53:56.7760|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:54:55.6148|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.MissingMethodException: No parameterless constructor defined for this object. Object type 'System.Net.Http.StringContent'. ---> System.MissingMethodException: No parameterless constructor defined for this object.
-   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
-   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-   at System.Activator.CreateInstance(Type type)
-   at System.Web.Mvc.DefaultModelBinder.CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-   --- End of inner exception stack trace ---
-   at System.Web.Mvc.DefaultModelBinder.CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-   at System.Web.Mvc.DefaultModelBinder.BindComplexModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   at System.Web.Mvc.DefaultModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
-   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
-2018-06-20 14:56:42.4299|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:56:42.4599|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:56:42.9721|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:58:34.8013|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:58:35.1534|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 14:58:35.2670|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 14:58:47.5586|ERROR|Navision.WebApi.App_Start.ExceptionHandlerAttribute|System.ArgumentException: Invalid JSON primitive: .
-   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
-   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
-   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
-   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
-   at System.Web.Mvc.JsonValueProviderFactory.GetDeserializedObject(ControllerContext controllerContext)
-   at System.Web.Mvc.JsonValueProviderFactory.GetValueProvider(ControllerContext controllerContext)
-   at System.Web.Mvc.ValueProviderFactoryCollection.GetValueProvider(ControllerContext controllerContext)
-   at System.Web.Mvc.ControllerBase.get_ValueProvider()
-   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
-   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
-2018-06-20 15:03:03.8236|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:03:03.8676|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:03:04.0231|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 15:12:25.1558|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:12:25.2002|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:12:25.3449|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 15:15:28.2828|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:15:28.3179|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:15:28.4764|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 15:16:30.1399|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 15:16:30.1399|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 15:16:30.4834|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 15:17:57.9329|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:17:57.9329|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 15:17:57.9641|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-<<<<<<< HEAD
-2018-06-20 16:14:40.5565|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 16:14:40.6052|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 16:14:40.7697|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 16:14:44.9752|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 16:14:44.9752|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 16:14:45.7631|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 16:14:47.8728|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 16:14:47.8728|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 16:14:47.8728|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 16:14:54.2540|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 16:14:54.2540|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 16:14:54.2861|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-2018-06-20 16:15:04.9143|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 16:15:04.9168|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005
-2018-06-20 16:15:04.9506|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\6005/output%d.jpg
-2018-06-20 16:15:09.9494|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 16:15:09.9494|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile
-2018-06-20 16:15:10.0238|INFO|Navision.WebApi.Controllers.StreamController|C:\Navision.ControleDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
-=======
->>>>>>> c492d71c0f6b6f93491c6bc4ed66fe1ca505fa51
->>>>>>> d85e486cb41e27e73f574feee7e93c777a2dd6ea
+2018-06-27 09:29:18.4594|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:29:18.5139|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:29:18.7059|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:36:25.9367|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:36:26.2502|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:36:26.3482|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:39:47.9585|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:39:48.2840|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:39:48.4344|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:40:58.7471|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:40:58.7471|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:40:58.7691|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:48:23.1727|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:48:23.6072|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:48:23.8287|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:48:57.9486|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:48:57.9511|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:48:57.9751|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:50:21.2060|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:50:21.4865|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:50:21.6439|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:53:07.5821|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:53:07.8866|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:53:08.0024|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 09:54:21.8822|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:54:21.8922|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 09:54:21.9202|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 10:00:47.8564|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:00:48.1744|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:00:48.3414|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 10:02:32.5299|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:02:32.5299|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:02:32.5454|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 10:04:14.8185|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:04:14.8185|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:04:14.8489|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg
+2018-06-27 10:20:41.5843|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-27 10:20:41.5913|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-27 10:20:42.2514|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-27 10:21:07.1871|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-27 10:21:07.1871|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile
+2018-06-27 10:21:07.5199|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\testFile/output%d.jpg
+2018-06-27 10:21:55.5159|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:21:55.5159|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306
+2018-06-27 10:21:55.5670|INFO|Navision.WebApi.Controllers.StreamController|C:\CheckDocument\Navision.WebApi\Logs\FileRead\Purchas106306/output%d.jpg

@@ -1,4 +1,6 @@
 ﻿using Navision.ControleDocument.DependenciesServices.IServices;
+using Navision.ControleDocument.SQL.IServices;
+using Navision.ControleDocument.SQL.Services;
 using Navision.ControleDocuments.Controllers.Base;
 using Navision.ControleDocuments.Controllers.Constants;
 using Navision.ControleDocuments.Controllers.Helpers;
@@ -24,8 +26,9 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private readonly Type _signInPage;
         private readonly Type _dashboardPage;
         private readonly INavigation _navigation;
-        private readonly IUserLoginService _userLoginService;
+        private static IUserLoginService _userLoginService;
         private readonly IReadFileService _readFileService;
+        private readonly IGetClientParamService _getClientParamService;
         private readonly Regex EmailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 
         private bool _isBusy;
@@ -70,7 +73,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             get
             {
-                return new Command(async() => await StartLoading());
+                return new Command(async () => await StartLoading());
             }
         }
         /// <summary>
@@ -84,16 +87,15 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         #region CTR
         public MainPageViewModel(Type signinpage, Type dashboardpage, INavigation navigation)
         {
+            string dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
             _pageService = new PageService();
             _signInPage = signinpage;
             _dashboardPage = dashboardpage;
             _navigation = navigation;
-            _userLoginService = new UserLoginService();
+            //_userLoginService = new UserLoginService();
             _readFileService = new ReadFileService();
-            
+            _getClientParamService = new GetClientParamService(dbSql);
             //var stream = _readFileService.GetFileStream("Navision.ControleDocuments.Services.DB.db.sqlite3");
-
-            var dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
 
             GetClientParamService t = new GetClientParamService(dbSql);
 
@@ -175,11 +177,15 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             // Crypt password
             var passwordCrypted = Convert.ToBase64String(Utils.EncryptStringToBytes_Aes(Password));
+            string url = GetUrlForCompany(UserName);
+            _userLoginService = new UserLoginService(new UserModel { UserName = UserName, Password = passwordCrypted, URL = url });
             string token = await _userLoginService.GetToken(new UserModel { UserName = UserName, Password = passwordCrypted });
+
+            
 
             if (!String.IsNullOrEmpty(token))
             {
-                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = passwordCrypted, Token = token });
+                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = passwordCrypted, Token = token, URL = url });
                 return true;
             }
             else if (token == null)
@@ -192,6 +198,30 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 await _pageService.DisplayAlert("Connexion refusée", "Vous n'êtes pas autorisé à vous connecter.\nVérifiez vos identifiants puis réessayer.", "Ok");
                 return false;
             }
+        }
+        /// <summary>
+        /// Get URL for the company
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private string GetUrlForCompany(string name)
+        {
+            string company = GetCompanyName(UserName);
+            var url = _getClientParamService.GetClient().Where(c => c.CompanyName.ToLower().Contains(company)).FirstOrDefault().Url;
+            return url;
+        }
+        /// <summary>
+        /// Get Company Name of mail
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private string GetCompanyName(string name)
+        {
+            var indexPointFirstName = name.IndexOf('@');
+            var nameAfterAt = name.Remove(0, indexPointFirstName + 1);
+            var indexAfterPoint = nameAfterAt.IndexOf('.');
+            var company = nameAfterAt.Remove(indexAfterPoint);
+            return company;
         }
     }
 }

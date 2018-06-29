@@ -13,10 +13,17 @@ namespace Navision.ControleDocuments
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DashboardPage : ContentPage
 	{
-		public DashboardPage ()
+        private static DashboardViewModel _context;
+        public DashboardPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new DashboardViewModel(Navigation,typeof(ViewerDocumentPage));
+            _context= new DashboardViewModel(Navigation, typeof(ViewerDocumentPage));
+            BindingContext = _context;
+        }
+        protected override void OnAppearing()
+        {
+            _context.RefreshCollection.Execute(null);
+            //return
         }
     }
 }

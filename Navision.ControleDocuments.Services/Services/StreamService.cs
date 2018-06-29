@@ -1,5 +1,6 @@
 ﻿using Navision.ControleDocument.DependenciesServices.IServices;
 using Navision.ControleDocuments.Models.DocsModel;
+using Navision.ControleDocuments.Models.UserModels;
 using Navision.ControleDocuments.Models.LogsModel;
 using Navision.ControleDocuments.Services.IServices;
 using Newtonsoft.Json;
@@ -19,7 +20,7 @@ namespace Navision.ControleDocuments.Services.Services
         {
 
         }
-        public StreamService(string token) : base(token)
+        public StreamService(UserModel user) : base(user)
         {
 
         }
