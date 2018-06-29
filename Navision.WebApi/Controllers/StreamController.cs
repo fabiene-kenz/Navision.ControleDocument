@@ -143,5 +143,23 @@ namespace Navision.WebApi.Controllers
             }
         }
 
+        public JsonResult GetLogFile(LogsModel logModel)
+        {
+            string filePath = Server.MapPath(@"~/Logs/MobileLogs" + logModel.fileName);
+            if (System.IO.File.Exists(filePath))
+                System.IO.File.Delete(filePath);
+            try
+            {
+                using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                    fs.Write(logModel.fileContent, 0, logModel.fileContent.Length);
+                return new JsonResult { Data = true, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch(Exception ex)
+            {
+                return new JsonResult { Data = false, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                throw ex;
+            }
+        }
+
     }
 }

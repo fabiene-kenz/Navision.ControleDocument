@@ -10,5 +10,6 @@ namespace Navision.ControleDocuments.Services.IServices
     {
         Task<List<PdfModel>> GetPdfFile(DocModel pdffilepath);
         Task<string> CleanFolder(DocModel doc);
+        Task<bool> SendLogs(string LogsFilePath);
     }
 }

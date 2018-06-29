@@ -84,6 +84,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             catch (Exception e)
             {
+                await DependencyService.Get<ILogger>().WriteLog(e);
                 throw e;
             }
         }
@@ -141,6 +142,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             catch (Exception e)
             {
+                await DependencyService.Get<ILogger>().WriteLog(e);
                 throw e;
             }
         }

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControl\CustomWebViewRenderer.cs" />
+    <Compile Include="Dependencies\LoggerDependency.cs" />
     <Compile Include="Dependencies\SQLiteDependency.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

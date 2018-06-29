@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="CustomControl\CustomWebViewRenderer.cs" />
     <Compile Include="Dependencies\LocalStorageFolderDependency.cs" />
+    <Compile Include="Dependencies\LoggerDependency.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

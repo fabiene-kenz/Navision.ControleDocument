@@ -1,4 +1,5 @@
-﻿using Navision.ControleDocuments.Models.DocsModel;
+﻿using Navision.ControleDocument.DependenciesServices.IServices;
+using Navision.ControleDocuments.Models.DocsModel;
 using Navision.ControleDocuments.Services.IServices;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Navision.ControleDocuments.Services.Services
 {
@@ -34,6 +36,7 @@ namespace Navision.ControleDocuments.Services.Services
             }
             catch (Exception ex)
             {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
                 return new List<DocModel>();
             }
         }

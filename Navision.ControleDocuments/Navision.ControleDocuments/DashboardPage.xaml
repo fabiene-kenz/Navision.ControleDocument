@@ -13,7 +13,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="Filter" Text="Filtrer" Order="Primary" Command="{Binding Path=ShowPopUpCommand}" Icon="filter.png" />
         <ToolbarItem x:Name="Refresh" Text="Rafraîchir" Order="Primary" Command="{Binding Path=RefreshCommand}" Icon="refresh.png"/>
-        <ToolbarItem x:Name="Logs" Text="Logs" Order="Secondary"/>
+        <ToolbarItem x:Name="Logs" Text="Logs" Order="Secondary" Command="{Binding Path=LogsCommand}"/>
     </ContentPage.ToolbarItems>
 
     <AbsoluteLayout VerticalOptions="FillAndExpand">
