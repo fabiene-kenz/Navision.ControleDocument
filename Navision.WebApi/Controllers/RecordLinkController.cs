@@ -2,7 +2,7 @@
 using Navision.Models;
 using Navision.WebApi.App_Start;
 using Navision.WebApi.Helpers;
-using Navision.WebApi.LinesPurchasOrders;
+using Navision.WebApi.LinesPurchaseOrders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
