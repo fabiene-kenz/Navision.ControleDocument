@@ -48,12 +48,18 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Navision.ControleDocument.DependenciesServices\Navision.ControleDocument.DependenciesServices.csproj" />
     <ProjectReference Include="..\Navision.ControleDocument.SQL\Navision.ControleDocument.SQL.csproj" />
     <ProjectReference Include="..\Navision.ControleDocuments.Models\Navision.ControleDocuments.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
   </ItemGroup>
 
 </Project>

@@ -506,6 +506,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Logs\FileRead\" />
+    <Folder Include="MobileLogs\" />
     <Folder Include="Views\Documents\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\RecordLink\" />

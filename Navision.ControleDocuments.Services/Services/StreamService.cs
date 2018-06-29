@@ -1,12 +1,16 @@
-﻿using Navision.ControleDocuments.Models.DocsModel;
+﻿using Navision.ControleDocument.DependenciesServices.IServices;
+using Navision.ControleDocuments.Models.DocsModel;
 using Navision.ControleDocuments.Models.UserModels;
+using Navision.ControleDocuments.Models.LogsModel;
 using Navision.ControleDocuments.Services.IServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Navision.ControleDocuments.Services.Services
 {
@@ -39,6 +43,7 @@ namespace Navision.ControleDocuments.Services.Services
             }
             catch (Exception ex)
             {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
                 return null;
             }
         }
@@ -61,7 +66,30 @@ namespace Navision.ControleDocuments.Services.Services
             }
             catch (Exception ex)
             {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
                 return new List<PdfModel>();
+            }
+        }
+
+        public async Task<bool> SendLogs(string LogsFilePath)
+        {
+            LogsModel logModel = new LogsModel();
+            logModel.fileName = Path.GetFileName(LogsFilePath);
+            logModel.fileContent = System.IO.File.ReadAllBytes(LogsFilePath);
+
+            string Uri = @"/Stream/GetLogFile";
+            var obj = JsonConvert.SerializeObject(logModel);
+            var content = new StringContent(obj, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await httpClient.PostAsync(Uribase + Uri, content);
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<bool>(result);
+            }
+            catch(Exception ex)
+            {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
+                return false;
             }
         }
     }

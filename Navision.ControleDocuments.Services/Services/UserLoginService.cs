@@ -1,4 +1,5 @@
-﻿using Navision.ControleDocuments.Models.UserModels;
+﻿using Navision.ControleDocument.DependenciesServices.IServices;
+using Navision.ControleDocuments.Models.UserModels;
 using Navision.ControleDocuments.Services.IServices;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Navision.ControleDocuments.Services.Services
 {
@@ -14,6 +16,7 @@ namespace Navision.ControleDocuments.Services.Services
     /// </summary>
     public class UserLoginService : ConnectService, IUserLoginService
     {
+
         public UserLoginService() : base()
         {
 
@@ -40,6 +43,7 @@ namespace Navision.ControleDocuments.Services.Services
             }
             catch (Exception ex)
             {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
                 return false;
             }
         }
@@ -60,12 +64,14 @@ namespace Navision.ControleDocuments.Services.Services
                 var result = await reponse.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<string>(result);
             }
-            catch(HttpRequestException ex)
+            catch (HttpRequestException ex)
             {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
                 return null;
             }
             catch (Exception ex)
             {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
                 return string.Empty;
             }
         }

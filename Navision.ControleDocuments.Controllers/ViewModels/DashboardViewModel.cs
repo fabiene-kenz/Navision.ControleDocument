@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Navision.ControleDocument.DependenciesServices.IServices;
 
 namespace Navision.ControleDocuments.Controllers.ViewModels
 {
@@ -19,10 +20,12 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
     {
         #region Properties
 
+        private readonly IStreamService _streamservice;
         private readonly IDocumentsService _documentsService;
         private readonly INavigation _navigation;
         private Type _page;
         private IPageService _pageService;
+        private IZipService _zipService;
 
         private DocModel _docModel = new DocModel();
         public DocModel DocModel
@@ -166,6 +169,12 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 return new Command(async () => DocsModel = await UpdateDocsAsync());
             }
         }
+
+        public ICommand LogsCommand
+        {
+            get { return new Command(async () => await SendLogs()); }
+        }
+
         #endregion
 
         #region CTR
@@ -176,6 +185,8 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _navigation = navigation;
             _page = page;
             _documentsService = new DocumentsService(user);
+            _streamservice = new StreamService(user.Token);
+            _zipService = new ZipService();
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
         #endregion
@@ -227,6 +238,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             catch (Exception ex)
             {
+                await DependencyService.Get<ILogger>().WriteLog(ex);
                 throw ex;
             }
         }
@@ -309,6 +321,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 foreach (var doc in _docsModelUnfiltered.Where(x => x.DocSatut == null).Where(x => x.DocName.ToLower().Contains(SearchText.ToLower())))
                     saveList.Add(doc);
             return saveList;
+        }
+
+        private async Task SendLogs()
+        {
+            var logFolder = DependencyService.Get<ILogger>().GetLogFolder();
+            string ZipFilePath = await _zipService.ZipLogs(logFolder);
+
+            if (!string.IsNullOrEmpty(ZipFilePath) && await _streamservice.SendLogs(ZipFilePath) == true)
+                await _pageService.DisplayAlert("Terminé", "Envoi des fichiers de log réussi.", "OK");
+            else
+                await _pageService.DisplayAlert("Erreur", "Erreur lors de l'envoi des fichiers de logs.", "OK");
         }
     }
 }

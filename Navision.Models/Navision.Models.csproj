@@ -46,6 +46,7 @@
     <Compile Include="DocumentModel.cs" />
     <Compile Include="DocumentValuesModel.cs" />
     <Compile Include="JsonModel.cs" />
+    <Compile Include="LogsModel.cs" />
     <Compile Include="PdfModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserContext.cs" />
