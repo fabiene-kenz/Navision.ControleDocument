@@ -135,8 +135,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             catch (Exception ex)
             {
-
-                throw ex;
+              Task.Run(()=>  DependencyService.Get<ILogger>().WriteLog(ex));
             }
 
         }
@@ -145,7 +144,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// Creates VersionModel and Companies Tables if not already created
         /// </summary>
         /// <param name="dbSql">Path of the database</param>
-        public void CreateTablesAsync(string dbSql)
+        public void CreateTables(string dbSql)
         {
             try
             {
@@ -153,10 +152,9 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 var resultVersion =   connection.CreateTableAsync<VersionModel>().Result;
                 var resultCompanies = connection.CreateTableAsync<Companies>().Result;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                 DependencyService.Get<ILogger>().WriteLog(e);
-                throw e;
+                Task.Run(() => DependencyService.Get<ILogger>().WriteLog(ex));
             }
         }
 
