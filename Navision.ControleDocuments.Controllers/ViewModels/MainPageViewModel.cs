@@ -134,11 +134,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private async Task StartLoading()
         {
             IsBusy = true;
-<<<<<<< .mine
-            if (IsValidEmail() && IsValidPassword())
-=======
             if (IsValidEmail() && IsValidPassword() )
->>>>>>> .theirs
                 await LoginAsync();
             else
                 await _pageService.DisplayAlert("Erreur", "Adresse email ou mot de passe incorrect. Verifiez vos identifiants puis réessayez.", "Ok");
@@ -209,6 +205,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private string GetUrlForCompany(string name)
         {
             string company = GetCompanyName(UserName);
+            var test=_getClientParamService.GetClient().ToList();
             var url = _getClientParamService.GetClient().Where(c => c.CompanyName.ToLower().Contains(company)).FirstOrDefault();
             if (url!=null)
             {

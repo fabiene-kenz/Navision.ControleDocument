@@ -23,5 +23,6 @@ namespace Navision.ControleDocument.SQL.Services
         public IQueryable<VersionModel> GetVersion() => Get();
 
         public int UpdateVersion(T version) => Update(version);
+        public void Commit() { _connect.Commit(); }
     }
 }

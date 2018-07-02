@@ -17,12 +17,13 @@ namespace Navision.ControleDocument.SQL.Services
         }
         public void Dispose() => _connect.Close();
 
-        public int AddNewCompany(T company) => Add(company);
+        public int AddNewCompany(T company)=> Add(company); 
 
         public int DelCompany(T company) => Del(company);
 
         public IQueryable<Companies> GetClientParams() => Get();
 
         public int UpdateCompany(T company) => Update(company);
+        public void Commit() { _connect.Commit(); }
     }
 }

@@ -28,7 +28,9 @@ namespace Navision.ControleDocuments.Services.Services
         {
             using (ClientParam<Companies> c = new ClientParam<Companies>(_file))
             {
-                return c.AddNewCompany(company);
+                var result = c.AddNewCompany(company);
+                //c.Commit();
+                return result;
             }
         }
         /// <summary>
@@ -40,7 +42,10 @@ namespace Navision.ControleDocuments.Services.Services
         {
             using (ClientParam<Companies> c = new ClientParam<Companies>(_file))
             {
-                return c.DelCompany(company);
+
+                var result = c.DelCompany(company);
+                //c.Commit();
+                return result;
             }
         }
         /// <summary>
@@ -61,7 +66,9 @@ namespace Navision.ControleDocuments.Services.Services
         {
             using (ClientParam<Companies> c = new ClientParam<Companies>(_file))
             {
-                return c.UpdateCompany(company);
+                var result = c.UpdateCompany(company);
+                //c.Commit();
+                return result;
             }
         }
     }
