@@ -1,14 +1,15 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android;
 
+[assembly: UsesPermission("android.permission.WRITE_EXTERNAL_STORAGE")]
 namespace Navision.ControleDocuments.Droid
-{
+{    
     [Activity( Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -16,6 +17,7 @@ namespace Navision.ControleDocuments.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+           
 
             base.OnCreate(bundle);
 

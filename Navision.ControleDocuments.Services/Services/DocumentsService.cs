@@ -2,7 +2,6 @@
 using Navision.ControleDocuments.Models.DocsModel;
 using Navision.ControleDocuments.Models.UserModels;
 using Navision.ControleDocuments.Services.IServices;
-using Navision.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

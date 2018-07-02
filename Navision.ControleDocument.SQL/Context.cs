@@ -18,6 +18,7 @@ namespace Navision.ControleDocument.SQL
             Repository = repository;
             _connect = new SQLiteConnection(file);
             _connect.Trace = true;
+            //_connect.BeginTransaction();
         }
         /// <summary>
         /// Del a row
@@ -42,7 +43,7 @@ namespace Navision.ControleDocument.SQL
         /// <param name="objet"></param>
         /// <returns></returns>
         protected int Update(T objet)
-        {
+        {            
             return _connect.Update(objet);
         }
         /// <summary>

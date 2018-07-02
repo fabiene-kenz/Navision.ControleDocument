@@ -19,7 +19,9 @@ namespace Navision.ControleDocuments.Services.Services
         {
             using (Version<VersionModel> v = new Version<VersionModel>(_file))
             {
-                return v.AddVersion(version);
+                var result = v.AddVersion(version);
+                //v.Commit();
+                return result; 
             }
         }
 
@@ -27,7 +29,9 @@ namespace Navision.ControleDocuments.Services.Services
         {
             using (Version<VersionModel> v = new Version<VersionModel>(_file))
             {
-                return v.DelVersion(version);
+                var result = v.DelVersion(version);
+                //v.Commit();
+                return result;
             }
         }
 
@@ -41,7 +45,9 @@ namespace Navision.ControleDocuments.Services.Services
         {
             using (Version<VersionModel> v = new Version<VersionModel>(_file))
             {
-                return v.UpdateVersion(version);
+                var result = v.UpdateVersion(version);
+                //v.Commit();
+                return result;
             }
         }
     }

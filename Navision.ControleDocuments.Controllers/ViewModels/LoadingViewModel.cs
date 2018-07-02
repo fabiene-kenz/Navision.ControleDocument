@@ -49,7 +49,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _mainpage = mainpage;
             string dbSql = DependencyService.Get<ISQLite>().GetLocalFilePath("db.sqlite3");
             _jsonService = new JsonService();
-            
+
             _versionService = new VersionService(dbSql);
             _getClientParamService = new GetClientParamService(dbSql);
 
@@ -59,9 +59,10 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             var jsonObject = Utils.DeserializeFromJson<JsonModel>(_jsonService.GetJson());
 
             //var jsonObject = Utils.DeserializeFromJson<JsonModel>("{\"Version\": \"1.0.0.0\",\"Companies\": [{\"CompanyName\": \"e-Kenz\",\"Url\": \"http://navapi.saas.e-kenz.com\", \"Domain\": \"SAAS\"},{\"CompanyName\": \"Company1\",\"Url\": \"URL1\", \"Domain\": \"Domain1\"},{\"CompanyName\": \"Company2\",\"Url\": \"URL2\", \"Domain\": \"Domain2\"}]}");
-
-            Task.Run(async () => await CreateTablesAsync(dbSql));
-            Task.Run(async () => await PopulateDb(dbSql, jsonObject));
+            CreateTablesAsync(dbSql);
+            PopulateDb(dbSql, jsonObject);
+            //Task.Run(async () => await CreateTablesAsync(dbSql));
+            //Task.Run(async () => await PopulateDb(dbSql, jsonObject));
 
             Device.StartTimer(TimeSpan.FromSeconds(2), () =>
             {
@@ -96,37 +97,47 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// </summary>
         /// <param name="dbSql">Path of the database</param>
         /// <param name="jsonObject">Configuration file as object</param>
-        public async Task PopulateDb(string dbSql, JsonModel jsonObject)
+        public void PopulateDb(string dbSql, JsonModel jsonObject)
         {
-            var versionService = new VersionService(dbSql);
-            // One version in the Table
-            var versionResult = versionService.GetVersion().FirstOrDefault();
-            //var query = versionResult.FirstOrDefault();
-            var clientResult = _getClientParamService.GetClient();
-            // Check Version
-            if (versionResult != null && versionResult.Version == jsonObject.Version)
+            try
             {
-                TextLoading = "La base de données est à jour...";
-                return;
-            }
 
-            if (versionResult != null && versionResult.Version != jsonObject.Version)
+                var versionService = new VersionService(dbSql);
+                // One version in the Table
+                var versionResult = versionService.GetVersion().FirstOrDefault();
+                //var query = versionResult.FirstOrDefault();
+                var clientResult = _getClientParamService.GetClient();
+                // Check Version
+                if (versionResult != null && versionResult.Version == jsonObject.Version)
+                {
+                    TextLoading = "La base de données est à jour...";
+                    return;
+                }
+
+                if (versionResult != null && versionResult.Version != jsonObject.Version)
+                {
+                    // Clean DB
+                    _versionService.DelVersion(versionResult);
+                    foreach (var company in clientResult)
+                        _getClientParamService.DelClient(company);
+                }
+
+
+                // Add new Datas
+                _versionService.AddVersion(new VersionModel { Version = jsonObject.Version });
+                foreach (var company in jsonObject.Companies)
+                    _getClientParamService.AddClient(new Companies { CompanyName = company.CompanyName, Url = company.Url, Domain = company.Domain });
+                TextLoading = "Mise à jour de la nouvelle base de données...";
+
+
+                IsLoading = false;
+                TextLoading = "Chargement effectué";
+            }
+            catch (Exception ex)
             {
-                // Clean DB
-                _versionService.DelVersion(versionResult);
-                foreach (var company in clientResult)
-                    _getClientParamService.DelClient(company);
+
+                throw ex;
             }
-           
-            // Add new Datas
-            _versionService.AddVersion(new VersionModel { Version = jsonObject.Version });
-            foreach (var company in jsonObject.Companies)
-                _getClientParamService.AddClient(new Companies { CompanyName = company.CompanyName, Url = company.Url, Domain = company.Domain });
-            TextLoading = "Mise à jour de la nouvelle base de données...";
-
-
-            IsLoading = false;
-            TextLoading = "Chargement effectué";
 
         }
 
@@ -134,17 +145,17 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// Creates VersionModel and Companies Tables if not already created
         /// </summary>
         /// <param name="dbSql">Path of the database</param>
-        public async Task CreateTablesAsync(string dbSql)
+        public void CreateTablesAsync(string dbSql)
         {
             try
             {
                 var connection = new SQLiteAsyncConnection(dbSql);
-                await connection.CreateTableAsync<VersionModel>();
-                await connection.CreateTableAsync<Companies>();
+                var resultVersion =   connection.CreateTableAsync<VersionModel>().Result;
+                var resultCompanies = connection.CreateTableAsync<Companies>().Result;
             }
             catch (Exception e)
             {
-                await DependencyService.Get<ILogger>().WriteLog(e);
+                 DependencyService.Get<ILogger>().WriteLog(e);
                 throw e;
             }
         }
