@@ -134,10 +134,12 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private async Task StartLoading()
         {
             IsBusy = true;
+<<<<<<< .mine
             if (IsValidEmail() && IsValidPassword())
+=======
+            if (IsValidEmail() && IsValidPassword() )
+>>>>>>> .theirs
                 await LoginAsync();
-            else if(string.IsNullOrEmpty(_url))
-                await _pageService.DisplayAlert("Erreur", "Vous ne pouvez pas vous connecter avec cette adresse mail.", "Ok");
             else
                 await _pageService.DisplayAlert("Erreur", "Adresse email ou mot de passe incorrect. Verifiez vos identifiants puis réessayez.", "Ok");
             IsBusy = false;

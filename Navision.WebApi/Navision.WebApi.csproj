@@ -211,7 +211,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\LinesPurchasOrders\Reference.cs">
+    <Compile Include="Connected Services\LinesPurchaseOrders\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -309,45 +309,45 @@
     <Content Include="Connected Services\Approve\Navision.WebApi.Approve.ShowPostedApprovalEntries_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\LinesPurchasOrders\LinesPurchasOrders.wsdl" />
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.CreateMultiple_Result.datasource">
+    <None Include="Connected Services\LinesPurchaseOrders\LinesPurchasOrders.wsdl" />
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.CreateMultiple_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.Create_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.Create_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.Delete_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.Delete_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.GetRecIdFromKey_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.GetRecIdFromKey_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.IsUpdated_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.IsUpdated_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.LinesPurchasOrders.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.LinesPurchasOrders.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.ReadByRecId_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.ReadByRecId_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.ReadMultiple_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.ReadMultiple_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.Read_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.Read_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.UpdateMultiple_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.UpdateMultiple_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\LinesPurchasOrders\Navision.WebApi.LinesPurchasOrders.Update_Result.datasource">
+    <Content Include="Connected Services\LinesPurchaseOrders\Navision.WebApi.LinesPurchaseOrders.Update_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\PurchaseOrders\configuration91.svcinfo" />
     <None Include="Connected Services\PurchaseOrders\configuration.svcinfo" />
-    <None Include="Connected Services\LinesPurchasOrders\configuration91.svcinfo" />
-    <None Include="Connected Services\LinesPurchasOrders\configuration.svcinfo" />
-    <None Include="Connected Services\LinesPurchasOrders\Reference.svcmap">
+    <None Include="Connected Services\LinesPurchaseOrders\configuration91.svcinfo" />
+    <None Include="Connected Services\LinesPurchaseOrders\configuration.svcinfo" />
+    <None Include="Connected Services\LinesPurchaseOrders\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -542,7 +542,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\Approve\" />
-    <WCFMetadataStorage Include="Connected Services\LinesPurchasOrders\" />
+    <WCFMetadataStorage Include="Connected Services\LinesPurchaseOrders\" />
     <WCFMetadataStorage Include="Connected Services\PurchaseOrders\" />
     <WCFMetadataStorage Include="Connected Services\RecordLink\" />
   </ItemGroup>

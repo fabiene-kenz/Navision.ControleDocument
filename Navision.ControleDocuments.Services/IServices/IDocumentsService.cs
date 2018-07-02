@@ -1,4 +1,5 @@
 ﻿using Navision.ControleDocuments.Models.DocsModel;
+using Navision.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
