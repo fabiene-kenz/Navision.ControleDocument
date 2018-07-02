@@ -89,13 +89,13 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="5">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="5" Margin="10,0,0,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                         <Label Text="{Binding Path=PropertyName, Mode=TwoWay}" FontAttributes="Bold" TextColor="White"/>
                                     </StackLayout>
                                     <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
