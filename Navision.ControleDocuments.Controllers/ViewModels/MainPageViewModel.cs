@@ -30,7 +30,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private readonly IReadFileService _readFileService;
         private readonly IGetClientParamService _getClientParamService;
         private readonly Regex EmailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-
+        private string _url;
         private bool _isBusy;
 
         public bool IsBusy
@@ -134,8 +134,10 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private async Task StartLoading()
         {
             IsBusy = true;
-            if (IsValidEmail() && IsValidPassword())
+            if (IsValidEmail() && IsValidPassword() && !string.IsNullOrEmpty(_url))
                 await LoginAsync();
+            else if(string.IsNullOrEmpty(_url))
+                await _pageService.DisplayAlert("Erreur", "Vous ne pouvez pas vous connecter avec cette adresse mail.", "Ok");
             else
                 await _pageService.DisplayAlert("Erreur", "Adresse email ou mot de passe incorrect. Verifiez vos identifiants puis réessayez.", "Ok");
             IsBusy = false;
@@ -177,15 +179,13 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         {
             // Crypt password
             var passwordCrypted = Convert.ToBase64String(Utils.EncryptStringToBytes_Aes(Password));
-            string url = GetUrlForCompany(UserName);
-            _userLoginService = new UserLoginService(new UserModel { UserName = UserName, Password = passwordCrypted, URL = url });
+            _url = GetUrlForCompany(UserName);
+            _userLoginService = new UserLoginService(new UserModel { UserName = UserName, Password = passwordCrypted, URL = _url });
             string token = await _userLoginService.GetToken(new UserModel { UserName = UserName, Password = passwordCrypted });
-
-            
 
             if (!String.IsNullOrEmpty(token))
             {
-                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = passwordCrypted, Token = token, URL = url });
+                Application.Current.Properties["UserData"] = Utils.SerializeToJson(new UserModel { UserName = UserName, Password = passwordCrypted, Token = token, URL = _url });
                 return true;
             }
             else if (token == null)
@@ -207,8 +207,13 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         private string GetUrlForCompany(string name)
         {
             string company = GetCompanyName(UserName);
-            var url = _getClientParamService.GetClient().Where(c => c.CompanyName.ToLower().Contains(company)).FirstOrDefault().Url;
-            return url;
+            var url = _getClientParamService.GetClient().Where(c => c.CompanyName.ToLower().Contains(company)).FirstOrDefault();
+            if (url!=null)
+            {
+                return url.Url;
+            }
+            
+            return string.Empty;
         }
         /// <summary>
         /// Get Company Name of mail

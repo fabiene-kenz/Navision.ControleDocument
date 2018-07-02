@@ -185,7 +185,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _navigation = navigation;
             _page = page;
             _documentsService = new DocumentsService(user);
-            _streamservice = new StreamService(user.Token);
+            _streamservice = new StreamService(user);
             _zipService = new ZipService();
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
