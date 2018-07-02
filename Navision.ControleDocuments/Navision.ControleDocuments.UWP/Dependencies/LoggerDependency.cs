@@ -14,15 +14,25 @@ namespace Navision.ControleDocuments.UWP.Dependencies
 {
     public class LoggerDependency : ILogger
     {
+
+        /// <summary>
+        /// Get the folder where Logs are located
+        /// </summary>
+        /// <returns></returns>
         public string GetLogFolder()
         {
             return System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         }
 
+        /// <summary>
+        /// Write each excpetion in log file with time, device info and core of exception
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
         public async Task WriteLog(Exception ex)
         {
-            string docFolder = GetLogFolder();
-            string filePath = Path.Combine(docFolder, DateTime.Now.ToString("ddMMyyyy-HHmm-") + CrossDeviceInfo.Current.Id + ".log");
+            string docFolder = Path.Combine(GetLogFolder(), "Logs");
+            string filePath = Path.Combine(docFolder, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString() + '-' + CrossDeviceInfo.Current.Id + ".log");
             string[] files;
 
             try
@@ -35,7 +45,7 @@ namespace Navision.ControleDocuments.UWP.Dependencies
                 if (files.Length == 0)
                     File.WriteAllText(filePath, null);
                 else
-                    filePath = CheckLogFileLength(docFolder, files);
+                    filePath = CheckLogFileLength(GetLogFolder(), files);
 
                 using (FileStream fs = File.Open(filePath, FileMode.Append, FileAccess.Write))
                 {
@@ -62,20 +72,23 @@ namespace Navision.ControleDocuments.UWP.Dependencies
             }
         }
 
+        /// <summary>
+        /// Check the size of th Log file, if more than 1Mbm then creates a new file with TimeStamp and Device ID as title
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <param name="files"></param>
+        /// <returns></returns>
         string CheckLogFileLength(string folderPath, string[] files)
         {
             string filePath = null;
             if (new System.IO.FileInfo(files.Last()).Length >= 1000000)
             {
-                var newPath = Path.Combine(folderPath, "Logs" + DateTime.Now.ToString("ddMMyyyy-HHmm") + CrossDeviceInfo.Current.Id + ".log");
-                filePath = Path.Combine(folderPath, newPath);
-                if (!File.Exists(filePath))
-                    using (File.CreateText(filePath));
+                filePath = Path.Combine(folderPath, "Logs", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString() + '-' + CrossDeviceInfo.Current.Id + ".log");
+                using (File.CreateText(filePath));
             }
             else
                 filePath = files.Last();
             return filePath;
         }
-
     }
 }

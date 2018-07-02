@@ -185,7 +185,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             _navigation = navigation;
             _page = page;
             _documentsService = new DocumentsService(user);
-            _streamservice = new StreamService(user.Token);
+            _streamservice = new StreamService(user);
             _zipService = new ZipService();
             Device.BeginInvokeOnMainThread(async () => DocsModel = await GetDocsAsync());
         }
@@ -323,12 +323,18 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             return saveList;
         }
 
+        /// <summary>
+        /// Sends the log folder as zip file to the WebApi
+        /// </summary>
+        /// <returns></returns>
         private async Task SendLogs()
         {
             var logFolder = DependencyService.Get<ILogger>().GetLogFolder();
             string ZipFilePath = await _zipService.ZipLogs(logFolder);
 
-            if (!string.IsNullOrEmpty(ZipFilePath) && await _streamservice.SendLogs(ZipFilePath) == true)
+            if (ZipFilePath == "")
+                await _pageService.DisplayAlert("Erreur", "Aucun log à envoyer.", "OK");
+            else if (!string.IsNullOrEmpty(ZipFilePath) && await _streamservice.SendLogs(ZipFilePath) == true)
                 await _pageService.DisplayAlert("Terminé", "Envoi des fichiers de log réussi.", "OK");
             else
                 await _pageService.DisplayAlert("Erreur", "Erreur lors de l'envoi des fichiers de logs.", "OK");

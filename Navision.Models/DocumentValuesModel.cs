@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Navision.Models
 {
-    public class DocumentValuesModel
+   public class DocumentValuesModel
     {
         public string Name { get; set; }
         public string Value { get; set; }
