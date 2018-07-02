@@ -47,7 +47,7 @@ namespace Navision.ControleDocuments
                 // affiche la popup a l'endroit et la taille voulu
                 Panel.LayoutTo(rect, 450, Easing.CubicOut);
                 _popupShow = true;
-                //ShowPanelImg.IsVisible = false;
+                ShowPanelImg.IsVisible = false;
             }
             else
             {
@@ -55,7 +55,7 @@ namespace Navision.ControleDocuments
                 // affichela popup a l'endroit et la taille voulu
                 Panel.LayoutTo(rect, 450, Easing.CubicOut);
                 _popupShow = false;
-                //ShowPanelImg.IsVisible = true;
+                ShowPanelImg.IsVisible = true;
             }
         }
         /// <summary>
