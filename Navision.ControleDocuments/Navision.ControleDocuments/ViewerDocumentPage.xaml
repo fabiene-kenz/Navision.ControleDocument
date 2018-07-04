@@ -85,7 +85,7 @@
             </Grid>
                 <ListView x:Name="PropertiesListView" HorizontalOptions="FillAndExpand" Grid.Row="1"
                         ItemsSource="{Binding Path=ValuesModel, Mode=TwoWay}"
-                        SelectedItem="{Binding Path=ValueModel,Mode=TwoWay}">
+                        SelectedItem="{Binding Path=ValueModel,Mode=TwoWay}" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
