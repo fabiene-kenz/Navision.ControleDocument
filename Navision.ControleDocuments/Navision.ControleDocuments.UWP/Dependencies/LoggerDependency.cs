@@ -21,6 +21,9 @@ namespace Navision.ControleDocuments.UWP.Dependencies
         /// <returns></returns>
         public string GetLogFolder()
         {
+            string docFolder = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Logs");
+            if (!Directory.Exists(docFolder))
+                Directory.CreateDirectory(docFolder);
             return System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         }
 
@@ -84,7 +87,7 @@ namespace Navision.ControleDocuments.UWP.Dependencies
             if (new System.IO.FileInfo(files.Last()).Length >= 1000000)
             {
                 filePath = Path.Combine(folderPath, "Logs", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString() + '-' + CrossDeviceInfo.Current.Id + ".log");
-                using (File.CreateText(filePath));
+                using (File.CreateText(filePath)) ;
             }
             else
                 filePath = files.Last();
