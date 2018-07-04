@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>OnePlus A6003</SelectedDevice>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
+    <DefaultDevice>AVD_GalaxyNexus_ToolsForApacheCordova</DefaultDevice>
   </PropertyGroup>
 </Project>

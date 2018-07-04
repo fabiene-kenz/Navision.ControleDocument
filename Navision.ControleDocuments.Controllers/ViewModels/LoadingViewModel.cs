@@ -59,7 +59,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             var jsonObject = Utils.DeserializeFromJson<JsonModel>(_jsonService.GetJson());
 
             //var jsonObject = Utils.DeserializeFromJson<JsonModel>("{\"Version\": \"1.0.0.0\",\"Companies\": [{\"CompanyName\": \"e-Kenz\",\"Url\": \"http://navapi.saas.e-kenz.com\", \"Domain\": \"SAAS\"},{\"CompanyName\": \"Company1\",\"Url\": \"URL1\", \"Domain\": \"Domain1\"},{\"CompanyName\": \"Company2\",\"Url\": \"URL2\", \"Domain\": \"Domain2\"}]}");
-            CreateTablesAsync(dbSql);
+            CreateTables(dbSql);
             PopulateDb(dbSql, jsonObject);
             //Task.Run(async () => await CreateTablesAsync(dbSql));
             //Task.Run(async () => await PopulateDb(dbSql, jsonObject));
@@ -135,8 +135,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             }
             catch (Exception ex)
             {
-
-                throw ex;
+              Task.Run(()=>  DependencyService.Get<ILogger>().WriteLog(ex));
             }
 
         }
@@ -145,7 +144,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
         /// Creates VersionModel and Companies Tables if not already created
         /// </summary>
         /// <param name="dbSql">Path of the database</param>
-        public void CreateTablesAsync(string dbSql)
+        public void CreateTables(string dbSql)
         {
             try
             {
@@ -153,10 +152,9 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
                 var resultVersion =   connection.CreateTableAsync<VersionModel>().Result;
                 var resultCompanies = connection.CreateTableAsync<Companies>().Result;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                 DependencyService.Get<ILogger>().WriteLog(e);
-                throw e;
+                Task.Run(() => DependencyService.Get<ILogger>().WriteLog(ex));
             }
         }
 

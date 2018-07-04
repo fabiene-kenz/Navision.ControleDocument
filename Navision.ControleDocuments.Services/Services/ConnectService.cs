@@ -22,7 +22,13 @@ namespace Navision.ControleDocuments.Services.Services
             private set { _uribase = value; }
         }
 #else
-        public string Uribase { get { return "http://localhost:61798/"; } }
+        private string _uribase;
+        public string Uribase
+        {
+            //get { return "http://localhost:61798/"; }
+            get { return _uribase; }
+            private set { _uribase = value; }
+        }
 #endif
         public HttpClient httpClient { get; private set; }
         private readonly string _userAgent = "Navision";

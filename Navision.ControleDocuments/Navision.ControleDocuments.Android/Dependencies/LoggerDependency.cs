@@ -22,6 +22,9 @@ namespace Navision.ControleDocuments.Droid.Dependencies
     {
         public string GetLogFolder()
         {
+            string docFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Logs");
+            if (!Directory.Exists(docFolder))
+                Directory.CreateDirectory(docFolder);
             return System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
         }
 
