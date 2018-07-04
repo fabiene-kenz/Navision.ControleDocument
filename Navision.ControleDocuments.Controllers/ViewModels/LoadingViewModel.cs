@@ -59,7 +59,7 @@ namespace Navision.ControleDocuments.Controllers.ViewModels
             var jsonObject = Utils.DeserializeFromJson<JsonModel>(_jsonService.GetJson());
 
             //var jsonObject = Utils.DeserializeFromJson<JsonModel>("{\"Version\": \"1.0.0.0\",\"Companies\": [{\"CompanyName\": \"e-Kenz\",\"Url\": \"http://navapi.saas.e-kenz.com\", \"Domain\": \"SAAS\"},{\"CompanyName\": \"Company1\",\"Url\": \"URL1\", \"Domain\": \"Domain1\"},{\"CompanyName\": \"Company2\",\"Url\": \"URL2\", \"Domain\": \"Domain2\"}]}");
-            CreateTablesAsync(dbSql);
+            CreateTables(dbSql);
             PopulateDb(dbSql, jsonObject);
             //Task.Run(async () => await CreateTablesAsync(dbSql));
             //Task.Run(async () => await PopulateDb(dbSql, jsonObject));
